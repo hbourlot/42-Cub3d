@@ -23,7 +23,7 @@ MSG_LINUX 		= "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES)
 
 
 NAME			= cube3d
-C_FUNCTIONS		= t
+C_FUNCTIONS		= initialize/window
 
 # -L./ -lminishell
 # VALGRIND		= valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes
@@ -91,7 +91,7 @@ bonus:			all
 
 r:
 	@make -s
-	@./minishell
+	@./$(NAME)
 
 v:
 	@make -s
