@@ -29,7 +29,7 @@ C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initial
 					exit/free																					\
 					\
 					\
-					map/cub_array map/map
+					map/cub_array map/open
 
 
 

@@ -42,6 +42,7 @@ void	free_data(t_cube3d *data);
 int 	open_cub(const char *path);
 int		init_window(t_cube3d *data);
 int		cub_array(t_map *map);
+int		count_lines(const char *path);
 
 
 

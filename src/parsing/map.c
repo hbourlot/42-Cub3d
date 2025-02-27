@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_map.c                                            :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:06:44 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/02/27 21:26:12 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/02/27 21:22:47 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+# include "cube3d.h"
 
-int	init_s_map(t_map *map)
+
+int	parsing_map(t_map *map)
 {
-	int			status;
 
-	status = cub_array(map);
-	if (status < 0)
-		return (status); //TODO: Need to menage the error output
-	map->nbr_of_lines = count_lines(map->path);
-	if (map->nbr_of_lines < 0)
-		return (-1); // TODO: Need to menage the error output
-	if (parsing_map(map))
-	return (0);
+	if (map->nbr_of_lines < 9)
+		ft_printf_fd(2, E_MINFO);
+	if (parsing_texture(map))
 }
+

@@ -3,13 +3,24 @@
 
 #include "cube3d.h"
 
+# define NORTH 	"NO"
+# define SOUTH 	"SO"
+# define WEST	"WE"
+# define EAST	"EA"
+# define CMP_OK	0
+
 typedef struct s_map
 {
 	const char	*path;
 	char		**cub_array;
+	int			nbr_of_lines;
 	int			width;
 	int			height;
-	int			error;
+	const char	*path_no;
+	const char	*path_so;
+	const char	*path_we;
+	const char	*path_ea;
+	int			error; // ! Maybe i can use
 }	t_map;
 
 

@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_map.c                                            :+:      :+:    :+:   */
+/*   count_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:06:44 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/02/27 21:26:12 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/02/27 21:03:23 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/02/27 21:03:46 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	init_s_map(t_map *map)
+static int lines_in_cub(int fd)
 {
-	int			status;
+	char	*line;
+	int		nbr_of_line;
 
-	status = cub_array(map);
-	if (status < 0)
-		return (status); //TODO: Need to menage the error output
-	map->nbr_of_lines = count_lines(map->path);
-	if (map->nbr_of_lines < 0)
-		return (-1); // TODO: Need to menage the error output
-	if (parsing_map(map))
-	return (0);
+	nbr_of_line = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		nbr_of_line++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (nbr_of_line);
+}
+
+int count_lines(const char *path)
+{
+	int fd;
+	int nbr_of_lines;
+
+	fd = open_cub(path);
+	if (fd < 0)
+		return (-1);
+	nbr_of_lines = lines_in_cub(fd);
+	close(fd);
+	return (nbr_of_lines);
 }
