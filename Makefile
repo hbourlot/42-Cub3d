@@ -8,7 +8,7 @@ RESET 			= \033[0m
 
 CC				= cc
 CFLAGS			=  -g #-Wall -Wextra -Werror #-pthread #-fsanitize=address,undefined 
-MINILIB_FLAGS	= -Llibrary/minilibx-linux -lmlx_Linux -lX11 -lXext
+MINILIB_FLAGS	= -Llib/minilibx-linux  -Lmlx -lmlx -lX11 -lXext -lm  #-lmlx_Linux -lX11 -lXext
 LIB				= libcube3d.a
 INCLUDE 		= inc/
 SRC_DIR 		= src/
@@ -23,12 +23,19 @@ MSG_LINUX 		= "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES)
 
 
 NAME			= cube3d
-C_FUNCTIONS		= initialize/window
+C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initialize/window					\
+					\
+					\
+					exit/free																					\
+					\
+					\
+					map/cub_array map/map
+
+
 
 # -L./ -lminishell
-# VALGRIND		= valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes
-VALGRIND		= valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --suppressions=readline.supp
-LINK			= -L./lib/libft/ -lft -L./ -lcube3d
+VALGRIND		= valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
+LINK			= -L./ -lcube3d -L./lib/libft -lft $(MINILIB_FLAGS)
 SRC_FILES 		= $(addprefix $(SRC_DIR), $(C_FUNCTIONS:=.c))
 OBJS_SRC 		= $(addprefix $(OBJ_DIR), $(SRC_FILES:%.c=%.o))
 
@@ -40,8 +47,10 @@ LIBFT_LIB = ./lib/libft/libft.a
 all:			$(NAME)
 
 $(NAME):		$(LIBFT_LIB) $(LIB) main.o
-				@$(CC) $(CFLAGS) main.o $(LINK) -o $@
+				@make re -s -C ./lib/minilibx-linux/
+				$(CC) $(CFLAGS) main.o $(LINK) -o $@
 				@echo "$(GREEN)Executable '$(NAME)' created successfully!$(RESET) ✅"
+# $(CC) $(CFLAGS) main.o -L./lib/libft -lft $(MINILIB_FLAGS) -o $@
 
 $(LIBFT_LIB):
 				@make -s -C lib/libft/
@@ -60,7 +69,7 @@ else
 endif
 				@$(CC) $(CFLAGS) -c $< -I./$(INCLUDE) -o $@
 
-main.o:			main.c $(INCLUDE)
+main.o:			main.c inc/cube3d.h inc/definitions.h
 				@$(CC) -c main.c $(CFLAGS) -I./$(INCLUDE) -o $@
 
 clean:
@@ -91,8 +100,8 @@ bonus:			all
 
 r:
 	@make -s
-	@./$(NAME)
+	@./$(NAME) ./map/ex1.cub
 
 v:
 	@make -s
-	@$(VALGRIND) ./minishell
+	@$(VALGRIND) ./$(NAME) ./map/ex1.cub
