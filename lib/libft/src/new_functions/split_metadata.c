@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   split_metadata.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 07:42:31 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/01 08:25:48 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/01 08:32:36 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+# include "libft.h"
 
-
-int	parse_s_map(t_map *map)
+t_split_meta	*split_metadata( void )
 {
-	if (map->nbr_of_lines < 9)
-		return (ft_printf_fd(2, ME_MINFO), -1);
-	if (parse_texture(map) < 0)
-		return (-1);		
+	static t_split_meta	meta_data;
+
+	return (&meta_data);
 }
