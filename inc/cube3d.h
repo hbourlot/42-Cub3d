@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 10:49:44 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:17:39 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_cube3d
 int				parse_s_map(t_map *map);
 bool			parse_texture(t_map *map);
 bool			parse_fc(t_map *map);
+bool			invalid_file_name(t_map *data);
+
 
 // ***************************************************************************
 // **							Initialize Functions 						**

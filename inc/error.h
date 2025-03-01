@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 10:59:00 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:10:15 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #define ME_IMP "Error: Invalid map path!\n"
 #define	ME_FD "Error: Opening file!\n"
 #define ME_EM "Error: Map is empty!\n"
+#define ME_PAX "Error: Parameter doesn't end with '.xpm'!\n"
 #define ME_MINFO "Error: The map doesn't have all the necessary information!\n"
 
 typedef enum s_status

@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:08:25 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 10:18:02 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:29:10 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	allocate_path(char **path_ref, char *src)
 {
 	int		i;
 	char	*ref;
+	size_t	length;
 
 	i = 0;
 	src += 2;
@@ -28,6 +29,9 @@ static int	allocate_path(char **path_ref, char *src)
 		*path_ref = ft_strdup(ref);
 		if (!*path_ref)
 			return (-1);
+		length = ft_strlen(*path_ref);
+		if (length > 0 && (*path_ref)[length - 1] == '\n')
+			(*path_ref)[length - 1] = '\0';
 		return (0);
 	}
 	return (-1);
@@ -67,7 +71,7 @@ static bool	parse_line(char *src, const char *compass[])
 }
 
 // [] Need to make sure if must be in the strict order of NO SO WE EA
-// [] Need to make sure it ends with .xpm
+// [X] Need to make sure it ends with .xpm
 bool	parse_texture(t_map *map)
 {
 	int			i;

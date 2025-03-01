@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/02/28 10:06:51 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/01 11:14:15 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,5 @@ t_cube3d* init_s_cube3d(int argc, char *argv[])
 	
 	ft_memset(&data, 0, sizeof(t_cube3d));
 	data.map.path = argv[1];
-
 	return (&data);
 }
