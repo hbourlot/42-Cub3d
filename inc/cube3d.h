@@ -15,9 +15,43 @@
 # include <stdbool.h>
 # include <fcntl.h>
 
+typedef struct s_map
+{
+	const char	*path;
+	char		**cub_array;
+	int			nbr_of_lines;
+	int			width;
+	int			height;
+	const char	*no;
+	const char	*so;
+	const char	*we;
+	const char	*ea;
+	int			error; // ! Maybe i can use
+}	t_map;
+
+
+typedef struct s_player
+{
+	int		direction;
+}	t_player;
+
+
+typedef struct s_cube3d
+{
+	t_map	map;
+	void	*mlx_ptr;
+	void	*mlx_win;
+	char 	*name;
+
+
+}	t_cube3d;
+
+
 // ***************************************************************************
 // **						   Parsing Functions						    **
 // ***************************************************************************
+int				parse_s_map(t_map *map);
+int				parse_texture(t_map *map);
 
 
 // ***************************************************************************
@@ -42,6 +76,7 @@ void	free_data(t_cube3d *data);
 int 	open_cub(const char *path);
 int		init_window(t_cube3d *data);
 int		cub_array(t_map *map);
+int		count_lines(const char *path);
 
 
 

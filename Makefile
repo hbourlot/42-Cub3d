@@ -24,12 +24,13 @@ MSG_LINUX 		= "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES)
 
 NAME			= cube3d
 C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initialize/window					\
-					\
-					\
-					exit/free																					\
-					\
-					\
-					map/cub_array map/map
+																												\
+																												\
+				  exit/free																						\
+																												\
+																												\
+				  map/count_lines map/cub_array map/open														\
+				  parsing/map parsing/texture
 
 
 
@@ -69,7 +70,7 @@ else
 endif
 				@$(CC) $(CFLAGS) -c $< -I./$(INCLUDE) -o $@
 
-main.o:			main.c inc/cube3d.h inc/definitions.h
+main.o:			main.c inc/cube3d.h inc/definitions.h inc/error.h
 				@$(CC) -c main.c $(CFLAGS) -I./$(INCLUDE) -o $@
 
 clean:
