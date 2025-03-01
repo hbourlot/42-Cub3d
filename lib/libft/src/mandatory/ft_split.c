@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:30:43 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/01/10 23:31:22 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/01 08:33:05 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,17 @@ static int	count_words_in_string(char const *s, char c)
 /// @return Returns a dynamically allocated array of strings split from s.
 char	**ft_split(char const *s, char c)
 {
-	char	**array;
-	size_t	words;
+	t_split_meta	*meta_data;
 
+	meta_data = split_metadata();
 	if (NULL == s)
 		return (NULL);
-	words = count_words_in_string(s, c);
-	array = ft_calloc((words + 1), sizeof(char *));
-	if (!array)
+	meta_data->word_count = count_words_in_string(s, c);
+	meta_data->address_ptr = ft_calloc((meta_data->word_count + 1), sizeof(char *));
+	if (!meta_data->address_ptr)
 		return (NULL);
-	array[words] = NULL;
-	if (split_to_array(array, s, c))
+	meta_data->address_ptr[meta_data->word_count] = NULL;
+	if (split_to_array(meta_data->address_ptr, s, c))
 		return (NULL);
-	return (array);
+	return (meta_data->address_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 20:49:30 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/02/20 16:10:39 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/01 08:32:50 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef	struct	s_split_meta
+{
+	size_t	word_count;
+	char	**address_ptr;
+}					t_split_meta;
 
 // ! Functions in "./SRC/"
 
@@ -78,6 +84,7 @@ int					ft_putchar(char c);
 int					ft_isspaces(int c);
 int					ft_putstr(char *c);
 int					ft_nbr_len(long nbr);
+t_split_meta		*split_metadata(void);
 char				*get_next_line(int fd);
 int					ft_line_len(char *src);
 char				*ft_itoa_iter(long nbr);
