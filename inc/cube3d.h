@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cube3d.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/01 10:49:44 by hbourlot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUBE3D_H
-#define CUBE3D_H
+# define CUBE3D_H
 
 # include "../lib/libft/inc/libft.h"
 # include "../lib/minilibx-linux/mlx.h"
@@ -7,13 +19,12 @@
 # include "error.h"
 // # include <X11/X.h>      // Button press
 // # include <X11/keysym.h> // Key device
+# include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdbool.h>
-# include <fcntl.h>
 
 typedef struct s_map
 {
@@ -26,60 +37,54 @@ typedef struct s_map
 	const char	*so;
 	const char	*we;
 	const char	*ea;
-	int			error; // ! Maybe i can use
-}	t_map;
-
+	const char	*floor;
+	const char	*ceiling;
+}				t_map;
 
 typedef struct s_player
 {
-	int		direction;
-}	t_player;
-
+	int			direction;
+}				t_player;
 
 typedef struct s_cube3d
 {
-	t_map	map;
-	void	*mlx_ptr;
-	void	*mlx_win;
-	char 	*name;
+	t_map		map;
+	void		*mlx_ptr;
+	void		*mlx_win;
+	char		*name;
 
-
-}	t_cube3d;
-
+}				t_cube3d;
 
 // ***************************************************************************
-// **						   Parsing Functions						    **
+// **							Parsing Functions							**
 // ***************************************************************************
 int				parse_s_map(t_map *map);
-int				parse_texture(t_map *map);
-
+bool			parse_texture(t_map *map);
+bool			parse_fc(t_map *map);
 
 // ***************************************************************************
-// **						   Initialize Functions 						**
+// **							Initialize Functions 						**
 // ***************************************************************************
 int				init_s_map(t_map *map);
-t_cube3d* 		init_s_cube3d(int argc, char *argv[]);
-
-
-// ***************************************************************************
-// **						    Draw Functions   							**
-// ***************************************************************************
+t_cube3d		*init_s_cube3d(int argc, char *argv[]);
 
 // ***************************************************************************
-// **						    Exit Functions   							**
+// **								Draw Functions   						**
 // ***************************************************************************
-void	free_data(t_cube3d *data);
 
 // ***************************************************************************
-// **						    Map Functions   							**
+// **								Exit Functions   						**
 // ***************************************************************************
-int 	open_cub(const char *path);
-int		init_window(t_cube3d *data);
-int		cub_array(t_map *map);
-int		count_lines(const char *path);
+void			free_data(t_cube3d *data);
 
+// ***************************************************************************
+// **								Map Functions   						**
+// ***************************************************************************
+int				open_cub(const char *path);
+int				init_window(t_cube3d *data);
+int				cub_array(t_map *map);
+int				count_lines(const char *path);
 
+int				game_loop(t_cube3d *data);
 
-
-int		game_loop(t_cube3d *data);
 #endif

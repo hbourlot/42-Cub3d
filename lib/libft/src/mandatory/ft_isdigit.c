@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 10:43:42 by hbourlot          #+#    #+#             */
-/*   Updated: 2024/12/08 20:51:23 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/01 10:36:25 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /// @return Returns 1 if c is a digit, otherwise returns 0.
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
+	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
