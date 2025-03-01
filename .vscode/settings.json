@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"array": "c"
+		"array": "c",
+		"cube3d.h": "c"
 	}
 }

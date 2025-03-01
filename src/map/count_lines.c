@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:03:23 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/02/27 21:03:46 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/01 10:49:16 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int count_lines(const char *path)
 
 	fd = open_cub(path);
 	if (fd < 0)
-		return (-1);
+		return (ft_printf_fd(2, ME_FD), -1);
 	nbr_of_lines = lines_in_cub(fd);
 	close(fd);
 	return (nbr_of_lines);

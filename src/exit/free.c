@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 07:39:53 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/01 10:45:07 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ static void	free_map(t_map *map)
 		free_pointers(1, &map->we);
 	if (map->so)
 		free_pointers(1, &map->so);
+	if (map->ceiling)
+		free_pointers(1, &map->ceiling);
+	if (map->floor)
+		free_pointers(1, &map->floor);
 	
 }
 

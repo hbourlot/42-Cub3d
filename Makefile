@@ -30,7 +30,7 @@ C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initial
 																												\
 																												\
 				  map/count_lines map/cub_array map/open														\
-				  parsing/map parsing/texture
+				  parsing/map parsing/texture parsing/floor_ceiling
 
 
 

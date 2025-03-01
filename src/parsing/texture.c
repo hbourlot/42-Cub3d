@@ -6,19 +6,20 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:08:25 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 08:51:20 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/01 10:18:02 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#include "cube3d.h"
 
-static int allocate_path(char **path_ref, char *src)
+static int	allocate_path(char **path_ref, char *src)
 {
 	int		i;
 	char	*ref;
 
 	i = 0;
 	src += 2;
+	ref = NULL;
 	while (src[i] && src[i] == ' ')
 		i++;
 	if (src[i])
@@ -34,10 +35,9 @@ static int allocate_path(char **path_ref, char *src)
 
 static int	set_path(t_map *map, char *src, const char *compass[])
 {
-	int				status;
-	
-	status = -1;
+	int	status;
 
+	status = -1;
 	if (ft_strncmp(src, compass[0], 2) == CMP_OK)
 		status = allocate_path((char **)&map->no, src);
 	if (ft_strncmp(src, compass[1], 2) == CMP_OK)
@@ -51,36 +51,39 @@ static int	set_path(t_map *map, char *src, const char *compass[])
 
 static bool	parse_line(char *src, const char *compass[])
 {
-	char		**split;
-	int			words;
-	
+	char	**split;
+	int		words;
+
 	split = ft_split(src, ' ');
 	if (!split)
 		return (ft_printf_fd(2, ME_MALLOC), -1);
 	words = split_metadata()->word_count;
+	free_split(split);
 	if (ft_strcmps(src, compass) != CMP_OK || ft_strlen(src) <= 2)
-		return (free_split(split), false);
+		return (false);
 	if (src[2] != ' ' || words != 2)
-		return (free_split(split), false);
-	return (free_split(split), true);
+		return (false);
+	return (true);
 }
 
-int	parse_texture(t_map *map)
+// [] Need to make sure if must be in the strict order of NO SO WE EA
+// [] Need to make sure it ends with .xpm
+bool	parse_texture(t_map *map)
 {
 	int			i;
-	const char 	*compass[] = {"NO", "SO", "WE", "EA", NULL};
-	
+	const char	*compass[] = {"NO", "SO", "WE", "EA", NULL};
+
 	i = 0;
 	while (map->cub_array[i] && i < 4)
 	{
 		if (parse_line(map->cub_array[i], compass))
 		{
 			if (set_path(map, map->cub_array[i], compass) < 0)
-				return (ft_printf_fd(2, ME_MALLOC), -1);
+				return (ft_printf_fd(2, ME_MALLOC), true);
 		}
 		i++;
 	}
-	if (!map->ea || !map->no || !map->so || ! map->we)
-		return (ft_printf_fd(2, ME_MMA), -1);
-	return	(SUCCESS);
+	if (!map->ea || !map->no || !map->so || !map->we)
+		return (ft_printf_fd(2, ME_MMA), true);
+	return (false);
 }
