@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:08:25 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 11:29:10 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/02 19:48:38 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ static bool	parse_line(char *src, const char *compass[])
 	return (true);
 }
 
-// [] Need to make sure if must be in the strict order of NO SO WE EA
-// [X] Need to make sure it ends with .xpm
+//* [] Need to make sure if must be in the strict order of NO SO WE EA
+//* [X] Need to make sure it ends with .xpm
 bool	parse_texture(t_map *map)
 {
 	int			i;
@@ -84,6 +84,7 @@ bool	parse_texture(t_map *map)
 		{
 			if (set_path(map, map->cub_array[i], compass) < 0)
 				return (ft_printf_fd(2, ME_MALLOC), true);
+			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
 		}
 		i++;
 	}

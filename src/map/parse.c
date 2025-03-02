@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 11:21:28 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/02 19:22:06 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/02 20:42:35 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+# include "cube3d.h"
 
 int	parse_s_map(t_map *map)
 {
@@ -22,5 +22,7 @@ int	parse_s_map(t_map *map)
 		return (-1);
 	if (invalid_file_name(map))
 		return (-1);
-	
+	if (parse_map(map))
+		return (-1);
+	return (0);
 }

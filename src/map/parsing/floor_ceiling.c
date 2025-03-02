@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:28:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 11:28:12 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/02 19:33:22 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ bool	parse_fc(t_map *map)
 		{
 			if (set_fc(map, map->cub_array[i]) < 0)
 				return (ft_printf_fd(2, ME_MALLOC), -1);
+			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
+			
 		}
 		i++;
 	}

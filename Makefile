@@ -29,8 +29,8 @@ C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initial
 				  exit/free																						\
 																												\
 																												\
-				  map/count_lines map/cub_array map/open														\
-				  parsing/map parsing/texture parsing/floor_ceiling parsing/valid_name
+				  map/count_lines map/cub_array map/open map/parse												\
+				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling map/parsing/name
 
 
 

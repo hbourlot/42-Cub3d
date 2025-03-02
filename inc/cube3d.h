@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 11:17:39 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/02 20:26:14 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_map
 {
 	const char	*path;
 	char		**cub_array;
+	char		**map_array;
 	int			nbr_of_lines;
 	int			width;
 	int			height;
@@ -56,12 +57,19 @@ typedef struct s_cube3d
 }				t_cube3d;
 
 // ***************************************************************************
-// **							Parsing Functions							**
+// **						  parsing Functions      						**
 // ***************************************************************************
-int				parse_s_map(t_map *map);
-bool			parse_texture(t_map *map);
+
+
+
+// ***************************************************************************
+// **						  map/parsing Functions 						**
+// ***************************************************************************
 bool			parse_fc(t_map *map);
-bool			invalid_file_name(t_map *data);
+bool			parse_map(t_map *map);
+bool			parse_texture(t_map *map);
+bool			invalid_file_name(t_map *map);
+
 
 
 // ***************************************************************************
@@ -71,21 +79,23 @@ int				init_s_map(t_map *map);
 t_cube3d		*init_s_cube3d(int argc, char *argv[]);
 
 // ***************************************************************************
-// **								Draw Functions   						**
+// **							Draw Functions       						**
 // ***************************************************************************
 
 // ***************************************************************************
-// **								Exit Functions   						**
+// **							Exit Functions      						**
 // ***************************************************************************
 void			free_data(t_cube3d *data);
 
 // ***************************************************************************
-// **								Map Functions   						**
+// **							Map Functions   						    **
 // ***************************************************************************
+int				cub_array(t_map *map);
+int				parse_s_map(t_map *map);
 int				open_cub(const char *path);
 int				init_window(t_cube3d *data);
-int				cub_array(t_map *map);
 int				count_lines(const char *path);
+
 
 int				game_loop(t_cube3d *data);
 
