@@ -14,13 +14,10 @@ INCLUDE 		= inc/
 SRC_DIR 		= src/
 BONUS_DIR 		= bonus/
 OBJ_DIR 		= obj/
-TOTAL_FILES		= $(words $(OBJS_SRC))
+# TOTAL_FILES		= $(words $(OBJS_SRC))
+TOTAL_FILES		=$(shell echo $$(($(words $(OBJS_SRC)) + 1)))
 COMPILED_FILES	= 0
 OS				= $(shell uname)
-
-MSG_MAC 		= "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$<]... $(RESET)"
-MSG_LINUX 		= "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))% ] $(ORANGE)Compiling [$<]... $(RESET)"
-
 
 NAME			= cube3d
 C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initialize/window					\
@@ -43,14 +40,29 @@ OBJS_SRC 		= $(addprefix $(OBJ_DIR), $(SRC_FILES:%.c=%.o))
 # -- INCLUDES LIBRARIES
 LIBFT_LIB = ./lib/libft/libft.a
 
+
+ifeq ($(OS), Darwin)
+	PRINT_CMD = printf
+	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
+else
+	PRINT_CMD = echo -n
+	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))% ] $(ORANGE)Compiling [$1]... $(RESET)"
+endif
+
+# Function to print the compilation message
+define print_compile_msg
+	$(eval COMPILED_FILES = $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@$(PRINT_CMD) $(MSG)
+endef
+
 .PHONY: 		all clean fclean re bonus
 
 all:			$(NAME)
 
 $(NAME):		$(LIBFT_LIB) $(LIB) main.o
 				@make re -s -C ./lib/minilibx-linux/
-				$(CC) $(CFLAGS) main.o $(LINK) -o $@
-				@echo "$(GREEN)Executable '$(NAME)' created successfully!$(RESET) ✅"
+				@$(CC) $(CFLAGS) main.o $(LINK) -o $@
+				@echo "$(GREEN)Executable '$(RED)$(NAME)$(GREEN)' created successfully!$(RESET) ✅"
 # $(CC) $(CFLAGS) main.o -L./lib/libft -lft $(MINILIB_FLAGS) -o $@
 
 $(LIBFT_LIB):
@@ -62,15 +74,12 @@ $(LIB):			$(OBJS_SRC)
 
 $(OBJ_DIR)%.o:	%.c $(INCLUDE)
 				@mkdir -p $(dir $@)
-				$(eval COMPILED_FILES = $(shell echo $$(($(COMPILED_FILES) + 1))))
-ifeq ($(OS), Darwin)
-				@printf $(MSG_MAC)
-else
-				@echo -n $(MSG_LINUX)
-endif
+				$(call print_compile_msg, $<)
 				@$(CC) $(CFLAGS) -c $< -I./$(INCLUDE) -o $@
 
 main.o:			main.c inc/cube3d.h inc/definitions.h inc/error.h
+				@mkdir -p $(dir $@)
+				$(call print_compile_msg, $<)
 				@$(CC) -c main.c $(CFLAGS) -I./$(INCLUDE) -o $@
 
 clean:

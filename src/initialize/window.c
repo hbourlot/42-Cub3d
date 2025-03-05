@@ -10,6 +10,6 @@ int init_window(t_cube3d *data)
     if (!data->mlx_win)
         return (ft_printf_fd(2, ME_NW), -1);
 	if (init_s_map(&data->map) < 0)
-        return (-1);
+        return (-1);    
     return (0);
 }

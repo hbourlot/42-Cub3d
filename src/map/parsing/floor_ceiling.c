@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:28:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/02 19:33:22 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:41:24 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ static int	set_fc(t_map *map, char *src)
 
 	status = -1;
 	c = src[0];
-	if (c == 'F')
+	if (c == 'F' && !map->ceiling)
 		status = allocate_fc((char **)&map->floor, src);
-	if (c == 'C')
+	if (c == 'C' && map->floor)
 		status = allocate_fc((char **)&map->ceiling, src);
+	if (c == 'F' || c == 'C')
+		status = 0;
 	return (status);
 }
 
@@ -92,7 +94,7 @@ static bool parse_line(char *src)
 	return (true);
 }
 
-// [] Need to make sure if wall texture can be mixed with floor and ceiling
+//* [x] Need to make sure if wall texture can be mixed with floor and ceiling
 bool	parse_fc(t_map *map)
 {
 	int		i;

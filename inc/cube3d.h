@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/02 20:26:14 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/02 22:11:10 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ bool			parse_fc(t_map *map);
 bool			parse_map(t_map *map);
 bool			parse_texture(t_map *map);
 bool			invalid_file_name(t_map *map);
+
 
 
 
