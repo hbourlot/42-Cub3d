@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_cube3d.c                                         :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 23:28:51 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/06 22:55:38 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/06 22:56:13 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#include "cube3d.h"
 
-int init_s_cube3d(t_cube3d **game, int argc, char *argv[])
+int key_press(int keycode, t_cube3d *game)
 {
-	static t_cube3d data;
-	
-	*game = &data;
-	ft_memset(&data, 0, sizeof(t_cube3d));
-	data.map.path = argv[1];
-	if (init_s_map(&data.map) < 0)
-		return (-1);
-	return (0);
+	if (keycode == XK_Escape)
+	{
+		ft_printf_fd(1, "You pressed %d (Esc)\n", keycode);
+		free_game(game);
+	}
 }

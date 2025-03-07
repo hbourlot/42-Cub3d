@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_cube3d.c                                         :+:      :+:    :+:   */
+/*   raytracing.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 23:28:51 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/06 14:35:51 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/06 14:39:19 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#pragma once
 
-int init_s_cube3d(t_cube3d **game, int argc, char *argv[])
+typedef struct s_vector
 {
-	static t_cube3d data;
-	
-	*game = &data;
-	ft_memset(&data, 0, sizeof(t_cube3d));
-	data.map.path = argv[1];
-	if (init_s_map(&data.map) < 0)
-		return (-1);
-	return (0);
-}
+	double	x;
+	double	y;
+	double	z;
+}			t_vec3;
+
+typedef struct s_ray
+{
+	t_vec3	origin;
+	t_vec3	direction;
+}			t_ray;
+
+typedef struct s_sphere
+{
+	t_vec3	center;
+	double	radius;
+}			t_sphere;
+
+typedef struct t_color
+{
+	double	r;
+	double	g;
+	double	b;
+}			t_color;

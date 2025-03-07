@@ -20,14 +20,14 @@ COMPILED_FILES	= 0
 OS				= $(shell uname)
 
 NAME			= cube3d
-C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initialize/window					\
-																												\
+C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initialize/window initialize/game	\
+				  utils/key_hook																				\
 																												\
 				  exit/free																						\
-																												\
+				  draw/draw_pixel																				\
 																												\
 				  map/count_lines map/cub_array map/open map/parse												\
-				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling map/parsing/name
+				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling map/parsing/name map/parsing/utils
 
 
 

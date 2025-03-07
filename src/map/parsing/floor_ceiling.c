@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:28:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/05 19:41:24 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:57:32 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,12 @@ static bool parse_line(char *src)
 	char	**split;
 	int		words;
 	char	c;
+	int		i;
 
 	c = src[0];
+	i = 0;
+	// if (invalid_chars(src))
+	// 	return (false);
 	split = ft_split(src, ' ');
 	if (!split)
 		return (ft_printf_fd(2, ME_MALLOC), -1);
@@ -101,18 +105,16 @@ bool	parse_fc(t_map *map)
 	char	c;
 
 	i = 4;
-
 	while (map->cub_array[i])
 	{
 		c = map->cub_array[i][0];
-		if (c == '1' || c == '2')
+		if (c == '1' || c == '2' || c == '\t' || c == ' ')
 			break;
 		if (parse_line(map->cub_array[i]))
 		{
 			if (set_fc(map, map->cub_array[i]) < 0)
 				return (ft_printf_fd(2, ME_MALLOC), -1);
 			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
-			
 		}
 		i++;
 	}
