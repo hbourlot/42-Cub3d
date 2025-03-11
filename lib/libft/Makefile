@@ -8,7 +8,8 @@ RESET 			= \033[0m
 
 CC				= cc
 CFLAGS			= -Wall -Wextra -Werror
-LIB				= libft.a
+# LIB				= libft.a
+NAME			= libft.a
 LIB_DIR 		= inc/
 SRC_DIR 		= src/
 MANDATORY_DIR	= mandatory/
@@ -18,9 +19,6 @@ OBJ_DIR 		= obj/
 TOTAL_FILES 	= $(words $(SRC_FILES) $(BONUS_FILES))
 COMPILED_FILES 	= 0
 OS 				= $(shell uname)
-MAC_MSG			= "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(( $(COMPILED_FILES) * 100 / $(TOTAL_FILES) ))%% ] $(ORANGE)Compiling [$<]... $(RESET)"
-LINUX_MSG       = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(( $(COMPILED_FILES) * 100 / $(TOTAL_FILES) ))% ] $(ORANGE)Compiling [$<]... $(RESET)"
-
 MAIN_SRC		= main.c
 
 CFUNCTIONS		= ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint		\
@@ -52,33 +50,56 @@ OBJS_SRC		= $(addprefix $(OBJ_DIR), $(SRC_FILES:%.c=%.o))
 # OBJS_BONUS		= $(addprefix $(OBJ_DIR), $(BONUS_FILES:%.c=%.o))
 
 
-#Targets that doesn't take into consideration for execution that matches its name.
-.PHONY:			all clean fclean re bonus
+ifeq ($(OS), Darwin)
+	PRINT_CMD = printf
+	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
+else
+	PRINT_CMD = echo -n
+	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))% ] $(ORANGE)Compiling [$1]... $(RESET)"
+endif
 
-all: 			$(LIB)
+# Function to print the compilation message
+define print_compile_msg
+	$(eval COMPILED_FILES = $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@$(PRINT_CMD) $(MSG)
+endef
+
+define clean_func
+	@if [ -d "$(OBJ_DIR)" ]; then \
+		$(PRINT_CMD) "$(ORANGE)Removing '$(OBJ_DIR)' directory and main.o...$(RESET) "; \
+		rm -rf $(OBJ_DIR); \
+		rm -rf main.o; \
+		$(PRINT_CMD) "$(GREEN)Removed successfully!$(RESET) ✅\n"; \
+	fi
+endef
+
+define fclean_func
+	@if [ -f "$(NAME)" ]; then \
+		$(PRINT_CMD) "$(ORANGE)Removing '$(YELLOW)$(NAME)$(ORANGE)' library...$(RESET) "; \
+		rm -f $(NAME); \
+		$(PRINT_CMD) "$(GREEN)Removed successfully!$(RESET) ✅\n"; \
+	fi
+endef
+
+all: 			$(NAME)
 	
-$(LIB):			$(OBJS_SRC)
+$(NAME):		$(OBJS_SRC)
 				@ar rcs $@ $^
-				@echo "$(CYAN)library '$(GREEN)$(LIB)$(CYAN)' created successfully!$(RESET)"
+				@echo "$(CYAN)library '$(YELLOW)$(NAME)$(CYAN)' created successfully!$(RESET)"
 
-# bonus: 			$(OBJS_SRC) $(OBJS_BONUS)
-# 				@ar rcs $(LIB) $^
 
 $(OBJ_DIR)%.o: 	%.c
 				@mkdir -p $(dir $@)
-				$(eval COMPILED_FILES = $(shell echo $$(($(COMPILED_FILES) + 1))))
-ifeq ($(OS), Darwin)
-				@printf $(MAC_MSG)
-else
-				@echo -n $(LINUX_MSG)
-endif
+				$(call print_compile_msg, $<)
 				@$(CC) $(CFLAGS) -c -I./$(LIB_DIR) $< -o $@
 	
 clean:
-				@rm -rf $(OBJ_DIR)
+				$(call clean_func)
 
 fclean: 		clean
-				@rm -f $(LIB)
+				$(call fclean_func)
 
 re: 			clean fclean all bonus
 
+#Targets that doesn't take into consideration for execution that matches its name.
+.PHONY:			all clean fclean re bonus

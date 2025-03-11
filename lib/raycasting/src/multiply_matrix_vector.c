@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   definitions.h                                      :+:      :+:    :+:   */
+/*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/11 16:03:43 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 16:34:16 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 16:56:03 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "raycasting.h"
 
-#include "cube3d.h"
-
-#define NORTH "NO"
-#define SOUTH "SO"
-#define WEST "WE"
-#define EAST "EA"
-#define CMP_OK 0
-#define IMG_WIDTH 256
-#define IMG_HEIGHT 256
-#define MAP_HEIGHT 800
-#define MAP_WIDTH 400
+void	multiply_matrix_vector(float result[4], t_matrix m, float v[4])
+{
+	int	i;
+	
+	i = 0;
+	while( i < 4)
+	{
+		result[i] = m.m[i][0] * v[0] + m.m[i][1] * v[1] +
+					m.m[i][2] * v[2] + m.m[i][3] * v[3];
+	}
+}

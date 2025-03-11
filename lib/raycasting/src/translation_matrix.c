@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   definitions.h                                      :+:      :+:    :+:   */
+/*   translation_matrix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/11 16:03:43 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 16:58:41 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 16:59:56 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "raycasting.h"
 
-#include "cube3d.h"
+t_matrix	translation_matrix(float tx, float ty, float tz)
+{
+	t_matrix result;
 
-#define NORTH "NO"
-#define SOUTH "SO"
-#define WEST "WE"
-#define EAST "EA"
-#define CMP_OK 0
-#define IMG_WIDTH 256
-#define IMG_HEIGHT 256
-#define MAP_HEIGHT 800
-#define MAP_WIDTH 400
+	result = identify_matrix();
+	result.m[0][3] = tx;
+	result.m[1][3] = ty;
+	result.m[2][3] = tz;
+
+	return (result);
+}

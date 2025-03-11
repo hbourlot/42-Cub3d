@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   definitions.h                                      :+:      :+:    :+:   */
+/*   cross.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/11 16:03:43 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 16:19:03 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 16:21:15 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "raycasting.h"
 
-#include "cube3d.h"
+t_vec3	cross(t_vec3 a, t_vec3 b)
+{
+	t_vec3	result;
 
-#define NORTH "NO"
-#define SOUTH "SO"
-#define WEST "WE"
-#define EAST "EA"
-#define CMP_OK 0
-#define IMG_WIDTH 256
-#define IMG_HEIGHT 256
-#define MAP_HEIGHT 800
-#define MAP_WIDTH 400
+	result.x = a.y * b.z - a.z * b.y;
+	result.y = a.z * b.x - a.x * b.z;
+	result.z = a.x * b.y - a.y * b.x;
+
+	return (result);
+}

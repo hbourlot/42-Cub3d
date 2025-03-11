@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:08:25 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/05 19:41:31 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/10 22:21:01 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static bool	parse_line(char *src, const char *compass[])
 		return (false);
 	return (true);
 }
-
+//* [] Still got to check it there's './'
 //* [X] Need to make sure if must be in the strict order of NO SO WE EA
 //* [X] Need to make sure it ends with .xpm
 bool	parse_texture(t_map *map)

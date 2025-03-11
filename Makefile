@@ -11,11 +11,11 @@ CFLAGS			=  -g #-Wall -Wextra -Werror #-pthread #-fsanitize=address,undefined
 MINILIB_FLAGS	= -Llib/minilibx-linux  -Lmlx -lmlx -lX11 -lXext -lm  #-lmlx_Linux -lX11 -lXext
 LIB				= libcube3d.a
 INCLUDE 		= inc/
+HEADERS			= inc/cube3d.h inc/definitions.h inc/error.h ./lib/libft/inc/libft.h ./lib/raycasting/inc/raycasting.h
 SRC_DIR 		= src/
 BONUS_DIR 		= bonus/
 OBJ_DIR 		= obj/
-# TOTAL_FILES		= $(words $(OBJS_SRC))
-TOTAL_FILES		=$(shell echo $$(($(words $(OBJS_SRC)) + 1)))
+TOTAL_FILES		= $(shell echo $$(($(words $(OBJS_SRC)) + 1)))
 COMPILED_FILES	= 0
 OS				= $(shell uname)
 
@@ -33,12 +33,14 @@ C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initial
 
 # -L./ -lminishell
 VALGRIND		= valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
-LINK			= -L./ -lcube3d -L./lib/libft -lft $(MINILIB_FLAGS)
+LINK			= -L./lib/libft -lft -L./lib/raycasting -lraycasting $(MINILIB_FLAGS)
+
 SRC_FILES 		= $(addprefix $(SRC_DIR), $(C_FUNCTIONS:=.c))
 OBJS_SRC 		= $(addprefix $(OBJ_DIR), $(SRC_FILES:%.c=%.o))
 
 # -- INCLUDES LIBRARIES
-LIBFT_LIB = ./lib/libft/libft.a
+LIBFT_LIB 		= ./lib/libft/libft.a
+RAYCASTING_LIB  = ./lib/raycasting/libraycasting.a 
 
 
 ifeq ($(OS), Darwin)
@@ -55,58 +57,72 @@ define print_compile_msg
 	@$(PRINT_CMD) $(MSG)
 endef
 
-.PHONY: 		all clean fclean re bonus
+define clean_func
+	@if [ -d "$(OBJ_DIR)" ]; then \
+		$(PRINT_CMD) "$(ORANGE)Removing '$(OBJ_DIR)' directory and main.o...$(RESET) "; \
+		rm -rf $(OBJ_DIR); \
+		rm -rf main.o; \
+		$(PRINT_CMD) "$(GREEN)Removed successfully!$(RESET) ✅\n"; \
+	fi
+endef
+
+define fclean_func
+	@if [ -f "$(LIB)" ]; then \
+		$(PRINT_CMD) "$(ORANGE)Removing '$(YELLOW)$(LIB)$(ORANGE)' library...$(RESET) "; \
+		rm -f $(LIB); \
+		$(PRINT_CMD) "$(GREEN)Removed successfully!$(RESET) ✅\n"; \
+	fi
+	@if [ -f "$(NAME)" ]; then \
+		$(PRINT_CMD) "$(ORANGE)Removing '$(RED)$(NAME)$(ORANGE)' executable...$(RESET) "; \
+		rm -f $(NAME); \
+		$(PRINT_CMD) "$(GREEN)Removed successfully!$(RESET) ✅\n"; \
+	fi
+endef
+
+# .PHONY: 		all clean fclean re bonus
+
 
 all:			$(NAME)
 
-$(NAME):		$(LIBFT_LIB) $(LIB) main.o
-				@make re -s -C ./lib/minilibx-linux/
-				@$(CC) $(CFLAGS) main.o $(LINK) -o $@
+$(MINILIBX):
+				make re -s -C ./lib/minilibx-linux/
+
+$(NAME): 		$(MINILIBX) $(LIBFT_LIB) $(RAYCASTING_LIB) $(LIB) $(HEADERS)
+				@$(CC) $(CFLAGS) $(LIB) $(LINK) -o $(NAME)
 				@echo "$(GREEN)Executable '$(RED)$(NAME)$(GREEN)' created successfully!$(RESET) ✅"
-# $(CC) $(CFLAGS) main.o -L./lib/libft -lft $(MINILIB_FLAGS) -o $@
 
 $(LIBFT_LIB):
 				@make -s -C lib/libft/
 
-$(LIB):			$(OBJS_SRC)
-				@ar rcs $@ $(OBJS_SRC)
-				@echo "$(CYAN)library '$(RED)$(LIB)$(CYAN)' created successfully!$(RESET)"
+$(RAYCASTING_LIB):
+				@make -s -C ./lib/raycasting/
+
+$(LIB):			$(OBJS_SRC) main.o
+				@ar rcs $@ $(OBJS_SRC) main.o
+				@echo "$(CYAN)library '$(YELLOW)$(LIB)$(CYAN)' created successfully!$(RESET)"
 
 $(OBJ_DIR)%.o:	%.c $(INCLUDE)
 				@mkdir -p $(dir $@)
 				$(call print_compile_msg, $<)
 				@$(CC) $(CFLAGS) -c $< -I./$(INCLUDE) -o $@
 
-main.o:			main.c inc/cube3d.h inc/definitions.h inc/error.h
-				@mkdir -p $(dir $@)
+main.o:			main.c $(INCLUDE)#inc/cube3d.h inc/definitions.h inc/error.h
 				$(call print_compile_msg, $<)
 				@$(CC) -c main.c $(CFLAGS) -I./$(INCLUDE) -o $@
 
 clean:
-				@printf "$(CYAN)Cleaning up *.o files...$(RESET)\b"
-				@rm -rf $(OBJ_DIR)
-				@rm -rf main.o
 				@make clean -s -C ./lib/libft
-				@echo " $(GREEN)Cleaned successfully.$(RESET) ✅"
+				@make clean -s -C ./lib/raycasting
+				$(call clean_func)
 
 fclean: 		clean
-				@printf "$(CYAN)Cleaning up '$(RED)$(NAME)$(CYAN)' and *.a files...$(RESET)\b"
-				@rm -f $(LIB)
 				@make fclean -s -C ./lib/libft
-				@rm -rf	$(NAME)
-				@echo " $(GREEN)Cleaned successfully.$(RESET) ✅"
+				@make fclean -s -C ./lib/raycasting
+				@$(call fclean_func)
 
 re: 			fclean all
 
 bonus:			all
-
-# TEST =			test_minishell
-
-# $(TEST): 		$(LIBFT_LIB) $(LIB) $(HEADER_MINI)
-# 				$(CC) $(LINK) -o test_minishell
-# 				./test_minishell
-
-# t: $(TEST)
 
 r:
 	@make -s

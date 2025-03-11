@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/07 17:38:42 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:51:14 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 #include "../lib/libft/inc/libft.h"
 #include "../lib/minilibx-linux/mlx.h"
+#include "../lib/raycasting/inc/raycasting.h"
 #include "definitions.h"
 #include "error.h"
-#include "raytracing.h"
 # include <X11/X.h>      // Button press
 # include <X11/keysym.h> // Key device
 #include <fcntl.h>

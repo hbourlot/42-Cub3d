@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   definitions.h                                      :+:      :+:    :+:   */
+/*   add.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/11 16:03:43 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 16:10:15 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 16:11:37 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "raycasting.h"
 
-#include "cube3d.h"
+t_vec3 add(t_vec3 a, t_vec3 b)
+{
+	t_vec3	result;
 
-#define NORTH "NO"
-#define SOUTH "SO"
-#define WEST "WE"
-#define EAST "EA"
-#define CMP_OK 0
-#define IMG_WIDTH 256
-#define IMG_HEIGHT 256
-#define MAP_HEIGHT 800
-#define MAP_WIDTH 400
+	result.x = a.x + b.x;
+	result.y = a.y + b.y;
+	result.z = a.z + b.z;
+
+	return (result);
+}

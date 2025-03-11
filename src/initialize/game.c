@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:36 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/07 17:09:46 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:40:48 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ void	render(t_cube3d *game)
 
 
 	j = 0;
-	while (j < HEIGHT)
+	while (j < MAP_HEIGHT)
 	{
 		i = 0;
-		while (i < WIDTH)
+		while (i < MAP_WIDTH)
 		{
-			double u = (double)i / (WIDTH - 1);
-			double v = (double)j / (HEIGHT - 1);
+			double u = (double)i / (MAP_WIDTH - 1);
+			double v = (double)j / (MAP_HEIGHT - 1);
 			
 			t_vec3 dir = {
 				lower_left_corner.x + u * horizontal.x + v * vertical.x - origin.x,
@@ -103,6 +103,6 @@ int	init_game(t_cube3d *game)
 
 	if (init_window(game) < 0)
 		return (-1);
-	render(game);
+	// render(game);
 	game_loop(game);
 }

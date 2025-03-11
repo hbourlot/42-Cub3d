@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   definitions.h                                      :+:      :+:    :+:   */
+/*   dot.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/11 16:03:43 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 16:17:04 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 16:18:47 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "raycasting.h"
 
-#include "cube3d.h"
-
-#define NORTH "NO"
-#define SOUTH "SO"
-#define WEST "WE"
-#define EAST "EA"
-#define CMP_OK 0
-#define IMG_WIDTH 256
-#define IMG_HEIGHT 256
-#define MAP_HEIGHT 800
-#define MAP_WIDTH 400
+float	dot(t_vec3 a, t_vec3 b)
+{
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
+}

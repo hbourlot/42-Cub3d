@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raytracing.h                                       :+:      :+:    :+:   */
+/*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 14:35:51 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 14:39:19 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 16:23:50 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 18:15:30 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "raycasting.h"
 
-typedef struct s_vector
+t_vec3	normalize(t_vec3 v)
 {
-	double	x;
-	double	y;
-	double	z;
-}			t_vec3;
+	float	mag;
+	t_vec3	result;
 
-typedef struct s_ray
-{
-	t_vec3	origin;
-	t_vec3	direction;
-}			t_ray;
-
-typedef struct s_sphere
-{
-	t_vec3	center;
-	double	radius;
-}			t_sphere;
-
-typedef struct t_color
-{
-	double	r;
-	double	g;
-	double	b;
-}			t_color;
+	mag = magnitude(v);
+	result = (t_vec3){v.x / mag, v.y / mag, v.z / mag};
+	
+	return (result);
+}

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   definitions.h                                      :+:      :+:    :+:   */
+/*   rotation_matrix_z.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/11 16:03:43 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 17:02:47 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 17:06:09 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "raycasting.h"
 
-#include "cube3d.h"
+t_matrix	rotation_matrix_z(float angle)
+{
+	t_matrix	result;
+	float		rad;
+	
+	result = identify_matrix();
+	rad = angle * (M_PI / 180.0f);
+	result.m[0][0] = cos(rad);
+	result.m[0][1] = -sin(rad);
+	result.m[1][0] = sin(rad);
+	result.m[1][1] = cos(rad);
 
-#define NORTH "NO"
-#define SOUTH "SO"
-#define WEST "WE"
-#define EAST "EA"
-#define CMP_OK 0
-#define IMG_WIDTH 256
-#define IMG_HEIGHT 256
-#define MAP_HEIGHT 800
-#define MAP_WIDTH 400
+	return (result);
+}
