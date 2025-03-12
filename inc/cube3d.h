@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/11 18:51:14 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:53:20 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,15 @@ typedef struct s_sprite
 	int					endian;
 }			t_sprite;
 
+typedef struct s_img
+{
+	t_sprite	*no;
+	t_sprite	*so;
+	t_sprite	*we;
+	t_sprite	*ea;
+	t_sprite	*floor;
+	t_sprite	*ceiling;
+}			t_img;
 typedef struct s_map
 {
 	const char	*path;
@@ -63,11 +72,12 @@ typedef struct s_player
 
 typedef struct s_cube3d
 {
-	t_map		map;
+	t_map		*map;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*img_ptr;
 	char		*name;
+	t_img		*sprites;
 
 }				t_cube3d;
 

@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 22:53:57 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:47:28 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	free_map(t_map *map)
 
 void free_game(t_cube3d *game)
 {
-	free_map(&game->map);
+	free_map(game->map);
 	if (game->img_ptr)
 		mlx_destroy_image(game->mlx_ptr, game->img_ptr);
 	if (game->mlx_ptr)
