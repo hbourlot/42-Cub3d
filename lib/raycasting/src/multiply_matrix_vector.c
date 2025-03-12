@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_cube3d.c                                         :+:      :+:    :+:   */
+/*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 23:28:51 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 16:34:16 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 16:56:03 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#include "raycasting.h"
 
-int init_s_cube3d(t_cube3d **game, int argc, char *argv[])
+void	multiply_matrix_vector(float result[4], t_matrix m, float v[4])
 {
-	static t_cube3d data;
+	int	i;
 	
-	*game = &data;
-	ft_memset(&data, 0, sizeof(t_cube3d));
-	data.map.path = argv[1];
-	if (init_s_map(&data.map) < 0)
-		return (-1);
-	return (0);
+	i = 0;
+	while( i < 4)
+	{
+		result[i] = m.m[i][0] * v[0] + m.m[i][1] * v[1] +
+					m.m[i][2] * v[2] + m.m[i][3] * v[3];
+	}
 }

@@ -1,15 +1,18 @@
 #include "cube3d.h"
 
-int init_window(t_cube3d *data)
+int init_window(t_cube3d *game)
 {
-    data->mlx_ptr = mlx_init();
-    if (!data->mlx_ptr)
+    game->mlx_ptr = mlx_init();
+    if (!game->mlx_ptr)
         return (ft_printf_fd(2, ME_MF), -1);
-    mlx_get_screen_size(data->mlx_ptr, &data->map.width, &data->map.height);
-    data->mlx_win = mlx_new_window(data->mlx_ptr, data->map.width - 800, data->map.height - 200, "Cube-3d");
-    if (!data->mlx_win)
+    mlx_get_screen_size(game->mlx_ptr, &game->map.width, &game->map.height);
+    // game->win_ptr = mlx_new_window(game->mlx_ptr, IMG_WIDTH, IMG_HEIGHT, "Cube-3d");
+    game->win_ptr = mlx_new_window(game->mlx_ptr, 800, 400, "Cube-3d");
+    if (!game->win_ptr)
         return (ft_printf_fd(2, ME_NW), -1);
-	if (init_s_map(&data->map) < 0)
-        return (-1);
+    // game->img_ptr = mlx_new_image(game->mlx_ptr, IMG_WIDTH, IMG_HEIGHT);
+    game->img_ptr = mlx_new_image(game->mlx_ptr, 800, 400);
+    if (!game->img_ptr)
+        return (ft_printf_fd(2, ME_NW), -1);
     return (0);
 }

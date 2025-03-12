@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_cube3d.c                                         :+:      :+:    :+:   */
+/*   rotation_matrix_z.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 23:28:51 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 17:02:47 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 17:06:09 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#include "raycasting.h"
 
-int init_s_cube3d(t_cube3d **game, int argc, char *argv[])
+t_matrix	rotation_matrix_z(float angle)
 {
-	static t_cube3d data;
+	t_matrix	result;
+	float		rad;
 	
-	*game = &data;
-	ft_memset(&data, 0, sizeof(t_cube3d));
-	data.map.path = argv[1];
-	if (init_s_map(&data.map) < 0)
-		return (-1);
-	return (0);
+	result = identify_matrix();
+	rad = angle * (M_PI / 180.0f);
+	result.m[0][0] = cos(rad);
+	result.m[0][1] = -sin(rad);
+	result.m[1][0] = sin(rad);
+	result.m[1][1] = cos(rad);
+
+	return (result);
 }

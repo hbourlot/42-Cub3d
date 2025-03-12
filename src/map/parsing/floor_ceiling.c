@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:28:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 11:28:12 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:57:32 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ static int	set_fc(t_map *map, char *src)
 
 	status = -1;
 	c = src[0];
-	if (c == 'F')
+	if (c == 'F' && !map->ceiling)
 		status = allocate_fc((char **)&map->floor, src);
-	if (c == 'C')
+	if (c == 'C' && map->floor)
 		status = allocate_fc((char **)&map->ceiling, src);
+	if (c == 'F' || c == 'C')
+		status = 0;
 	return (status);
 }
 
@@ -76,8 +78,12 @@ static bool parse_line(char *src)
 	char	**split;
 	int		words;
 	char	c;
+	int		i;
 
 	c = src[0];
+	i = 0;
+	// if (invalid_chars(src))
+	// 	return (false);
 	split = ft_split(src, ' ');
 	if (!split)
 		return (ft_printf_fd(2, ME_MALLOC), -1);
@@ -92,23 +98,23 @@ static bool parse_line(char *src)
 	return (true);
 }
 
-// [] Need to make sure if wall texture can be mixed with floor and ceiling
+//* [x] Need to make sure if wall texture can be mixed with floor and ceiling
 bool	parse_fc(t_map *map)
 {
 	int		i;
 	char	c;
 
 	i = 4;
-
 	while (map->cub_array[i])
 	{
 		c = map->cub_array[i][0];
-		if (c == '1' || c == '2')
+		if (c == '1' || c == '2' || c == '\t' || c == ' ')
 			break;
 		if (parse_line(map->cub_array[i]))
 		{
 			if (set_fc(map, map->cub_array[i]) < 0)
 				return (ft_printf_fd(2, ME_MALLOC), -1);
+			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
 		}
 		i++;
 	}

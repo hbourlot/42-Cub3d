@@ -6,9 +6,11 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 11:10:15 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:40:10 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "cube3d.h"
 
@@ -17,7 +19,7 @@
 #define ME_MF "Error: mlx_init fail!\n"
 #define ME_NW "Error: mlx_new_window fail!\n"
 #define ME_IMP "Error: Invalid map path!\n"
-#define	ME_FD "Error: Opening file!\n"
+#define ME_FD "Error: Opening file!\n"
 #define ME_EM "Error: Map is empty!\n"
 #define ME_PAX "Error: Parameter doesn't end with '.xpm'!\n"
 #define ME_MINFO "Error: The map doesn't have all the necessary information!\n"

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_cube3d.c                                         :+:      :+:    :+:   */
+/*   translation_matrix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 23:28:51 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 16:58:41 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 16:59:56 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#include "raycasting.h"
 
-int init_s_cube3d(t_cube3d **game, int argc, char *argv[])
+t_matrix	translation_matrix(float tx, float ty, float tz)
 {
-	static t_cube3d data;
-	
-	*game = &data;
-	ft_memset(&data, 0, sizeof(t_cube3d));
-	data.map.path = argv[1];
-	if (init_s_map(&data.map) < 0)
-		return (-1);
-	return (0);
+	t_matrix result;
+
+	result = identify_matrix();
+	result.m[0][3] = tx;
+	result.m[1][3] = ty;
+	result.m[2][3] = tz;
+
+	return (result);
 }

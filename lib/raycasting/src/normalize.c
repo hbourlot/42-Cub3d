@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 11:21:28 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/03/11 16:23:50 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/11 18:15:30 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "raycasting.h"
 
-int	parse_s_map(t_map *map)
+t_vec3	normalize(t_vec3 v)
 {
-	if (map->nbr_of_lines < 9)
-		return (ft_printf_fd(2, ME_MINFO), -1);
-	if (parse_texture(map))
-		return (-1);
-	if (parse_fc(map))
-		return (-1);
-	if (invalid_file_name(map))
-		return (-1);
+	float	mag;
+	t_vec3	result;
+
+	mag = magnitude(v);
+	result = (t_vec3){v.x / mag, v.y / mag, v.z / mag};
 	
+	return (result);
 }
