@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 23:28:51 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:52:18 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,16 @@
 int init_s_cube3d(t_cube3d **game, int argc, char *argv[])
 {
 	static t_cube3d data;
+	static t_map	map;
+	static t_img    sprites;
 	
-	*game = &data;
 	ft_memset(&data, 0, sizeof(t_cube3d));
-	data.map.path = argv[1];
-	if (init_s_map(&data.map) < 0)
+	*game = &data;
+	(*game)->map = &map;
+	(*game)->sprites = &sprites;
+	data.map->path = argv[1];
+	if (init_s_map(data.map) < 0)
 		return (-1);
+	printf("%s\n", map.ceiling);
 	return (0);
 }
