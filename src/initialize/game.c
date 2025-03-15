@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:36 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/11 18:40:48 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:31:49 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,8 @@ int	init_game(t_cube3d *game)
 	if (init_window(game) < 0)
 		return (-1);
 	// render(game);
+	draw_map2d(game);
+	// draw_player2d(game);
 	game_loop(game);
+	
 }

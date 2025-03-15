@@ -19,9 +19,9 @@ TOTAL_FILES		= $(shell echo $$(($(words $(OBJS_SRC)) + 1)))
 COMPILED_FILES	= 0
 OS				= $(shell uname)
 
-NAME			= cube3d
+NAME			= cube3D
 C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initialize/window initialize/game	\
-				  utils/key_hook																				\
+				  initialize/player utils/key_hook																				\
 																												\
 				  exit/free																						\
 				  draw/draw_pixel																				\
@@ -126,8 +126,10 @@ bonus:			all
 
 r:
 	@make -s
-	@./$(NAME) ./map/ex1.cub
+	@./$(NAME) ./map/basic.cub
+#@./$(NAME) ./map/ex1.cub
 
 v:
 	@make -s
-	@$(VALGRIND) ./$(NAME) ./map/ex1.cub
+#@$(VALGRIND) ./$(NAME) ./map/ex1.cub
+	@$(VALGRIND) ./$(NAME) ./map/basic.cub

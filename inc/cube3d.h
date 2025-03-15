@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/12 16:53:20 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/14 18:34:11 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 #include "../lib/raycasting/inc/raycasting.h"
 #include "definitions.h"
 #include "error.h"
-# include <X11/X.h>      // Button press
-# include <X11/keysym.h> // Key device
+#include <X11/X.h>      // Button press
+#include <X11/keysym.h> // Key device
 #include <fcntl.h>
 #include <math.h>
 #include <stdbool.h>
@@ -28,17 +28,17 @@
 
 typedef struct s_sprite
 {
-	char				*addr;
-	void				*mlx_ptr;
-	void				*mlx_win;
-	void				*img;
-	int					size_x;
-	int					size_y;
-	int					color;
-	int					bpp;
-	int					size_line;
-	int					endian;
-}			t_sprite;
+	char		*addr;
+	void		*mlx_ptr;
+	void		*mlx_win;
+	void		*img;
+	int			size_x;
+	int			size_y;
+	int			color;
+	int			bpp;
+	int			size_line;
+	int			endian;
+}				t_sprite;
 
 typedef struct s_img
 {
@@ -48,13 +48,16 @@ typedef struct s_img
 	t_sprite	*ea;
 	t_sprite	*floor;
 	t_sprite	*ceiling;
-}			t_img;
+}				t_img;
+
 typedef struct s_map
 {
 	const char	*path;
 	char		**cub_array;
 	char		**map_array;
 	int			nbr_of_lines;
+	int			screen_width;
+	int			screen_height;
 	int			width;
 	int			height;
 	const char	*no;
@@ -68,6 +71,11 @@ typedef struct s_map
 typedef struct s_player
 {
 	int			direction;
+	float		x;
+	float		y;
+	float		pdx;
+	float		pdy;
+	float		angle;
 }				t_player;
 
 typedef struct s_cube3d
@@ -78,6 +86,7 @@ typedef struct s_cube3d
 	void		*img_ptr;
 	char		*name;
 	t_img		*sprites;
+	t_player	player;
 
 }				t_cube3d;
 
@@ -85,7 +94,6 @@ typedef struct s_cube3d
 // **							Utils Functions      						**
 // ***************************************************************************
 int				key_press(int keycode, t_cube3d *game);
-
 
 // ***************************************************************************
 // **							map/parsing Functions 						**
@@ -101,14 +109,16 @@ bool			invalid_file_name(t_map *map);
 int				init_s_map(t_map *map);
 int				init_game(t_cube3d *game);
 int				init_s_cube3d(t_cube3d **game, int argc, char *argv[]);
+void			init_player(t_cube3d *game);
 
 // ***************************************************************************
 // **							Draw Functions       						**
 // ***************************************************************************
 void			draw_pixel(t_sprite *sprite, int x, int y, int color);
 int				create_rgb(int t, int r, int g, int b);
-
-
+void			draw_map2d(t_cube3d *game);
+void			draw_player2d(t_cube3d *game);
+void			draw_rays2d(t_cube3d *game, t_player *player, t_map *map);
 
 // ***************************************************************************
 // **							Exit Functions      						**
@@ -125,3 +135,8 @@ int				init_window(t_cube3d *game);
 int				count_lines(const char *path);
 
 int				game_loop(t_cube3d *game);
+
+// ***************************************************************************
+// **							Player Functions   							**
+// ***************************************************************************
+void			move_player(t_cube3d *game, float pa, float dx, float dy);
