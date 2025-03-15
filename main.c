@@ -202,7 +202,6 @@ void draw_line(t_data *data, int x0, int y0, int x1, int y1, int color) {
     }
 }
 
-// Dibujar mapa
 void drawMap2D(t_data *data)
 {
     int x, y, mx, my;
