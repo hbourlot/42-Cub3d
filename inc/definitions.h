@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/14 22:40:51 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:35:38 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 #define TILE_SIZE 20
 #define PI 3.1415926535
-#define M_PI 3.1415926535
+// #define M_PI 3.1415926535
 #define SPEED 2.0
 
 #define P2 PI/2

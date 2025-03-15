@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:55:38 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/14 14:30:34 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:37:43 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,6 @@ int	key_press(int keycode, t_cube3d *game)
 		move_player(game, -0.1, 0, 0);
 	if (keycode == XK_d)
 		move_player(game, +0.1, 0, 0);
+
+	return(0);
 }
