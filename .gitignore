@@ -5,3 +5,5 @@ lib/libft/libft.a
 lib/raycasting/libraycasting.a
 
 *.o
+cub3D
+*.a
