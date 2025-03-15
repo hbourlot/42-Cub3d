@@ -81,6 +81,7 @@ endef
 
 # .PHONY: 		all clean fclean re bonus
 
+MINILIBX = ./lib/minilibx-linux/libmlx.a
 
 all:			$(NAME)
 
@@ -118,6 +119,7 @@ clean:
 fclean: 		clean
 				@make fclean -s -C ./lib/libft
 				@make fclean -s -C ./lib/raycasting
+				@make clean -s -C ./lib/minilibx-linux
 				@$(call fclean_func)
 
 re: 			fclean all
