@@ -19,15 +19,21 @@ TOTAL_FILES		= $(shell echo $$(($(words $(OBJS_SRC)) + 1)))
 COMPILED_FILES	= 0
 OS				= $(shell uname)
 
-NAME			= cube3D
-C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initialize/window initialize/game	\
-				  initialize/player utils/key_hook																				\
+NAME			= cube3d
+C_FUNCTIONS		= init/game_loop init/s_cube3d init/init_s_map 													\
+				  init/init_window init/init_game init/init_s_player													\
+				  																								\
+				  utils/key_hook																				\
 																												\
 				  exit/free																						\
-				  draw/draw_pixel																				\
+				  draw/draw_pixel	draw/load_xpm	draw/create_rgb												\
 																												\
-				  map/count_lines map/cub_array map/open map/parse												\
-				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling map/parsing/name map/parsing/utils
+				  map/count_lines map/cub_array map/open														\
+				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling									\
+				  map/parsing/name map/parsing/utils 															\
+																												\
+				  player/locate_spawn_point																		\
+
 
 
 
@@ -41,6 +47,7 @@ OBJS_SRC 		= $(addprefix $(OBJ_DIR), $(SRC_FILES:%.c=%.o))
 # -- INCLUDES LIBRARIES
 LIBFT_LIB 		= ./lib/libft/libft.a
 RAYCASTING_LIB  = ./lib/raycasting/libraycasting.a 
+MINILIBX_LIB	= ./lib/minilibx-linux/libmlx.a
 
 
 ifeq ($(OS), Darwin)
@@ -81,11 +88,10 @@ endef
 
 # .PHONY: 		all clean fclean re bonus
 
-MINILIBX = ./lib/minilibx-linux/libmlx.a
 
 all:			$(NAME)
 
-$(MINILIBX):
+$(MINILIBX_LIB):
 				make -s -C ./lib/minilibx-linux/
 
 $(NAME): 		$(MINILIBX) $(LIBFT_LIB) $(RAYCASTING_LIB) $(LIB) $(HEADERS)
@@ -119,7 +125,6 @@ clean:
 fclean: 		clean
 				@make fclean -s -C ./lib/libft
 				@make fclean -s -C ./lib/raycasting
-# @make clean -s -C ./lib/minilibx-linux
 				@$(call fclean_func)
 
 re: 			fclean all
@@ -128,10 +133,8 @@ bonus:			all
 
 r:
 	@make -s
-	@./$(NAME) ./map/basic.cub
-#@./$(NAME) ./map/ex1.cub
+	@./$(NAME) ./map/ex1.cub
 
 v:
 	@make -s
-#@$(VALGRIND) ./$(NAME) ./map/ex1.cub
-	@$(VALGRIND) ./$(NAME) ./map/basic.cub
+	@$(VALGRIND) ./$(NAME) ./map/ex1.cub
