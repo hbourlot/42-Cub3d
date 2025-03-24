@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop.c                                        :+:      :+:    :+:   */
+/*   init_s_cube3d.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 22:53:39 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/12 23:47:49 by joralves         ###   ########.fr       */
+/*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/23 23:33:24 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-
-int	game_loop(t_cube3d *game)
+int	init_s_cube3d(t_cube3d **game, int argc, char *argv[])
 {
-	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, key_press, game);
-	mlx_loop(game->mlx_ptr);
-	return 0;
+	static t_cube3d	data;
+	static t_map	map;
+	static t_img	sprites;
+
+	ft_memset(&data, 0, sizeof(t_cube3d));
+	*game = &data;
+	(*game)->map = &map;
+	(*game)->sprites = &sprites;
+	data.map->path = argv[1];
+	init_player(&data, 1, 1);
+	if (init_s_map(data.map) < 0)
+		return (-1);
+	return (0);
 }

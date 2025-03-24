@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/14 18:34:11 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/24 01:15:21 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,15 @@ typedef struct s_player
 	float		angle;
 }				t_player;
 
+typedef struct s_dda
+{
+	int			dx;
+	int			dy;
+	int			steps;
+	float		x_inc;
+	float		y_inc;
+}				t_dda;
+
 typedef struct s_cube3d
 {
 	t_map		*map;
@@ -109,7 +118,7 @@ bool			invalid_file_name(t_map *map);
 int				init_s_map(t_map *map);
 int				init_game(t_cube3d *game);
 int				init_s_cube3d(t_cube3d **game, int argc, char *argv[]);
-void			init_player(t_cube3d *game);
+void			init_player(t_cube3d *game, int x, int y);
 
 // ***************************************************************************
 // **							Draw Functions       						**
@@ -118,7 +127,13 @@ void			draw_pixel(t_sprite *sprite, int x, int y, int color);
 int				create_rgb(int t, int r, int g, int b);
 void			draw_map2d(t_cube3d *game);
 void			draw_player2d(t_cube3d *game);
-void			draw_rays2d(t_cube3d *game, t_player *player, t_map *map);
+void			draw_line(t_cube3d *game, float x0, float y0, float x1,
+					float y1, int color);
+// void			draw_rays2d(t_cube3d *game, t_player *player, t_map *map);
+void			draw_square(t_cube3d *game, int x, int y, int width, int height,
+					int color);
+void			my_mlx_pixel_put(t_cube3d *game, int x, int y, int color);
+void			drawRaycast(t_cube3d *game);
 
 // ***************************************************************************
 // **							Exit Functions      						**
@@ -139,4 +154,8 @@ int				game_loop(t_cube3d *game);
 // ***************************************************************************
 // **							Player Functions   							**
 // ***************************************************************************
-void			move_player(t_cube3d *game, float pa, float dx, float dy);
+void			move_player(t_map *map, t_player *player, int keycode);
+void			rotate_player(t_player *player, int keycode);
+
+float			DDA(t_cube3d *game, float x0, float y0, float angle);
+void			normalize_angle(float *angle);

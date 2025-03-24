@@ -20,19 +20,18 @@ COMPILED_FILES	= 0
 OS				= $(shell uname)
 
 NAME			= cube3d
-C_FUNCTIONS		= init/game_loop init/s_cube3d init/init_s_map 													\
+C_FUNCTIONS		= init/game_loop init/init_s_cube3d init/init_s_map 													\
 				  init/init_window init/init_game init/init_s_player													\
 				  																								\
 				  utils/key_hook																				\
 																												\
 				  exit/free																						\
-				  draw/draw_pixel	draw/load_xpm	draw/create_rgb												\
+				  draw/draw_pixel draw/dda												\
 																												\
 				  map/count_lines map/cub_array map/open														\
 				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling									\
-				  map/parsing/name map/parsing/utils 															\
-																												\
-				  player/locate_spawn_point																		\
+				  map/parsing/name map/parsing/utils  map/parse															\
+																																													\
 
 
 
@@ -133,8 +132,8 @@ bonus:			all
 
 r:
 	@make -s
-	@./$(NAME) ./map/ex1.cub
+	@./$(NAME) ./map/basic.cub
 
 v:
 	@make -s
-	@$(VALGRIND) ./$(NAME) ./map/ex1.cub
+	@$(VALGRIND) ./$(NAME) ./map/basic.cub
