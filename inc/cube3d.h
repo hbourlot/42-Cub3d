@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/25 15:03:17 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:35:32 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 typedef struct s_sprite
 {
 	char		*addr;
-	void		*mlx_ptr;
-	void		*mlx_win;
+	// void		*mlx_ptr;
+	// void		*mlx_win;
 	void		*img;
 	int			size_x;
 	int			size_y;
@@ -42,6 +42,7 @@ typedef struct s_sprite
 
 typedef struct s_img
 {
+	t_sprite	*dirt;
 	t_sprite	*no;
 	t_sprite	*so;
 	t_sprite	*we;
@@ -104,7 +105,7 @@ typedef struct s_dda
 	int			stepY;
 	float		acum_x;
 	float		acum_y;
-	float		res;
+	float		dist;
 	int			counterX;
 	int			counterY;
 }				t_dda;
@@ -156,6 +157,7 @@ void			draw_square(t_cube3d *game, int x, int y, int width, int height,
 					int color);
 void			my_mlx_pixel_put(t_cube3d *game, int x, int y, int color);
 void			draw_raycast(t_cube3d *game);
+void			draw_background(t_cube3d *game);
 
 // ***************************************************************************
 // **							Exit Functions      						**
@@ -181,3 +183,5 @@ void			rotate_player(t_player *player, int keycode);
 
 float			dda(t_cube3d *game, float x0, float y0, float angle);
 void			normalize_angle(float *angle);
+
+int				init_dirt_sprite(t_cube3d *game);

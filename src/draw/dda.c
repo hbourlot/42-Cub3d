@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/03/25 15:07:27 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:02:12 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,21 @@ float	dda(t_cube3d *game, float x0, float y0, float angle)
 {
 	t_dda	dda;
 
-	
+	dda.grid = game->map->map_array;
 	init_dda(&dda, x0, y0, angle);
 	while (dda.grid[dda.gridY][dda.gridX] == '0')
 	{
 		if (dda.acum_x <= dda.acum_y)
 		{
 			dda.gridX += dda.stepX;
-			dda.res = dda.acum_x;
+			dda.dist = dda.acum_x;
 			dda.acum_x += dda.sx;
 			dda.counterX++;
 		}
 		else
 		{
 			dda.gridY += dda.stepY;
-			dda.res = dda.acum_y;
+			dda.dist = dda.acum_y;
 			dda.acum_y = dda.acum_y + dda.sy;
 			dda.counterY++;
 		}
@@ -96,7 +96,7 @@ float	dda(t_cube3d *game, float x0, float y0, float angle)
 			break ;
 	}
 	draw_ray_lines(game, &dda, x0, y0);
-	return (dda.res);
+	return (dda.dist);
 }
 
 void	draw_raycast(t_cube3d *game)
@@ -106,8 +106,8 @@ void	draw_raycast(t_cube3d *game)
 	float	ray_angle;
 	float	dist;
 	int		wall_height;
-	float	mid_line;
-
+	float	wall_start;
+	float	perp_dist;
 	i = 0;
 	while (i < CANT_RAYS - 1)
 	{
@@ -115,14 +115,14 @@ void	draw_raycast(t_cube3d *game)
 		ray_angle = game->player.angle + alpha;
 		normalize_angle(&ray_angle);
 		dist = dda(game, game->player.x, game->player.y, ray_angle);
-		wall_height = WALL_SIZE * GAME_HEIGHT / dist;
-		mid_line = GAME_HEIGHT / 2 - wall_height / 2;
-
+		perp_dist = dist * cos(alpha);
+		wall_height = floor(WALL_SIZE * GAME_HEIGHT / perp_dist);
+		wall_start = GAME_HEIGHT / 2 - wall_height / 2;
 		for (int y = 0; y < wall_height; y++)
 		{
-			if (mid_line + y >= 0 && mid_line + y < GAME_HEIGHT)
+			if (wall_start + y >= 0 && wall_start + y < GAME_HEIGHT)
 			{
-				my_mlx_pixel_put(game, i * RENDER_LINE_WIDTH, mid_line + y,
+				my_mlx_pixel_put(game, i * RENDER_LINE_WIDTH, wall_start + y,
 					create_rgb(100, 100, 50, 50));
 			}
 		}
