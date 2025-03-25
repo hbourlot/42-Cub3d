@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/24 01:15:21 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/25 01:03:19 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,35 @@ typedef struct s_player
 	float		angle;
 }				t_player;
 
-typedef struct s_dda
+typedef struct s_line
 {
 	int			dx;
 	int			dy;
 	int			steps;
 	float		x_inc;
 	float		y_inc;
+}				t_line;
+
+typedef struct s_dda
+{
+	char		**grid;
+	int			gridX;
+	int			gridY;
+	float		dirX;
+	float		dirY;
+	float		sx_norm;
+	float		sy_norm;
+	float		sx;
+	float		sy;
+	float		initialX;
+	float		initialY;
+	int			stepX;
+	int			stepY;
+	float		acum_x;
+	float		acum_y;
+	float		res;
+	int			counterX;
+	int			counterY;
 }				t_dda;
 
 typedef struct s_cube3d

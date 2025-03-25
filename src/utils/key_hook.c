@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:55:38 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/24 01:01:00 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/24 23:31:30 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	key_press(int keycode, t_cube3d *game)
 		rotate_player(&game->player, keycode);
 	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	draw_map2d(game);
-	// drawRaycast(game);
 
 	return (0);
 }

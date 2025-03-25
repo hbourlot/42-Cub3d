@@ -13,8 +13,8 @@ int	init_window(t_cube3d *game)
 	if (!game->win_ptr)
 		return (ft_printf_fd(2, ME_NW), -1);
 	// game->img_ptr = mlx_new_image(game->mlx_ptr, IMG_WIDTH, IMG_HEIGHT);
-	game->img_ptr = mlx_new_image(game->mlx_ptr, 800, 400);
-	if (!game->img_ptr)
-		return (ft_printf_fd(2, ME_NW), -1);
+	// game->img_ptr = mlx_new_image(game->mlx_ptr, 800, 400);
+	// if (!game->img_ptr)
+	// 	return (ft_printf_fd(2, ME_NW), -1);
 	return (0);
 }
