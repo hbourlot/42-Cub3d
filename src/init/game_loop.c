@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:53:39 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/24 18:55:10 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:03:17 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	draw(t_cube3d *game)
 {
-	drawRaycast(game);
+	draw_raycast(game);
 }
 
 int	game_loop(t_cube3d *game)

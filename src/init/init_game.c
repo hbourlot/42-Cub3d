@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:36 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/24 01:01:16 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:23:38 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,10 @@ int	init_game(t_cube3d *game)
 	if (init_window(game) < 0)
 		return (-1);
 	// render(game);
-	drawRaycast(game);
+	// drawRaycast(game);
 	draw_map2d(game);
 	// draw_player2d(game);
 	game_loop(game);
-	
+
 	return(0);
 }

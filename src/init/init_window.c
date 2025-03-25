@@ -8,7 +8,7 @@ int	init_window(t_cube3d *game)
 	mlx_get_screen_size(game->mlx_ptr, &game->map->screen_width,
 		&game->map->screen_height);
 	// game->win_ptr = mlx_new_window(game->mlx_ptr, IMG_WIDTH, IMG_HEIGHT, "Cube-3d");
-	game->win_ptr = mlx_new_window(game->mlx_ptr, MAP_WIDTH, MAP_HEIGHT,
+	game->win_ptr = mlx_new_window(game->mlx_ptr, SCREEN_WIDTH*2, SCREEN_HEIGHT*2,
 			"Cube-3D");
 	if (!game->win_ptr)
 		return (ft_printf_fd(2, ME_NW), -1);

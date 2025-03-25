@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/25 01:03:19 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:03:17 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ void			draw_line(t_cube3d *game, float x0, float y0, float x1,
 void			draw_square(t_cube3d *game, int x, int y, int width, int height,
 					int color);
 void			my_mlx_pixel_put(t_cube3d *game, int x, int y, int color);
-void			drawRaycast(t_cube3d *game);
+void			draw_raycast(t_cube3d *game);
 
 // ***************************************************************************
 // **							Exit Functions      						**
@@ -179,5 +179,5 @@ int				game_loop(t_cube3d *game);
 void			move_player(t_map *map, t_player *player, int keycode);
 void			rotate_player(t_player *player, int keycode);
 
-float			DDA(t_cube3d *game, float x0, float y0, float angle);
+float			dda(t_cube3d *game, float x0, float y0, float angle);
 void			normalize_angle(float *angle);

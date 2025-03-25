@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dda.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
+/*   Updated: 2025/03/25 15:07:27 by joralves         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube3d.h"
 
-void	DDA_set_step(t_dda *dda, float x0, float y0)
+void	dda_set_step(t_dda *dda, float x0, float y0)
 {
 	if (dda->dirX < 0)
 	{
@@ -24,7 +36,7 @@ void	DDA_set_step(t_dda *dda, float x0, float y0)
 	}
 }
 
-void	init_DDA(t_dda *dda, float x0, float y0, float angle)
+void	init_dda(t_dda *dda, float x0, float y0, float angle)
 {
 	normalize_angle(&angle);
 	dda->gridX = round(x0 / TILE_SIZE);
@@ -39,12 +51,13 @@ void	init_DDA(t_dda *dda, float x0, float y0, float angle)
 	dda->sy_norm = sqrt(1 + (dda->dirX / dda->dirY) * (dda->dirX / dda->dirY));
 	dda->sx = TILE_SIZE * dda->sx_norm;
 	dda->sy = TILE_SIZE * dda->sy_norm;
-	DDA_set_step(dda, x0, y0);
+	dda_set_step(dda, x0, y0);
 	dda->acum_x = dda->initialX * dda->sx_norm;
 	dda->acum_y = dda->initialY * dda->sy_norm;
 	dda->counterX = 0;
 	dda->counterY = 0;
 }
+
 void	draw_ray_lines(t_cube3d *game, t_dda *dda, float x0, float y0)
 {
 	draw_line(game, x0, y0, x0 + dda->initialX * dda->stepX + TILE_SIZE
@@ -56,12 +69,12 @@ void	draw_ray_lines(t_cube3d *game, t_dda *dda, float x0, float y0)
 		+ TILE_SIZE * (dda->counterY - 1) * dda->stepY, 0x8080CC);
 }
 
-float	DDA(t_cube3d *game, float x0, float y0, float angle)
+float	dda(t_cube3d *game, float x0, float y0, float angle)
 {
 	t_dda	dda;
 
-	dda.grid = game->map->map_array;
-	init_DDA(&dda, x0, y0, angle);
+	
+	init_dda(&dda, x0, y0, angle);
 	while (dda.grid[dda.gridY][dda.gridX] == '0')
 	{
 		if (dda.acum_x <= dda.acum_y)
@@ -86,37 +99,14 @@ float	DDA(t_cube3d *game, float x0, float y0, float angle)
 	return (dda.res);
 }
 
-void	draw_filled_rectangle(t_cube3d *game, int x, int y, int width,
-		int height, int color)
-{
-	int	pixel_x;
-	int	pixel_y;
-
-	for (int dy = 0; dy < height; dy++)
-	{
-		for (int dx = 0; dx < width; dx++)
-		{
-			pixel_x = x + dx;
-			pixel_y = y + dy;
-			if (pixel_x >= 0 && pixel_x < game->map->screen_width
-				&& pixel_y >= 0 && pixel_y < game->map->screen_height)
-			{
-				mlx_pixel_put(game->mlx_ptr, game->win_ptr, pixel_x, pixel_y,
-					color);
-			}
-		}
-	}
-}
-
-void	drawRaycast(t_cube3d *game)
+void	draw_raycast(t_cube3d *game)
 {
 	int		i;
 	float	alpha;
 	float	ray_angle;
 	float	dist;
-	int		wallH;
-	float	midLine;
-	int		color;
+	int		wall_height;
+	float	mid_line;
 
 	i = 0;
 	while (i < CANT_RAYS - 1)
@@ -124,25 +114,18 @@ void	drawRaycast(t_cube3d *game)
 		alpha = FOV / 2 - ANGLE_PER_RAY * i;
 		ray_angle = game->player.angle + alpha;
 		normalize_angle(&ray_angle);
-		dist = DDA(game, game->player.x, game->player.y, ray_angle);
-		wallH = WALL_SIZE * GAME_HEIGHT / dist;
-		midLine = GAME_HEIGHT / 2 - wallH / 2;
-		color = 0xFFFFFF;
-		// for (int y = 0; y < wallH; y++)
-		// {
-		// 	if (midLine + y >= 0 && midLine + y < GAME_HEIGHT)
-		// 	{
-		// 		// my_mlx_pixel_put(game, i * RENDER_LINE_WIDTH, midLine + y,
-		// 		// 	color);
-		// 		draw_square(game, i * RENDER_LINE_WIDTH, midLine,
-		// 			RENDER_LINE_WIDTH, wallH, color);
-		// 	}
-		// }
-		draw_filled_rectangle(game, i * RENDER_LINE_WIDTH, (int)midLine,
-			RENDER_LINE_WIDTH, wallH, color);
+		dist = dda(game, game->player.x, game->player.y, ray_angle);
+		wall_height = WALL_SIZE * GAME_HEIGHT / dist;
+		mid_line = GAME_HEIGHT / 2 - wall_height / 2;
+
+		for (int y = 0; y < wall_height; y++)
+		{
+			if (mid_line + y >= 0 && mid_line + y < GAME_HEIGHT)
+			{
+				my_mlx_pixel_put(game, i * RENDER_LINE_WIDTH, mid_line + y,
+					create_rgb(100, 100, 50, 50));
+			}
+		}
 		i++;
 	}
 }
-
-// love, graphics.rectangle("fill", i *RENDER_LINE_WIDTH, midLine,
-// 	RENDER_LINE_WIDTH, wallH)
