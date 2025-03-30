@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/03/25 17:02:12 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:30:55 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,33 +99,89 @@ float	dda(t_cube3d *game, float x0, float y0, float angle)
 	return (dda.dist);
 }
 
-void	draw_raycast(t_cube3d *game)
+// void	render_walls(t_cube3d *game, t_raycast *raycast)
+// {
+// 	int			x;
+// 	int			y;
+// 	t_sprite	*text;
+// 	int			color;
+
+// 	text = game->sprites->dirt;
+// 	x = raycast->x_start;
+// 	while (x < raycast->x_end)
+// 	{
+// 		y = 0;
+// 		while (y < raycast->wall_height)
+// 		{
+// 			raycast->screen_y = raycast->wall_start + y;
+// 			if (raycast->screen_y >= 0 && raycast->screen_y < GAME_HEIGHT)
+// 			{
+// 				my_mlx_pixel_put(game, x, raycast->screen_y, create_rgb(100,
+// 						100, 50, 50));
+// 			}
+// 			y++;
+// 		}
+// 		x++;
+// 	}
+// }
+void	render_walls(t_cube3d *game, t_raycast *raycast)
 {
-	int		i;
-	float	alpha;
-	float	ray_angle;
-	float	dist;
-	int		wall_height;
-	float	wall_start;
-	float	perp_dist;
-	i = 0;
-	while (i < CANT_RAYS - 1)
+	float	tex_pos_y;
+	int		color;
+
+	int x, y;
+	t_sprite *texture = game->sprites->dirt; // Usamos solo "dirt"
+	int tex_x, tex_y;
+	// Coordenada X en la textura (simplificado sin 'side')
+	float wall_hit_x = game->player.x + raycast->dist * cos(raycast->ray_angle);
+		// Usamos solo X para simplificar
+	wall_hit_x -= floor(wall_hit_x);
+	tex_x = (int)(wall_hit_x * texture->width);
+	x = raycast->x_start;
+	while (x < raycast->x_end)
 	{
-		alpha = FOV / 2 - ANGLE_PER_RAY * i;
-		ray_angle = game->player.angle + alpha;
-		normalize_angle(&ray_angle);
-		dist = dda(game, game->player.x, game->player.y, ray_angle);
-		perp_dist = dist * cos(alpha);
-		wall_height = floor(WALL_SIZE * GAME_HEIGHT / perp_dist);
-		wall_start = GAME_HEIGHT / 2 - wall_height / 2;
-		for (int y = 0; y < wall_height; y++)
+		tex_pos_y = 0; // Empezamos desde arriba de la textura
+		y = (raycast->wall_start < 0) ? 0 : raycast->wall_start;
+		while (y < raycast->wall_start + raycast->wall_height
+			&& y < GAME_HEIGHT)
 		{
-			if (wall_start + y >= 0 && wall_start + y < GAME_HEIGHT)
-			{
-				my_mlx_pixel_put(game, i * RENDER_LINE_WIDTH, wall_start + y,
-					create_rgb(100, 100, 50, 50));
-			}
+			tex_y = (int)(tex_pos_y) % texture->height; // Mapeo simple
+			color = *(int *)(texture->addr + (tex_y * texture->size_line
+						+ tex_x * (texture->bpp / 8)));
+			my_mlx_pixel_put(game, x, y, color);
+			tex_pos_y += (float)texture->height / raycast->wall_height;
+				// Ajuste vertical
+			y++;
 		}
+		x++;
+	}
+}
+
+void	cast_render_raycast(t_cube3d *game)
+{
+	t_raycast	raycast;
+	int			i;
+
+	i = 0;
+	raycast.column_width = (int)((float)GAME_WIDTH / (float)CANT_RAYS);
+	if (raycast.column_width < 1)
+		raycast.column_width = 1;
+	while (i < CANT_RAYS)
+	{
+		raycast.alpha = FOV / 2 - ANGLE_PER_RAY * i;
+		raycast.ray_angle = game->player.angle + raycast.alpha;
+		normalize_angle(&raycast.ray_angle);
+		raycast.dist = dda(game, game->player.x, game->player.y,
+				raycast.ray_angle);
+		raycast.perp_dist = raycast.dist * cos(raycast.alpha);
+		raycast.wall_height = (int)(WALL_SIZE * GAME_HEIGHT
+				/ raycast.perp_dist);
+		raycast.wall_start = GAME_HEIGHT / 2 - raycast.wall_height / 2;
+		raycast.x_start = i * raycast.column_width;
+		raycast.x_end = (i + 1) * raycast.column_width;
+		if (raycast.x_end > GAME_WIDTH)
+			raycast.x_end = GAME_WIDTH;
+		render_walls(game, &raycast);
 		i++;
 	}
 }

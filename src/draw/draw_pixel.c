@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/25 17:37:02 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/27 22:56:22 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ void	draw_player2d(t_cube3d *game)
 	// line_x = game->player.x + game->player.pdx * 3 * TILE_SIZE;
 	// line_y = game->player.y + game->player.pdy * 3 * TILE_SIZE;
 	// draw_line(game, game->player.x, game->player.y, line_x, line_y,
-		// 0x00FF00);
+	// 0x00FF00);
 	// DDA(game, game->player.x, game->player.y, game->player.angle);
-	draw_raycast(game);
+	cast_render_raycast(game);
 }
 
 void	draw_background(t_cube3d *game)

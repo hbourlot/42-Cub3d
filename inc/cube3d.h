@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/25 17:35:32 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:32:00 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@
 
 typedef struct s_sprite
 {
-	char		*addr;
 	// void		*mlx_ptr;
 	// void		*mlx_win;
 	void		*img;
-	int			size_x;
-	int			size_y;
-	int			color;
+	char		*addr;
+	int			width;
+	int			height;
 	int			bpp;
 	int			size_line;
+	int			color;
 	int			endian;
 }				t_sprite;
 
@@ -110,6 +110,20 @@ typedef struct s_dda
 	int			counterY;
 }				t_dda;
 
+typedef struct s_raycast
+{
+	float		alpha;
+	float		ray_angle;
+	float		dist;
+	float		wall_start;
+	float		perp_dist;
+	int			column_width;
+	int			wall_height;
+	int			x_start;
+	int			x_end;
+	int			screen_y;
+}				t_raycast;
+
 typedef struct s_cube3d
 {
 	t_map		*map;
@@ -142,6 +156,7 @@ int				init_s_map(t_map *map);
 int				init_game(t_cube3d *game);
 int				init_s_cube3d(t_cube3d **game, int argc, char *argv[]);
 void			init_player(t_cube3d *game, int x, int y);
+int				init_dirt_sprite(t_cube3d *game);
 
 // ***************************************************************************
 // **							Draw Functions       						**
@@ -156,7 +171,7 @@ void			draw_line(t_cube3d *game, float x0, float y0, float x1,
 void			draw_square(t_cube3d *game, int x, int y, int width, int height,
 					int color);
 void			my_mlx_pixel_put(t_cube3d *game, int x, int y, int color);
-void			draw_raycast(t_cube3d *game);
+void			cast_render_raycast(t_cube3d *game);
 void			draw_background(t_cube3d *game);
 
 // ***************************************************************************
