@@ -136,4 +136,4 @@ r:
 
 v:
 	@make -s
-	@$(VALGRIND) ./$(NAME) ./map/basic.cub
+	@$(VALGRIND) ./$(NAME) ./map/basic_fail.cub

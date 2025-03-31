@@ -32,7 +32,7 @@ static int	init_sprite(t_cube3d *game, t_img **sprite, char *path)
 
 	new = malloc(sizeof(t_img));
 	if (!new)
-		return (printf("Error: Malloc failed for dirt texture\n"), -1);
+		return (printf("Error: Malloc failed for%s texture\n", path), -1);
 	new->img = mlx_xpm_file_to_image(game->mlx_ptr, path, &new->width,
 			&new->height);
 	if (!new->img)
@@ -54,13 +54,13 @@ static int	init_sprite(t_cube3d *game, t_img **sprite, char *path)
 
 int	init_s_sprite(t_cube3d *game)
 {
-	if (init_sprite(game, &game->sprites->no, game->map->no))
+	if (init_sprite(game, &game->sprites->no, (char *)game->map->no))
 		return (ft_printf_fd(2, ME_MALLOC), -1);
-	if (init_sprite(game, &game->sprites->so, game->map->so))
+	if (init_sprite(game, &game->sprites->so, (char *)game->map->so))
 		return (ft_printf_fd(2, ME_MALLOC), -1);
-	if (init_sprite(game, &game->sprites->ea, game->map->ea))
+	if (init_sprite(game, &game->sprites->ea, (char *)game->map->ea))
 		return (ft_printf_fd(2, ME_MALLOC), -1);
-	if (init_sprite(game, &game->sprites->we, game->map->we))
+	if (init_sprite(game, &game->sprites->we, (char *)game->map->we))
 		return (ft_printf_fd(2, ME_MALLOC), -1);
 	return (SUCCESS);
 }

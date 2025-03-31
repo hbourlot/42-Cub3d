@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/31 18:12:09 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:32:51 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ int	init_s_cube3d(t_cube3d **game, int argc, char *argv[])
 	data.map->path = argv[1];
 	if (init_s_map(data.map) < 0)
 		return (-1);
-	return (-1);
 	return (0);
 }
