@@ -7,7 +7,7 @@ CYAN 			= \033[1;36m
 RESET 			= \033[0m
 
 CC				= cc
-CFLAGS			=  -g -Wall #-Wextra -Werror #-pthread #-fsanitize=address,undefined 
+CFLAGS			=  -g -Wall #-Wextra -Werror 
 MINILIB_FLAGS	= -Llib/minilibx-linux  -Lmlx -lmlx -lX11 -lXext -lm  #-lmlx_Linux -lX11 -lXext
 LIB				= libcube3d.a
 INCLUDE 		= inc/
@@ -21,7 +21,7 @@ OS				= $(shell uname)
 
 NAME			= cube3d
 C_FUNCTIONS		= init/game_loop init/init_s_cube3d init/init_s_map 											\
-				  init/init_window init/init_game init/init_s_player init/init_sprites								\
+				  init/init_window init/init_game init/init_s_player init/init_s_sprites							\
 				  																								\
 				  utils/key_hook																				\
 																												\
@@ -32,7 +32,7 @@ C_FUNCTIONS		= init/game_loop init/init_s_cube3d init/init_s_map 											\
 				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling									\
 				  map/parsing/name map/parsing/utils  map/parse													\
 																												\
-
+					player/locate_spawn_point																		\
 
 
 

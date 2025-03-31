@@ -6,13 +6,13 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/14 18:40:46 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/31 12:01:17 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static int	allocate_map(t_map *map, int i)
+static int	allocate_map_array(t_map *map, int i)
 {
 	int	j;
 	int	len;
@@ -41,6 +41,40 @@ static int	allocate_map(t_map *map, int i)
 	map->height = j;
 	return (SUCCESS);
 }
+static int	allocate_map_world(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	map->map_world = ft_calloc(map->height, sizeof(int *));
+	if (!map->map_world)
+		return (ft_printf_fd(2, ME_MALLOC), -1);
+	while (map->map_array[i])
+	{
+		j = 0;
+		map->map_world[i] = ft_calloc(map->width, sizeof(int));
+		if (!map->map_array[i])
+		{
+			while (i-- > 0)
+				free(map->map_world[i]);
+			free(map->map_world);
+			return (ft_printf_fd(2, ME_MALLOC), -1);
+		}
+		while (map->map_array[i][j] && map->map_array[i][j] != '\n')
+		{
+			if (map->map_array[i][j] == '1')
+				map->map_world[i][j] = 1;
+			else if (ft_strchr("NSEW0 ", map->map_array[i][j]))
+				map->map_world[i][j] = 0;
+			else
+				map->map_world[i][j] = -1;
+			j++;
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
 
 static bool	is_map_valid(char **cub_array, const char *valid_chars, int i)
 {
@@ -53,8 +87,9 @@ static bool	is_map_valid(char **cub_array, const char *valid_chars, int i)
 		{
 			if (!ft_strchr(valid_chars, cub_array[i][j]))
 			{
-				// printf("Caractere inválido encontrado: '%c' (ASCII: %d)\n", cub_array[i][j], cub_array[i][j]);
-					return (false);
+				// printf("Caractere inválido encontrado: '%c' (ASCII: %d)\n",
+				// cub_array[i][j], cub_array[i][j]);
+				return (false);
 			}
 			j++;
 		}
@@ -81,7 +116,9 @@ bool	parse_map(t_map *map)
 		return (ft_printf_fd(2, ME_MINFO), true);
 	if (is_map_valid(map->cub_array, valid_chars, i))
 	{
-		if (allocate_map(map, i))
+		if (allocate_map_array(map, i))
+			return (false);
+		if (allocate_map_world(map))
 			return (false);
 	}
 	else

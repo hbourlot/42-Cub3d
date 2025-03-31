@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_s_cube3d.c                                    :+:      :+:    :+:   */
+/*   locate_spawn_point.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/31 18:12:09 by joralves         ###   ########.fr       */
+/*   Created: 2025/03/13 10:13:30 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/03/31 17:00:08 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-t_screen	*init_s_screen(void)
+void	locate_spawn_point(t_player *player, t_map *map)
 {
-	static t_screen	screen;
+	int	i;
+	int	j;
 
-	return (&screen);
-}
-
-int	init_s_cube3d(t_cube3d **game, int argc, char *argv[])
-{
-	static t_cube3d	data;
-	static t_map	map;
-	static t_sprite	sprites;
-
-	ft_memset(&data, 0, sizeof(t_cube3d));
-	*game = &data;
-	(*game)->map = &map;
-	(*game)->sprites = &sprites;
-	data.map->path = argv[1];
-	if (init_s_map(data.map) < 0)
-		return (-1);
-	return (-1);
-	return (0);
+	i = 0;
+	while (map->map_array[i])
+	{
+		j = 0;
+		while (map->map_array[i][j])
+		{
+			if (ft_strchr(VPL, map->map_array[i][j]))
+			{
+				player->dir = map->map_array[i][j];
+				player->x = j;
+				player->y = i;
+			}
+			j++;
+		}
+		i++;
+	}
 }

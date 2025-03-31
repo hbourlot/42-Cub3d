@@ -3,20 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/12 16:47:28 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/03/31 18:14:20 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#include "cube3d.h"
 
 static void	free_map(t_map *map)
 {
 	int	i;
 
+	// printf("Here\n");
 	i = 0;
+	if (!map)
+		return ;
 	while (map->map_array && map->map_array[i])
 	{
 		free(map->map_array[i]);
@@ -40,8 +43,9 @@ static void	free_map(t_map *map)
 		free_pointers(1, &map->floor);
 }
 
-void free_game(t_cube3d *game)
+void	free_game(t_cube3d *game)
 {
+	printf("HEre\n");
 	free_map(game->map);
 	if (game->img_ptr)
 		mlx_destroy_image(game->mlx_ptr, game->img_ptr);

@@ -2,19 +2,18 @@
 
 int	init_window(t_cube3d *game)
 {
+	t_screen	*screen;
+
+	screen = init_s_screen();
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		return (ft_printf_fd(2, ME_MF), -1);
-	mlx_get_screen_size(game->mlx_ptr, &game->map->screen_width,
-		&game->map->screen_height);
-	// game->win_ptr = mlx_new_window(game->mlx_ptr, IMG_WIDTH, IMG_HEIGHT, "Cube-3d");
+	mlx_get_screen_size(game->mlx_ptr, &screen->width, &screen->height);
+	//! Check game scale, if > screen_width or height ERROR
 	game->win_ptr = mlx_new_window(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT,
 			"Cube-3D");
 	if (!game->win_ptr)
 		return (ft_printf_fd(2, ME_NW), -1);
-	// game->img_ptr = mlx_new_image(game->mlx_ptr, IMG_WIDTH, IMG_HEIGHT);
-	// game->img_ptr = mlx_new_image(game->mlx_ptr, 800, 400);
-	// if (!game->img_ptr)
-	// 	return (ft_printf_fd(2, ME_NW), -1);
+	// printf("%d %d\n", init_s_screen()->height, screen->width);
 	return (0);
 }

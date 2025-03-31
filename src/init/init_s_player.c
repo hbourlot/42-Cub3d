@@ -1,12 +1,14 @@
 #include "cube3d.h"
 
+
 void	init_player(t_cube3d *game, int x, int y)
 {
 	t_player	*player;
 
 	player = &game->player;
-	player->x = x * TILE_SIZE + TILE_SIZE / 2;
-	player->y = y * TILE_SIZE + TILE_SIZE / 2;
+	locate_spawn_point(&game->player, game->map);
+	player->x = player->x * TILE_SIZE + TILE_SIZE / 2;
+	player->y = player->y * TILE_SIZE + TILE_SIZE / 2;
 	player->angle = P2;
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;

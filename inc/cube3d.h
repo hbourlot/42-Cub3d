@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/28 16:32:00 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/31 17:36:27 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include "../lib/libft/inc/libft.h"
 #include "../lib/minilibx-linux/mlx.h"
-#include "../lib/raycasting/inc/raycasting.h"
 #include "definitions.h"
 #include "error.h"
 #include <X11/X.h>      // Button press
@@ -26,10 +25,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-typedef struct s_sprite
+typedef struct s_img
 {
-	// void		*mlx_ptr;
-	// void		*mlx_win;
 	void		*img;
 	char		*addr;
 	int			width;
@@ -38,27 +35,32 @@ typedef struct s_sprite
 	int			size_line;
 	int			color;
 	int			endian;
+}				t_img;
+
+typedef struct s_sprite
+{
+	t_img		*dirt;
+	t_img		*no;
+	t_img		*so;
+	t_img		*we;
+	t_img		*ea;
+	t_img		*floor;
+	t_img		*ceiling;
 }				t_sprite;
 
-typedef struct s_img
+typedef struct s_screen
 {
-	t_sprite	*dirt;
-	t_sprite	*no;
-	t_sprite	*so;
-	t_sprite	*we;
-	t_sprite	*ea;
-	t_sprite	*floor;
-	t_sprite	*ceiling;
-}				t_img;
+	int			width;
+	int			height;
+}				t_screen;
 
 typedef struct s_map
 {
 	const char	*path;
 	char		**cub_array;
 	char		**map_array;
+	int			**map_world;
 	int			nbr_of_lines;
-	int			screen_width;
-	int			screen_height;
 	int			width;
 	int			height;
 	const char	*no;
@@ -71,7 +73,7 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int			direction;
+	char		dir;
 	float		x;
 	float		y;
 	float		pdx;
@@ -131,7 +133,7 @@ typedef struct s_cube3d
 	void		*win_ptr;
 	void		*img_ptr;
 	char		*name;
-	t_img		*sprites;
+	t_sprite	*sprites;
 	t_player	player;
 
 }				t_cube3d;
@@ -153,7 +155,7 @@ bool			invalid_file_name(t_map *map);
 // **							Initialize Functions 						**
 // ***************************************************************************
 int				init_s_map(t_map *map);
-int				init_game(t_cube3d *game);
+int				init_game(t_cube3d *game, int argc, char *argv[]);
 int				init_s_cube3d(t_cube3d **game, int argc, char *argv[]);
 void			init_player(t_cube3d *game, int x, int y);
 int				init_dirt_sprite(t_cube3d *game);
@@ -167,7 +169,6 @@ void			draw_map2d(t_cube3d *game);
 void			draw_player2d(t_cube3d *game);
 void			draw_line(t_cube3d *game, float x0, float y0, float x1,
 					float y1, int color);
-// void			draw_rays2d(t_cube3d *game, t_player *player, t_map *map);
 void			draw_square(t_cube3d *game, int x, int y, int width, int height,
 					int color);
 void			my_mlx_pixel_put(t_cube3d *game, int x, int y, int color);
@@ -187,7 +188,6 @@ int				parse_s_map(t_map *map);
 int				open_cub(const char *path);
 int				init_window(t_cube3d *game);
 int				count_lines(const char *path);
-
 int				game_loop(t_cube3d *game);
 
 // ***************************************************************************
@@ -200,3 +200,7 @@ float			dda(t_cube3d *game, float x0, float y0, float angle);
 void			normalize_angle(float *angle);
 
 int				init_dirt_sprite(t_cube3d *game);
+t_screen		*init_s_screen(void);
+void			locate_spawn_point(t_player *player, t_map *map);
+
+int				init_s_sprite(t_cube3d *game);

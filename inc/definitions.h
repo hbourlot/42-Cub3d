@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/25 13:25:01 by joralves         ###   ########.fr       */
+/*   Updated: 2025/03/30 23:23:54 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #define IMG_HEIGHT 256
 #define MAP_HEIGHT 768
 #define MAP_WIDTH 1024
+#define VPL "NSWE" // valid player location
+#define IPL " \t\n\v\f\r\a\b" // Ingnore player location
 
 #define PI 3.1415926535
 #define P2 PI / 2
