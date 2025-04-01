@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:00:39 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:32:58 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ int	create_rgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
-
-// void	draw_pixel(t_sprite *sprite, int x, int y, int color)
-// {
-// 	mlx_pixel_put(sprite->mlx_ptr, sprite->mlx_win, x, y, color);
-// }
 
 void	my_mlx_pixel_put(t_cube3d *game, int x, int y, int color)
 {
@@ -97,8 +92,8 @@ void	draw_map2d(t_cube3d *game)
 
 void	draw_player2d(t_cube3d *game)
 {
-	int	line_x;
-	int	line_y;
+	// int	line_x;
+	// int	line_y;
 
 	draw_square(game, game->player.x - TILE_SIZE / 2, game->player.y - TILE_SIZE
 		/ 2, TILE_SIZE, TILE_SIZE, 0xc0c0c0);

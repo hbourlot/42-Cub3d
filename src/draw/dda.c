@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/01 01:00:33 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 12:57:57 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ float	dda(t_cube3d *game, float x0, float y0, float angle)
 {
 	t_dda	dda;
 
-	dda.grid = game->map->map_array;
+	dda.grid_int = game->map->map_world;
 	init_dda(&dda, x0, y0, angle);
-	while (dda.grid[dda.gridY][dda.gridX] == '0')
+	while (dda.grid_int[dda.gridY][dda.gridX] == 0)
 	{
 		if (dda.acum_x <= dda.acum_y)
 		{
@@ -99,66 +99,63 @@ float	dda(t_cube3d *game, float x0, float y0, float angle)
 	return (dda.dist);
 }
 
-// void	render_walls(t_cube3d *game, t_raycast *raycast)
-// {
-// 	int			x;
-// 	int			y;
-// 	t_sprite	*text;
-// 	int			color;
-
-// 	text = game->sprites->dirt;
-// 	x = raycast->x_start;
-// 	while (x < raycast->x_end)
-// 	{
-// 		y = 0;
-// 		while (y < raycast->wall_height)
-// 		{
-// 			raycast->screen_y = raycast->wall_start + y;
-// 			if (raycast->screen_y >= 0 && raycast->screen_y <
-// GAME_HEIGHT)
-// 			{
-// 				my_mlx_pixel_put(game, x, raycast->screen_y,
-// create_rgb(100, 						100, 50, 50));
-// 			}
-// 			y++;
-// 		}
-// 		x++;
-// 	}
-// }
-
 void	render_walls(t_cube3d *game, t_raycast *raycast)
 {
-	float	tex_pos_y;
-	int		color;
-	float	wall_hit_x;
+	int	x;
+	int	y;
+	int	color;
 
-	int x, y;
-	t_img *texture = game->sprites->dirt; // Usamos solo "dirt"
-	int tex_x, tex_y;
-	// Coordenada X en la textura (simplificado sin 'side')
-	wall_hit_x = game->player.x + raycast->dist * cos(raycast->ray_angle);
-	// Usamos solo X para simplificar
-	wall_hit_x -= floor(wall_hit_x);
-	tex_x = (int)(wall_hit_x * texture->width);
 	x = raycast->x_start;
 	while (x < raycast->x_end)
 	{
-		tex_pos_y = 0; // Empezamos desde arriba de la textura
-		y = (raycast->wall_start < 0) ? 0 : raycast->wall_start;
-		while (y < raycast->wall_start + raycast->wall_height
-			&& y < GAME_HEIGHT)
+		y = 0;
+		while (y < raycast->wall_height)
 		{
-			tex_y = (int)(tex_pos_y) % texture->height; // Mapeo simple
-			color = *(int *)(texture->addr + (tex_y * texture->size_line + tex_x
-						* (texture->bpp / 8)));
-			my_mlx_pixel_put(game, x, y, color);
-			tex_pos_y += (float)texture->height / raycast->wall_height;
-			// Ajuste vertical
+			raycast->screen_y = raycast->wall_start + y;
+			if (raycast->screen_y >= 0 && raycast->screen_y < GAME_HEIGHT)
+			{
+				my_mlx_pixel_put(game, x, raycast->screen_y, create_rgb(100,
+						100, 50, 50));
+			}
 			y++;
 		}
 		x++;
 	}
 }
+
+// void	render_walls(t_cube3d *game, t_raycast *raycast)
+// {
+// 	float	tex_pos_y;
+// 	int		color;
+// 	float	wall_hit_x;
+
+// 	int x, y;
+// 	t_img *texture = game->sprites->dirt; // Usamos solo "dirt"
+// 	int tex_x, tex_y;
+// 	// Coordenada X en la textura (simplificado sin 'side')
+// 	wall_hit_x = game->player.x + raycast->dist * cos(raycast->ray_angle);
+// 	// Usamos solo X para simplificar
+// 	wall_hit_x -= floor(wall_hit_x);
+// 	tex_x = (int)(wall_hit_x * texture->width);
+// 	x = raycast->x_start;
+// 	while (x < raycast->x_end)
+// 	{
+// 		tex_pos_y = 0; // Empezamos desde arriba de la textura
+// 		y = (raycast->wall_start < 0) ? 0 : raycast->wall_start;
+// 		while (y < raycast->wall_start + raycast->wall_height
+// 			&& y < GAME_HEIGHT)
+// 		{
+// 			tex_y = (int)(tex_pos_y) % texture->height; // Mapeo simple
+// 			color = *(int *)(texture->addr + (tex_y * texture->size_line + tex_x
+// 						* (texture->bpp / 8)));
+// 			my_mlx_pixel_put(game, x, y, color);
+// 			tex_pos_y += (float)texture->height / raycast->wall_height;
+// 			// Ajuste vertical
+// 			y++;
+// 		}
+// 		x++;
+// 	}
+// }
 
 void	cast_render_raycast(t_cube3d *game)
 {
