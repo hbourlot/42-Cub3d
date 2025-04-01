@@ -6,13 +6,13 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:55:38 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:01:56 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	key_press(int keycode, t_cube3d *game)
+int	key_press(int keycode, t_cub3d *game)
 {
 	if (keycode == XK_Escape)
 	{
@@ -24,6 +24,5 @@ int	key_press(int keycode, t_cube3d *game)
 	if (keycode == XK_a || keycode == XK_d)
 		rotate_player(&game->player, keycode);
 	mlx_clear_window(game->mlx_ptr, game->win_ptr);
-
 	return (0);
 }

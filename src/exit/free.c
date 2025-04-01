@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 13:40:25 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	free_map(t_map *map)
 		free_pointers(1, &map->floor);
 }
 
-static void	free_sprites(t_cube3d *game, t_sprite *sprites)
+static void	free_sprites(t_cub3d *game, t_sprite *sprites)
 {
 	if (sprites->no)
 	{
@@ -81,7 +81,7 @@ static void	free_sprites(t_cube3d *game, t_sprite *sprites)
 	}
 }
 
-void	free_game(t_cube3d *game)
+void	free_game(t_cub3d *game)
 {
 	free_map(game->map);
 	free_sprites(game, game->sprites);

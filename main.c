@@ -2,7 +2,7 @@
 
 int	main(int argc, char *argv[])
 {
-	t_cube3d	*game;
+	t_cub3d	*game;
 
 	game = NULL;
 	if (argc != 2)

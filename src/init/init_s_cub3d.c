@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:00:51 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ t_screen	*init_s_screen(void)
 	return (&screen);
 }
 
-int	init_s_cube3d(t_cube3d **game, int argc, char *argv[])
+int	init_s_cube3d(t_cub3d **game, int argc, char *argv[])
 {
-	static t_cube3d	data;
+	static t_cub3d	data;
 	static t_map	map;
 	static t_sprite	sprites;
 
-	ft_memset(&data, 0, sizeof(t_cube3d));
+	ft_memset(&data, 0, sizeof(t_cub3d));
 	*game = &data;
 	(*game)->map = &map;
 	(*game)->sprites = &sprites;

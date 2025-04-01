@@ -6,13 +6,13 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 01:01:03 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/01 01:01:08 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	init_dirt_sprite(t_cube3d *game)
+int	init_dirt_sprite(t_cub3d *game)
 {
 	t_img	*dirt;
 
@@ -38,7 +38,7 @@ int	init_dirt_sprite(t_cube3d *game)
 	return (0);
 }
 
-static int	init_sprite(t_cube3d *game, t_img **sprite, char *path)
+static int	init_sprite(t_cub3d *game, t_img **sprite, char *path)
 {
 	t_img	*new;
 
@@ -64,7 +64,7 @@ static int	init_sprite(t_cube3d *game, t_img **sprite, char *path)
 	return (SUCCESS);
 }
 
-int	init_s_sprite(t_cube3d *game)
+int	init_s_sprite(t_cub3d *game)
 {
 	if (init_sprite(game, &game->sprites->no, (char *)game->map->no))
 		return (ft_printf_fd(2, ME_MALLOC), -1);

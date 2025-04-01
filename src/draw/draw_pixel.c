@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:32:58 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	create_rgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void	my_mlx_pixel_put(t_cube3d *game, int x, int y, int color)
+void	my_mlx_pixel_put(t_cub3d *game, int x, int y, int color)
 {
 	mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, y, color);
 }
 
-void	draw_square(t_cube3d *game, int x, int y, int width, int height,
+void	draw_square(t_cub3d *game, int x, int y, int width, int height,
 		int color)
 {
 	for (int i = 0; i < height; i++)
@@ -42,7 +42,7 @@ void	draw_square(t_cube3d *game, int x, int y, int width, int height,
 	}
 }
 
-void	draw_line(t_cube3d *game, float x0, float y0, float x1, float y1,
+void	draw_line(t_cub3d *game, float x0, float y0, float x1, float y1,
 		int color)
 {
 	t_line	lines;
@@ -65,7 +65,7 @@ void	draw_line(t_cube3d *game, float x0, float y0, float x1, float y1,
 	}
 }
 
-void	draw_map2d(t_cube3d *game)
+void	draw_map2d(t_cub3d *game)
 {
 	int	x;
 	int	y;
@@ -90,7 +90,7 @@ void	draw_map2d(t_cube3d *game)
 	draw_player2d(game);
 }
 
-void	draw_player2d(t_cube3d *game)
+void	draw_player2d(t_cub3d *game)
 {
 	// int	line_x;
 	// int	line_y;
@@ -107,7 +107,7 @@ void	draw_player2d(t_cube3d *game)
 	// cast_render_raycast(game);
 }
 
-void	draw_background(t_cube3d *game)
+void	draw_background(t_cub3d *game)
 {
 	for (int x = SCREEN_WIDTH / 2; x < SCREEN_WIDTH; x++)
 	{

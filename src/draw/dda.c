@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/01 15:38:04 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	init_dda(t_dda *dda, float x0, float y0, float angle)
 	dda->counter_y = 0;
 }
 
-void	draw_ray_lines(t_cube3d *game, t_dda *dda, float x0, float y0)
+void	draw_ray_lines(t_cub3d *game, t_dda *dda, float x0, float y0)
 {
 	// draw_line(game, x0, y0, x0 + dda->initialX * dda->stepX + TILE_SIZE
 	// 	* (dda->counterX - 1) * dda->stepX, y0, 0x80CC80);
@@ -71,7 +71,7 @@ void	draw_ray_lines(t_cube3d *game, t_dda *dda, float x0, float y0)
 		+ TILE_SIZE * (dda->counter_y - 1) * dda->step_y, 0x8080CC);
 }
 
-void	dda(t_cube3d *game, t_raycast *raycast, float x0, float y0)
+void	dda(t_cub3d *game, t_raycast *raycast, float x0, float y0)
 {
 	t_dda	*dda;
 
@@ -105,7 +105,7 @@ void	dda(t_cube3d *game, t_raycast *raycast, float x0, float y0)
 	draw_ray_lines(game, dda, x0, y0);
 }
 
-void	render_walls(t_cube3d *game, t_raycast *raycast, int color)
+void	render_walls(t_cub3d *game, t_raycast *raycast, int color)
 {
 	int	x;
 	int	y;
@@ -125,7 +125,7 @@ void	render_walls(t_cube3d *game, t_raycast *raycast, int color)
 	}
 }
 
-void	cast_render_raycast(t_cube3d *game)
+void	cast_render_raycast(t_cub3d *game)
 {
 	t_raycast	raycast;
 	int			i;

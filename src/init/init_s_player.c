@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 00:59:35 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/01 12:55:58 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	init_rotation(t_player *player)
 		player->angle = P3;
 }
 
-void	init_player(t_cube3d *game, int x, int y)
+void	init_player(t_cub3d *game, int x, int y)
 {
 	t_player	*player;
 

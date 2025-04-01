@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int	init_window(t_cube3d *game)
+int	init_window(t_cub3d *game)
 {
 	t_screen	*screen;
 
