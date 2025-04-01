@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/01 15:31:30 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:38:04 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,15 +150,9 @@ void	cast_render_raycast(t_cube3d *game)
 		if (raycast.x_end > GAME_WIDTH)
 			raycast.x_end = GAME_WIDTH;
 		if (raycast.dda.hitside == 1)
-		{
-			printf("1\n");
 			color = create_rgb(0, 255, 0, 0);
-		}
 		else
-		{
-			printf("0\n");
 			color = create_rgb(0, 0, 0, 255);
-		}
 		render_walls(game, &raycast, color);
 		i++;
 	}
