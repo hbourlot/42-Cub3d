@@ -6,11 +6,11 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/31 23:30:23 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:00:42 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	free_world(int **world)
 {
@@ -22,7 +22,6 @@ static void	free_world(int **world)
 		free(world[i]);
 		i++;
 	}
-	printf("%d\n", i);
 	free(world);
 }
 
@@ -31,8 +30,6 @@ static void	free_map(t_map *map)
 	int	i;
 
 	i = 0;
-	if (!map)
-		return ;
 	while (map->map_array && map->map_array[i])
 	{
 		free(map->map_array[i]);

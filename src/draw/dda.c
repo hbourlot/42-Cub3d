@@ -6,11 +6,11 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/03/31 17:22:38 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:00:33 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	dda_set_step(t_dda *dda, float x0, float y0)
 {

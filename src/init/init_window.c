@@ -1,4 +1,4 @@
-#include "cube3d.h"
+#include "cub3d.h"
 
 int	init_window(t_cube3d *game)
 {
@@ -14,6 +14,5 @@ int	init_window(t_cube3d *game)
 			"Cube-3D");
 	if (!game->win_ptr)
 		return (ft_printf_fd(2, ME_NW), -1);
-	// printf("%d %d\n", init_s_screen()->height, screen->width);
 	return (0);
 }

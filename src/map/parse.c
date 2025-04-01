@@ -6,11 +6,11 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 19:22:06 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/13 16:22:57 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:01:45 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+# include "cub3d.h"
 
 int	parse_s_map(t_map *map)
 {

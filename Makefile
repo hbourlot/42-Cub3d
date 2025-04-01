@@ -11,7 +11,7 @@ CFLAGS			=  -g -Wall #-Wextra -Werror
 MINILIB_FLAGS	= -Llib/minilibx-linux  -Lmlx -lmlx -lX11 -lXext -lm  #-lmlx_Linux -lX11 -lXext
 LIB				= libcube3d.a
 INCLUDE 		= inc/
-HEADERS			= inc/cube3d.h inc/definitions.h inc/error.h ./lib/libft/inc/libft.h ./lib/raycasting/inc/raycasting.h
+HEADERS			= inc/cub3d.h inc/definitions.h inc/error.h ./lib/libft/inc/libft.h ./lib/raycasting/inc/raycasting.h
 SRC_DIR 		= src/
 BONUS_DIR 		= bonus/
 OBJ_DIR 		= obj/
@@ -21,7 +21,7 @@ OS				= $(shell uname)
 
 NAME			= cube3d
 C_FUNCTIONS		= init/game_loop init/init_s_cube3d init/init_s_map 											\
-				  init/init_window init/init_game init/init_s_player init/init_s_sprites							\
+				  init/init_window init/init_game init/init_s_player init/init_s_sprites						\
 				  																								\
 				  utils/key_hook																				\
 																												\
@@ -31,8 +31,8 @@ C_FUNCTIONS		= init/game_loop init/init_s_cube3d init/init_s_map 											\
 				  map/count_lines map/cub_array map/open														\
 				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling									\
 				  map/parsing/name map/parsing/utils  map/parse													\
-																												\
-					player/locate_spawn_point																		\
+				  																								\
+				player/locate_spawn_point player/player_movement												\
 
 
 

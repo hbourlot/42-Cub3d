@@ -6,13 +6,13 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/30 23:23:54 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:02:13 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 #define NORTH "NO"
 #define SOUTH "SO"

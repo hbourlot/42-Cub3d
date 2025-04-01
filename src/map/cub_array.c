@@ -6,11 +6,11 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:56:43 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/14 15:46:10 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:01:39 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static char	**allocate_cub_array(int nbr_of_lines, t_map *map)
 {

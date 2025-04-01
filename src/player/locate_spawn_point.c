@@ -6,11 +6,11 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:13:30 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/31 17:00:08 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:01:48 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	locate_spawn_point(t_player *player, t_map *map)
 {
