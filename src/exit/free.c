@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:00:42 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:15:44 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,9 @@ static void	free_map(t_map *map)
 {
 	int	i;
 
-	i = 0;
-	while (map->map_array && map->map_array[i])
-	{
+	i = -1;
+	while (map->map_array && map->map_array[++i])
 		free(map->map_array[i]);
-		i++;
-	}
 	if (map->map_world)
 		free_world(map->map_world);
 	if (map->map_array)
@@ -87,13 +84,13 @@ static void	free_sprites(t_cube3d *game, t_sprite *sprites)
 void	free_game(t_cube3d *game)
 {
 	free_map(game->map);
-	if (game->img_ptr)
+	if (game->mlx_ptr && game->img_ptr)
 		mlx_destroy_image(game->mlx_ptr, game->img_ptr);
 	free_sprites(game, game->sprites);
+	if (game->mlx_ptr && game->img_ptr)
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	if (game->mlx_ptr)
 	{
-		if (game->mlx_ptr)
-			mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
 	}

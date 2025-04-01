@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:02:30 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:09:49 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 #define ME_EM "Error: Map is empty!\n"
 #define ME_PAX "Error: Parameter doesn't end with '.xpm'!\n"
 #define ME_MINFO "Error: The map doesn't have all the necessary information!\n"
+
+#define ME_RES "Error: Resolution too big\n"
 
 typedef enum s_status
 {
