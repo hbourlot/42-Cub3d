@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:34:34 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:29:27 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,23 +94,24 @@ typedef struct s_dda
 {
 	char		**grid;
 	int			**grid_int;
-	int			gridX;
-	int			gridY;
-	float		dirX;
-	float		dirY;
+	int			grid_x;
+	int			grid_y;
+	float		dir_x;
+	float		dir_y;
 	float		sx_norm;
 	float		sy_norm;
 	float		sx;
 	float		sy;
-	float		initialX;
-	float		initialY;
-	int			stepX;
-	int			stepY;
+	float		initial_x;
+	float		initial_y;
+	int			step_x;
+	int			step_y;
 	float		acum_x;
 	float		acum_y;
 	float		dist;
-	int			counterX;
-	int			counterY;
+	int			counter_x;
+	int			counter_y;
+	int			hitside;
 }				t_dda;
 
 typedef struct s_raycast
@@ -125,6 +126,7 @@ typedef struct s_raycast
 	int			x_start;
 	int			x_end;
 	int			screen_y;
+	t_dda		dda;
 }				t_raycast;
 
 typedef struct s_cube3d
@@ -155,26 +157,27 @@ bool			invalid_file_name(t_map *map);
 // ***************************************************************************
 // **							Initialize Functions 						**
 // ***************************************************************************
+t_screen		*init_s_screen(void);
 int				init_s_map(t_map *map);
+int				init_s_sprite(t_cube3d *game);
+int				init_dirt_sprite(t_cube3d *game);
+void			init_player(t_cube3d *game, int x, int y);
 int				init_game(t_cube3d *game, int argc, char *argv[]);
 int				init_s_cube3d(t_cube3d **game, int argc, char *argv[]);
-void			init_player(t_cube3d *game, int x, int y);
-int				init_dirt_sprite(t_cube3d *game);
 
 // ***************************************************************************
 // **							Draw Functions       						**
 // ***************************************************************************
-void			draw_pixel(t_sprite *sprite, int x, int y, int color);
-int				create_rgb(int t, int r, int g, int b);
 void			draw_map2d(t_cube3d *game);
 void			draw_player2d(t_cube3d *game);
-void			draw_line(t_cube3d *game, float x0, float y0, float x1,
-					float y1, int color);
+void			draw_background(t_cube3d *game);
+void			cast_render_raycast(t_cube3d *game);
+int				create_rgb(int t, int r, int g, int b);
+void			my_mlx_pixel_put(t_cube3d *game, int x, int y, int color);
 void			draw_square(t_cube3d *game, int x, int y, int width, int height,
 					int color);
-void			my_mlx_pixel_put(t_cube3d *game, int x, int y, int color);
-void			cast_render_raycast(t_cube3d *game);
-void			draw_background(t_cube3d *game);
+void			draw_line(t_cube3d *game, float x0, float y0, float x1,
+					float y1, int color);
 
 // ***************************************************************************
 // **							Exit Functions      						**
@@ -186,22 +189,19 @@ void			free_game(t_cube3d *game);
 // ***************************************************************************
 int				cub_array(t_map *map);
 int				parse_s_map(t_map *map);
+int				game_loop(t_cube3d *game);
 int				open_cub(const char *path);
 int				init_window(t_cube3d *game);
 int				count_lines(const char *path);
-int				game_loop(t_cube3d *game);
 
 // ***************************************************************************
 // **							Player Functions   							**
 // ***************************************************************************
-void			move_player(t_map *map, t_player *player, int keycode);
-void			rotate_player(t_player *player, int keycode);
-
-float			dda(t_cube3d *game, float x0, float y0, float angle);
 void			normalize_angle(float *angle);
-
-int				init_dirt_sprite(t_cube3d *game);
-t_screen		*init_s_screen(void);
+void			rotate_player(t_player *player, int keycode);
 void			locate_spawn_point(t_player *player, t_map *map);
+void			move_player(t_map *map, t_player *player, int keycode);
 
-int				init_s_sprite(t_cube3d *game);
+// float			dda(t_cube3d *game, float x0, float y0, float angle);
+void			dda(t_cube3d *game, t_raycast *raycast, float x0, float y0);
+int				init_dirt_sprite(t_cube3d *game);
