@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h                                           :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/12 16:53:20 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:29:27 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 #include "../lib/libft/inc/libft.h"
 #include "../lib/minilibx-linux/mlx.h"
-#include "../lib/raycasting/inc/raycasting.h"
 #include "definitions.h"
 #include "error.h"
-# include <X11/X.h>      // Button press
-# include <X11/keysym.h> // Key device
+#include <X11/X.h>      // Button press
+#include <X11/keysym.h> // Key device
 #include <fcntl.h>
 #include <math.h>
 #include <stdbool.h>
@@ -26,34 +25,41 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-typedef struct s_sprite
-{
-	char				*addr;
-	void				*mlx_ptr;
-	void				*mlx_win;
-	void				*img;
-	int					size_x;
-	int					size_y;
-	int					color;
-	int					bpp;
-	int					size_line;
-	int					endian;
-}			t_sprite;
-
 typedef struct s_img
 {
-	t_sprite	*no;
-	t_sprite	*so;
-	t_sprite	*we;
-	t_sprite	*ea;
-	t_sprite	*floor;
-	t_sprite	*ceiling;
-}			t_img;
+	void		*img;
+	char		*addr;
+	int			width;
+	int			height;
+	int			bpp;
+	int			size_line;
+	int			color;
+	int			endian;
+}				t_img;
+
+typedef struct s_sprite
+{
+	t_img		*dirt;
+	t_img		*no;
+	t_img		*so;
+	t_img		*we;
+	t_img		*ea;
+	t_img		*floor;
+	t_img		*ceiling;
+}				t_sprite;
+
+typedef struct s_screen
+{
+	int			width;
+	int			height;
+}				t_screen;
+
 typedef struct s_map
 {
 	const char	*path;
 	char		**cub_array;
 	char		**map_array;
+	int			**map_world;
 	int			nbr_of_lines;
 	int			width;
 	int			height;
@@ -67,8 +73,61 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	int			direction;
+	char		dir;
+	float		x;
+	float		y;
+	float		pdx;
+	float		pdy;
+	float		angle;
 }				t_player;
+
+typedef struct s_line
+{
+	int			dx;
+	int			dy;
+	int			steps;
+	float		x_inc;
+	float		y_inc;
+}				t_line;
+
+typedef struct s_dda
+{
+	char		**grid;
+	int			**grid_int;
+	int			grid_x;
+	int			grid_y;
+	float		dir_x;
+	float		dir_y;
+	float		sx_norm;
+	float		sy_norm;
+	float		sx;
+	float		sy;
+	float		initial_x;
+	float		initial_y;
+	int			step_x;
+	int			step_y;
+	float		acum_x;
+	float		acum_y;
+	float		dist;
+	int			counter_x;
+	int			counter_y;
+	int			hitside;
+}				t_dda;
+
+typedef struct s_raycast
+{
+	float		alpha;
+	float		ray_angle;
+	float		dist;
+	float		wall_start;
+	float		perp_dist;
+	int			column_width;
+	int			wall_height;
+	int			x_start;
+	int			x_end;
+	int			screen_y;
+	t_dda		dda;
+}				t_raycast;
 
 typedef struct s_cube3d
 {
@@ -77,7 +136,8 @@ typedef struct s_cube3d
 	void		*win_ptr;
 	void		*img_ptr;
 	char		*name;
-	t_img		*sprites;
+	t_sprite	*sprites;
+	t_player	player;
 
 }				t_cube3d;
 
@@ -85,7 +145,6 @@ typedef struct s_cube3d
 // **							Utils Functions      						**
 // ***************************************************************************
 int				key_press(int keycode, t_cube3d *game);
-
 
 // ***************************************************************************
 // **							map/parsing Functions 						**
@@ -98,17 +157,27 @@ bool			invalid_file_name(t_map *map);
 // ***************************************************************************
 // **							Initialize Functions 						**
 // ***************************************************************************
+t_screen		*init_s_screen(void);
 int				init_s_map(t_map *map);
-int				init_game(t_cube3d *game);
+int				init_s_sprite(t_cube3d *game);
+int				init_dirt_sprite(t_cube3d *game);
+void			init_player(t_cube3d *game, int x, int y);
+int				init_game(t_cube3d *game, int argc, char *argv[]);
 int				init_s_cube3d(t_cube3d **game, int argc, char *argv[]);
 
 // ***************************************************************************
 // **							Draw Functions       						**
 // ***************************************************************************
-void			draw_pixel(t_sprite *sprite, int x, int y, int color);
+void			draw_map2d(t_cube3d *game);
+void			draw_player2d(t_cube3d *game);
+void			draw_background(t_cube3d *game);
+void			cast_render_raycast(t_cube3d *game);
 int				create_rgb(int t, int r, int g, int b);
-
-
+void			my_mlx_pixel_put(t_cube3d *game, int x, int y, int color);
+void			draw_square(t_cube3d *game, int x, int y, int width, int height,
+					int color);
+void			draw_line(t_cube3d *game, float x0, float y0, float x1,
+					float y1, int color);
 
 // ***************************************************************************
 // **							Exit Functions      						**
@@ -120,8 +189,19 @@ void			free_game(t_cube3d *game);
 // ***************************************************************************
 int				cub_array(t_map *map);
 int				parse_s_map(t_map *map);
+int				game_loop(t_cube3d *game);
 int				open_cub(const char *path);
 int				init_window(t_cube3d *game);
 int				count_lines(const char *path);
 
-int				game_loop(t_cube3d *game);
+// ***************************************************************************
+// **							Player Functions   							**
+// ***************************************************************************
+void			normalize_angle(float *angle);
+void			rotate_player(t_player *player, int keycode);
+void			locate_spawn_point(t_player *player, t_map *map);
+void			move_player(t_map *map, t_player *player, int keycode);
+
+// float			dda(t_cube3d *game, float x0, float y0, float angle);
+void			dda(t_cube3d *game, t_raycast *raycast, float x0, float y0);
+int				init_dirt_sprite(t_cube3d *game);

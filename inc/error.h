@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 14:40:10 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:09:49 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 #define ME_MMA "Error: Map argument!\n"
 #define ME_MALLOC "Error: Malloc!\n"
@@ -23,6 +23,8 @@
 #define ME_EM "Error: Map is empty!\n"
 #define ME_PAX "Error: Parameter doesn't end with '.xpm'!\n"
 #define ME_MINFO "Error: The map doesn't have all the necessary information!\n"
+
+#define ME_RES "Error: Resolution too big\n"
 
 typedef enum s_status
 {

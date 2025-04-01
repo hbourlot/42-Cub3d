@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:55:38 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 22:56:13 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:01:56 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-int key_press(int keycode, t_cube3d *game)
+int	key_press(int keycode, t_cube3d *game)
 {
 	if (keycode == XK_Escape)
 	{
 		ft_printf_fd(1, "You pressed %d (Esc)\n", keycode);
 		free_game(game);
 	}
+	if (keycode == XK_w || keycode == XK_s)
+		move_player(game->map, &game->player, keycode);
+	if (keycode == XK_a || keycode == XK_d)
+		rotate_player(&game->player, keycode);
+	mlx_clear_window(game->mlx_ptr, game->win_ptr);
+
+	return (0);
 }

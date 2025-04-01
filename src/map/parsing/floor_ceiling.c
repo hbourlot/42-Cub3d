@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceiling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:28:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/06 15:57:32 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:01:19 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static int	allocate_fc(char **ptr_ref, char *src)
 {
@@ -78,12 +78,8 @@ static bool parse_line(char *src)
 	char	**split;
 	int		words;
 	char	c;
-	int		i;
 
 	c = src[0];
-	i = 0;
-	// if (invalid_chars(src))
-	// 	return (false);
 	split = ft_split(src, ' ');
 	if (!split)
 		return (ft_printf_fd(2, ME_MALLOC), -1);

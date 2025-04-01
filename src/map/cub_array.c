@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub_array.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:56:43 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 10:57:56 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:01:39 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
-static char **allocate_cub_array(int nbr_of_lines, t_map *map)
+static char	**allocate_cub_array(int nbr_of_lines, t_map *map)
 {
-	char **cub_array;
+	char	**cub_array;
 
 	cub_array = ft_calloc(nbr_of_lines + 1, sizeof(char *));
 	if (!cub_array)
@@ -22,10 +22,10 @@ static char **allocate_cub_array(int nbr_of_lines, t_map *map)
 	return (cub_array);
 }
 
-static int fill_cub_array(char **cub_array, const char *path)
+static int	fill_cub_array(char **cub_array, const char *path)
 {
-	int fd;
-	int i;
+	int	fd;
+	int	i;
 
 	fd = open_cub(path);
 	if (fd < 0)
@@ -37,10 +37,10 @@ static int fill_cub_array(char **cub_array, const char *path)
 	return (0);
 }
 
-int cub_array(t_map *map)
+int	cub_array(t_map *map)
 {
 	map->cub_array = allocate_cub_array(map->nbr_of_lines, map);
-	if (!cub_array)
+	if (!map->cub_array)
 		return (-1);
 	if (fill_cub_array(map->cub_array, map->path) < 0)
 		return (-1);

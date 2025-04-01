@@ -7,11 +7,11 @@ CYAN 			= \033[1;36m
 RESET 			= \033[0m
 
 CC				= cc
-CFLAGS			=  -g #-Wall -Wextra -Werror #-pthread #-fsanitize=address,undefined 
+CFLAGS			=  -g -Wall #-Wextra -Werror 
 MINILIB_FLAGS	= -Llib/minilibx-linux  -Lmlx -lmlx -lX11 -lXext -lm  #-lmlx_Linux -lX11 -lXext
 LIB				= libcube3d.a
 INCLUDE 		= inc/
-HEADERS			= inc/cube3d.h inc/definitions.h inc/error.h ./lib/libft/inc/libft.h ./lib/raycasting/inc/raycasting.h
+HEADERS			= inc/cub3d.h inc/definitions.h inc/error.h ./lib/libft/inc/libft.h ./lib/raycasting/inc/raycasting.h
 SRC_DIR 		= src/
 BONUS_DIR 		= bonus/
 OBJ_DIR 		= obj/
@@ -20,14 +20,19 @@ COMPILED_FILES	= 0
 OS				= $(shell uname)
 
 NAME			= cube3d
-C_FUNCTIONS		= initialize/game_loop initialize/s_cube3d initialize/s_map initialize/window initialize/game	\
+C_FUNCTIONS		= init/game_loop init/init_s_cube3d init/init_s_map 											\
+				  init/init_window init/init_game init/init_s_player init/init_s_sprites						\
+				  																								\
 				  utils/key_hook																				\
 																												\
 				  exit/free																						\
-				  draw/draw_pixel																				\
+				  draw/draw_pixel draw/dda																		\
 																												\
-				  map/count_lines map/cub_array map/open map/parse												\
-				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling map/parsing/name map/parsing/utils
+				  map/count_lines map/cub_array map/open														\
+				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling									\
+				  map/parsing/name map/parsing/utils  map/parse													\
+				  																								\
+				player/locate_spawn_point player/player_movement												\
 
 
 
@@ -41,6 +46,7 @@ OBJS_SRC 		= $(addprefix $(OBJ_DIR), $(SRC_FILES:%.c=%.o))
 # -- INCLUDES LIBRARIES
 LIBFT_LIB 		= ./lib/libft/libft.a
 RAYCASTING_LIB  = ./lib/raycasting/libraycasting.a 
+MINILIBX_LIB	= ./lib/minilibx-linux/libmlx.a
 
 
 ifeq ($(OS), Darwin)
@@ -84,8 +90,8 @@ endef
 
 all:			$(NAME)
 
-$(MINILIBX):
-				make re -s -C ./lib/minilibx-linux/
+$(MINILIBX_LIB):
+				make -s -C ./lib/minilibx-linux/
 
 $(NAME): 		$(MINILIBX) $(LIBFT_LIB) $(RAYCASTING_LIB) $(LIB) $(HEADERS)
 				@$(CC) $(CFLAGS) $(LIB) $(LINK) -o $(NAME)
@@ -126,8 +132,8 @@ bonus:			all
 
 r:
 	@make -s
-	@./$(NAME) ./map/ex1.cub
+	@./$(NAME) ./map/basic.cub
 
 v:
 	@make -s
-	@$(VALGRIND) ./$(NAME) ./map/ex1.cub
+	@$(VALGRIND) ./$(NAME) ./map/basic.cub

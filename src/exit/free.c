@@ -3,25 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/12 16:47:28 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/01 13:40:25 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#include "cub3d.h"
+
+static void	free_world(int **world)
+{
+	int	i;
+
+	i = 0;
+	while (world[i])
+	{
+		free(world[i]);
+		i++;
+	}
+	free(world);
+}
 
 static void	free_map(t_map *map)
 {
 	int	i;
 
-	i = 0;
-	while (map->map_array && map->map_array[i])
-	{
+	i = -1;
+	while (map->map_array && map->map_array[++i])
 		free(map->map_array[i]);
-		i++;
-	}
+	if (map->map_world)
+		free_world(map->map_world);
 	if (map->map_array)
 		free(map->map_array);
 	if (map->cub_array)
@@ -40,15 +52,45 @@ static void	free_map(t_map *map)
 		free_pointers(1, &map->floor);
 }
 
-void free_game(t_cube3d *game)
+static void	free_sprites(t_cube3d *game, t_sprite *sprites)
+{
+	if (sprites->no)
+	{
+		mlx_destroy_image(game->mlx_ptr, sprites->no->img);
+		free(sprites->no);
+	}
+	if (sprites->so)
+	{
+		mlx_destroy_image(game->mlx_ptr, sprites->so->img);
+		free(sprites->so);
+	}
+	if (sprites->ea)
+	{
+		mlx_destroy_image(game->mlx_ptr, sprites->ea->img);
+		free(sprites->ea);
+	}
+	if (sprites->we)
+	{
+		mlx_destroy_image(game->mlx_ptr, sprites->we->img);
+		free(sprites->we);
+	}
+	if (sprites->dirt)
+	{
+		mlx_destroy_image(game->mlx_ptr, sprites->dirt->img);
+		free(sprites->dirt);
+	}
+}
+
+void	free_game(t_cube3d *game)
 {
 	free_map(game->map);
-	if (game->img_ptr)
+	free_sprites(game, game->sprites);
+	if (game->mlx_ptr && game->img_ptr)
 		mlx_destroy_image(game->mlx_ptr, game->img_ptr);
+	if (game->mlx_ptr && game->win_ptr)
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	if (game->mlx_ptr)
 	{
-		if (game->mlx_ptr)
-			mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
 	}

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_cube3d.c                                         :+:      :+:    :+:   */
+/*   init_s_cube3d.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/12 16:52:18 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:00:51 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cube3d.h"
+#include "cub3d.h"
 
-int init_s_cube3d(t_cube3d **game, int argc, char *argv[])
+t_screen	*init_s_screen(void)
 {
-	static t_cube3d data;
+	static t_screen	screen;
+
+	return (&screen);
+}
+
+int	init_s_cube3d(t_cube3d **game, int argc, char *argv[])
+{
+	static t_cube3d	data;
 	static t_map	map;
-	static t_img    sprites;
-	
+	static t_sprite	sprites;
+
 	ft_memset(&data, 0, sizeof(t_cube3d));
 	*game = &data;
 	(*game)->map = &map;
@@ -25,6 +32,5 @@ int init_s_cube3d(t_cube3d **game, int argc, char *argv[])
 	data.map->path = argv[1];
 	if (init_s_map(data.map) < 0)
 		return (-1);
-	printf("%s\n", map.ceiling);
 	return (0);
 }

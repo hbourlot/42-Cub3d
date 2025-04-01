@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_map.c                                            :+:      :+:    :+:   */
+/*   init_s_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:06:44 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/02 20:43:24 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/01 01:00:53 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 int	init_s_map(t_map *map)
 {
-	int			status;
-
 	map->nbr_of_lines = count_lines(map->path);
 	if (map->nbr_of_lines < 0)
 		return (-1);
