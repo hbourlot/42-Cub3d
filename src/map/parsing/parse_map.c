@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:29:14 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:39:44 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,31 @@ static int	allocate_map_array(t_map *map, int i)
 	int	j;
 	int	len;
 
-	len = 0;
 	j = 0;
 	map->map_array = ft_calloc(map->nbr_of_lines - i + 1, sizeof(char *));
 	if (!map->map_array)
-		return (ft_printf_fd(2, ME_MALLOC), -1);
+		return (ft_printf_fd(2, ME_MALLOC), -1);	
 	while (map->cub_array[i])
 	{
 		map->map_array[j] = ft_strdup(map->cub_array[i]);
 		if (!map->map_array[j])
 		{
 			while (--j >= 0)
-				free(map->map_array[j]);
+			free(map->map_array[j]);
 			free(map->map_array);
 			return (ft_printf_fd(2, ME_MALLOC), -1);
 		}
 		len = ft_strlen(map->map_array[j]);
-		if (len > map->width)
-			map->width = len;
+		if (map->map_array[j][len - 1] == '\n' && len > 1)
+			map->map_array[j][len - 1] = '\0';
 		j++;
 		i++;
 	}
-	map->height = j;
 	return (SUCCESS);
 }
+
+
+// !! CAN BE USEFULL
 static int	allocate_map_world(t_map *map)
 {
 	int	i;
@@ -96,26 +97,33 @@ static bool	is_map_valid(char **cub_array, const char *valid_chars, int i)
 	return (true);
 }
 
+static int		parse_map_aux(t_map *map, int *i)
+{
+	*i = -1;
+	while (map->cub_array[++(*i)])
+	{
+		if (map->cub_array[*i][0] == '\0' || all_same_char(map->cub_array[*i], ' ') || map->cub_array[*i][0] == '\n')
+			continue;
+		break;
+	}
+	if (!map->cub_array[*i])
+		return (-1);
+
+	return (0);
+}
+
 bool	parse_map(t_map *map)
 {
 	int			i;
 	const char	*valid_chars = "10NSEW \t\n";
 
-	i = -1;
-	while (map->cub_array[++i])
-	{
-		// printf("line: >%s<\n",  map->cub_array[i]);
-		if (map->cub_array[i][0] == '\0' || all_same_char(map->cub_array[i],
-				' ') || map->cub_array[i][0] == '\n')
-			continue ;
-		break ;
-	}
-	if (!map->cub_array[i])
+	if (parse_map_aux(map, &i) < 0)
 		return (ft_printf_fd(2, ME_MINFO), true);
 	if (is_map_valid(map->cub_array, valid_chars, i))
 	{
 		if (allocate_map_array(map, i))
 			return (false);
+		map_range(map);
 		if (allocate_map_world(map))
 			return (false);
 	}

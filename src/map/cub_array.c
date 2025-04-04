@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_array.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:56:43 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:01:39 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/04 18:27:10 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,26 @@ static char	**allocate_cub_array(int nbr_of_lines, t_map *map)
 
 static int	fill_cub_array(char **cub_array, const char *path)
 {
-	int	fd;
-	int	i;
+	int		fd;
+	int		i;
+	char	*line;
 
 	fd = open_cub(path);
 	if (fd < 0)
 		return (ft_printf_fd(2, ME_FD), -1);
-	i = 0;
-	while ((cub_array[i] = get_next_line(fd)))
+	i = 1;
+	line = get_next_line(fd);
+	if (!line)
+		return (-1);
+	cub_array[0] = line;
+	while (line)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break;
+		cub_array[i] = line;
 		i++;
+	}
 	close(fd);
 	return (0);
 }

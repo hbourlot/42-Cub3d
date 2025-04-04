@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 16:39:16 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/04 22:23:46 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#define		abss(a, b)  if (a > b) a else b
 
 typedef struct s_img
 {
@@ -193,6 +194,10 @@ int				game_loop(t_cub3d *game);
 int				open_cub(const char *path);
 int				init_window(t_cub3d *game);
 int				count_lines(const char *path);
+void 			map_range(t_map *map);
+int				map_reachability(t_cub3d *game, t_map *map, int x, int y);
+
+
 
 // ***************************************************************************
 // **							Player Functions   							**

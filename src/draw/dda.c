@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/04 17:09:13 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	cast_render_raycast(t_cub3d *game)
 	{
 		raycast.alpha = FOV / 2 - ANGLE_PER_RAY * i;
 		raycast.ray_angle = game->player.angle + raycast.alpha;
-		normalize_angle(&raycast.ray_angle);
+		// normalize_angle(&raycast.ray_angle);
 		dda(game, &raycast, game->player.x, game->player.y);
 		raycast.perp_dist = raycast.dist * cos(raycast.alpha);
 		raycast.wall_height = (int)(WALL_SIZE * GAME_HEIGHT

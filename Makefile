@@ -20,7 +20,7 @@ COMPILED_FILES	= 0
 OS				= $(shell uname)
 
 NAME			= cub3D
-C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map 											\
+C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map 												\
 				  init/init_window init/init_game init/init_s_player init/init_s_sprites						\
 				  																								\
 				  utils/key_hook																				\
@@ -29,8 +29,8 @@ C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map 											\
 				  draw/draw_pixel draw/dda																		\
 																												\
 				  map/count_lines map/cub_array map/open														\
-				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling									\
-				  map/parsing/name map/parsing/utils  map/parse													\
+				  map/parsing/parse_map map/parsing/texture map/parsing/floor_ceiling							\
+				  map/parsing/name map/parsing/utils  map/parse map/map_range map/parsing/map_reachability		\
 				  																								\
 				player/locate_spawn_point player/player_movement												\
 
@@ -93,7 +93,7 @@ all:			$(NAME)
 $(MINILIBX_LIB):
 				make -s -C ./lib/minilibx-linux/
 
-$(NAME): 		$(MINILIBX) $(LIBFT_LIB) $(RAYCASTING_LIB) $(LIB) $(HEADERS)
+$(NAME): 		$(MINILIBX_LIB) $(LIBFT_LIB) $(RAYCASTING_LIB) $(LIB) $(HEADERS)
 				@$(CC) $(CFLAGS) $(LIB) $(LINK) -o $(NAME)
 				@echo "$(GREEN)Executable '$(RED)$(NAME)$(GREEN)' created successfully!$(RESET) ✅"
 
@@ -103,8 +103,8 @@ $(LIBFT_LIB):
 $(RAYCASTING_LIB):
 				@make -s -C ./lib/raycasting/
 
-$(LIB):			$(OBJS_SRC) main.o
-				@ar rcs $@ $(OBJS_SRC) main.o
+$(LIB):			$(OBJS_SRC) $(OBJ_DIR)main.o
+				@ar rcs $@ $(OBJS_SRC) $(OBJ_DIR)main.o
 				@echo "$(CYAN)library '$(YELLOW)$(LIB)$(CYAN)' created successfully!$(RESET)"
 
 $(OBJ_DIR)%.o:	%.c $(INCLUDE)
@@ -112,9 +112,9 @@ $(OBJ_DIR)%.o:	%.c $(INCLUDE)
 				$(call print_compile_msg, $<)
 				@$(CC) $(CFLAGS) -c $< -I./$(INCLUDE) -o $@
 
-main.o:			main.c $(INCLUDE)#inc/cube3d.h inc/definitions.h inc/error.h
-				$(call print_compile_msg, $<)
-				@$(CC) -c main.c $(CFLAGS) -I./$(INCLUDE) -o $@
+$(OBJ_DIR)main.o:	main.c $(INCLUDE)#inc/cube3d.h inc/definitions.h inc/error.h
+					$(call print_compile_msg, $<)
+					@$(CC) -c main.c $(CFLAGS) -I./$(INCLUDE) -o $@
 
 clean:
 				@make clean -s -C ./lib/libft
@@ -132,7 +132,7 @@ bonus:			all
 
 r:
 	@make -s
-	@./$(NAME) ./map/basic.cub
+	@./$(NAME) ./map/ex1.cub
 
 v:
 	@make -s

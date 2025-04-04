@@ -2,6 +2,7 @@
 	"files.associations": {
 		"array": "c",
 		"cube3d.h": "c",
-		"raycasting.h": "c"
+		"raycasting.h": "c",
+		"random": "cpp"
 	}
 }
