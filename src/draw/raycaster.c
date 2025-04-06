@@ -13,7 +13,6 @@ void	render_walls(t_cub3d *game, t_raycast *ray, t_img *tex)
 	double	wall_hit;
 	int		color;
 
-	// Calcular tex_x en base al impacto del rayo
 	if (ray->dda.hitside == 0)
 		wall_hit = game->player.y + ray->perp_dist * sin(ray->ray_angle);
 	else
@@ -23,29 +22,23 @@ void	render_walls(t_cub3d *game, t_raycast *ray, t_img *tex)
 	if ((ray->dda.hitside == 0 && ray->dda.dir_x < 0) || (ray->dda.hitside == 1
 			&& ray->dda.dir_y > 0))
 		tex_x = tex->width - tex_x - 1;
-	// Calcular paso vertical
 	step = (double)tex->height / ray->wall_height;
 	tex_pos = 0;
 	if (ray->wall_start < 0)
 		tex_pos = -ray->wall_start * step;
 	x = ray->x_start;
-	while (x < ray->x_end)
+	y = 0;
+	while (y < ray->wall_height)
 	{
-		y = 0;
-		while (y < ray->wall_height)
+		ray->screen_y = ray->wall_start + y;
+		if (ray->screen_y >= 0 && ray->screen_y < SCREEN_HEIGHT)
 		{
-			ray->screen_y = ray->wall_start + y;
-			if (ray->screen_y >= 0 && ray->screen_y < SCREEN_HEIGHT)
-			{
-				tex_y = (int)tex_pos & (tex->height - 1);
-					// para texturas POT (power of two)
-				color = get_texture_color(tex, tex_x, tex_y);
-				my_mlx_pixel_put(game, x, ray->screen_y, color);
-			}
-			tex_pos += step;
-			y++;
+			tex_y = (int)tex_pos & (tex->height - 1);
+			color = get_texture_color(tex, tex_x, tex_y);
+			my_mlx_pixel_put(game, x, ray->screen_y, color);
 		}
-		x++;
+		tex_pos += step;
+		y++;
 	}
 }
 
@@ -65,7 +58,6 @@ void	cast_render_raycast(t_cub3d *game)
 		ray.wall_height = (int)(WALL_SIZE * SCREEN_HEIGHT / ray.perp_dist);
 		ray.wall_start = SCREEN_HEIGHT / 2 - ray.wall_height / 2;
 		ray.x_start = i;
-		ray.x_end = i + 1;
 		tex = get_texture(game, &ray);
 		render_walls(game, &ray, tex);
 		i++;

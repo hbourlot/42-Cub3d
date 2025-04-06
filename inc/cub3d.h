@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/06 17:24:29 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/06 18:11:42 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ typedef struct s_raycast
 	int			wall_height;
 	int			x_start;
 	int			x_end;
-	double		hit_x;
+	double		wall_hit;
 	double		hit_y;
 	int			screen_y;
 	t_dda		dda;

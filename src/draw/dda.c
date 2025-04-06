@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/06 15:38:06 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/06 18:29:27 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	draw_ray_lines(t_cub3d *game, t_dda *dda, float x0, float y0)
 		+ TILE_SIZE * (dda->counter_y - 1) * dda->step_y, 0x8080CC);
 }
 
- void	dda(t_cub3d *game, t_raycast *raycast, float x0, float y0)
+void	dda(t_cub3d *game, t_raycast *raycast, float x0, float y0)
 {
 	t_dda	*dda;
 
