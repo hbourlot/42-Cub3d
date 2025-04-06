@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/06 15:26:35 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/06 17:24:29 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ typedef struct s_raycast
 	int			wall_height;
 	int			x_start;
 	int			x_end;
+	double		hit_x;
+	double		hit_y;
 	int			screen_y;
 	t_dda		dda;
 }				t_raycast;
@@ -205,3 +207,5 @@ void			move_player(t_map *map, t_player *player, int keycode);
 // void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
 int				init_dirt_sprite(t_cub3d *game);
 void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
+int				get_texture_color(t_img *tex, int x, int y);
+t_img			*get_texture(t_cub3d *game, t_raycast *raycast);

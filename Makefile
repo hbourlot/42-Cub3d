@@ -26,7 +26,7 @@ C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map 											\
 				  utils/key_hook																				\
 																												\
 				  exit/free																						\
-				  draw/draw_pixel draw/dda draw/raycaster draw/get_texture										\
+				  draw/draw_pixel draw/dda draw/raycaster draw/get_texture												\
 																												\
 				  map/count_lines map/cub_array map/open														\
 				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling									\
