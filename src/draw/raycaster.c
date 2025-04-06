@@ -24,20 +24,18 @@ void	render_walls(t_cub3d *game, t_raycast *ray, int color)
 
 void	cast_render_raycast(t_cub3d *game)
 {
-	t_raycast ray;
-	int i;
-	int color;
+	t_raycast	ray;
+	int			i;
+	int			color;
 
 	i = 0;
 	while (i < SCREEN_WIDTH)
 	{
 		ray.alpha = FOV / 2 - FOV / SCREEN_WIDTH * i;
 		ray.ray_angle = game->player.angle + ray.alpha;
-		normalize_angle(&ray.ray_angle);
 		dda(game, &ray, game->player.x, game->player.y);
 		ray.perp_dist = ray.dist * cos(ray.alpha);
-		ray.wall_height = (int)(WALL_SIZE * SCREEN_HEIGHT
-				/ ray.perp_dist);
+		ray.wall_height = (int)(WALL_SIZE * SCREEN_HEIGHT / ray.perp_dist);
 		ray.wall_start = SCREEN_HEIGHT / 2 - ray.wall_height / 2;
 		ray.x_start = i;
 		ray.x_end = i + 1;

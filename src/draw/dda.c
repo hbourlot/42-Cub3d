@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/06 15:26:11 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/06 15:38:06 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ static void	dda_set_step(t_dda *dda, float x0, float y0)
 
 static void	init_dda(t_dda *dda, float x0, float y0, float angle)
 {
-	normalize_angle(&angle);
-	dda->grid_x = round(x0 / TILE_SIZE);
-	dda->grid_y = round(y0 / TILE_SIZE);
+	dda->grid_x = (int)(x0 / TILE_SIZE);
+	dda->grid_y = (int)(y0 / TILE_SIZE);
 	dda->dir_x = cos(angle);
 	dda->dir_y = -sin(angle);
 	if (dda->dir_x == 0)
