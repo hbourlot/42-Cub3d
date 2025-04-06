@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 16:39:16 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/06 15:26:35 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,3 +204,4 @@ void			move_player(t_map *map, t_player *player, int keycode);
 
 // void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
 int				init_dirt_sprite(t_cub3d *game);
+void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
