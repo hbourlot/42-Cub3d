@@ -12,7 +12,7 @@ void	render_walls(t_cub3d *game, t_raycast *ray, t_img *tex)
 	int		tex_y;
 	int		color;
 
-	tex_x = (int)(ray->wall_hit * (double)tex->width);
+	tex_x = (int)(ray->wall_hit * tex->width);
 	if ((ray->dda.hitside == 0 && ray->dda.dir_x < 0) || (ray->dda.hitside == 1
 			&& ray->dda.dir_y > 0))
 		tex_x = tex->width - tex_x - 1;
@@ -27,7 +27,7 @@ void	render_walls(t_cub3d *game, t_raycast *ray, t_img *tex)
 		ray->screen_y = ray->wall_start + y;
 		if (ray->screen_y >= 0 && ray->screen_y < SCREEN_HEIGHT)
 		{
-			tex_y = (int)tex_pos & (tex->height - 1);
+			tex_y = (int)tex_pos % tex->height; // Usamos % en lugar de & para mayor claridad
 			color = get_texture_color(tex, tex_x, tex_y);
 			my_mlx_pixel_put(game, x, ray->screen_y, color);
 		}
@@ -35,6 +35,41 @@ void	render_walls(t_cub3d *game, t_raycast *ray, t_img *tex)
 		y++;
 	}
 }
+
+// void	render_walls(t_cub3d *game, t_raycast *ray, t_img *tex)
+// {
+// 	int		x;
+// 	int		y;
+// 	double	step;
+// 	double	tex_pos;
+// 	int		tex_x;
+// 	int		tex_y;
+// 	int		color;
+
+// 	tex_x = (int)(ray->wall_hit * tex->width);
+// 	printf("%d\n", tex_x);
+// 	if ((ray->dda.hitside == 0 && ray->dda.dir_x < 0) || (ray->dda.hitside == 1
+// 			&& ray->dda.dir_y > 0))
+// 		tex_x = tex->width - tex_x - 1;
+// 	step = (double)tex->height / ray->wall_height;
+// 	tex_pos = 0;
+// 	if (ray->wall_start < 0)
+// 		tex_pos = -ray->wall_start * step;
+// 	x = ray->x_start;
+// 	y = 0;
+// 	while (y < ray->wall_height)
+// 	{
+// 		ray->screen_y = ray->wall_start + y;
+// 		if (ray->screen_y >= 0 && ray->screen_y < SCREEN_HEIGHT)
+// 		{
+// 			tex_y = (int)tex_pos & (tex->height - 1);
+// 			color = get_texture_color(tex, tex_x, tex_y);
+// 			my_mlx_pixel_put(game, x, ray->screen_y, color);
+// 		}
+// 		tex_pos += step;
+// 		y++;
+// 	}
+// }
 
 void	cast_render_raycast(t_cub3d *game)
 {
@@ -51,13 +86,15 @@ void	cast_render_raycast(t_cub3d *game)
 		ray.perp_dist = ray.dist * cos(ray.alpha);
 		ray.wall_height = (int)(WALL_SIZE * SCREEN_HEIGHT / ray.perp_dist);
 		ray.wall_start = SCREEN_HEIGHT / 2 - ray.wall_height / 2;
+		// ray.draw_end = ray.wall_start + ray.wall_height;
+		// printf("ray.wall_height %d ray.wall_start %f\n", ray.wall_height,
+		// ray.wall_start);
 		ray.x_start = i;
 		tex = get_texture(game, &ray);
 		render_walls(game, &ray, tex);
 		i++;
 	}
 }
-
 
 // t_raycast cast_ray(t_cub3d *game, float x, float y, float angle)
 // {
@@ -79,8 +116,10 @@ void	cast_render_raycast(t_cub3d *game)
 //     float delta_dist_y = fabs(1.0 / d->dir_y);
 //     d->step_x = (d->dir_x < 0) ? -1 : 1;
 //     d->step_y = (d->dir_y < 0) ? -1 : 1;
-//     d->sx = (d->dir_x < 0) ? (x - d->grid_x) * delta_dist_x : (d->grid_x + 1.0 - x) * delta_dist_x;
-//     d->sy = (d->dir_y < 0) ? (y - d->grid_y) * delta_dist_y : (d->grid_y + 1.0 - y) * delta_dist_y;
+//     d->sx = (d->dir_x < 0) ? (x - d->grid_x) * delta_dist_x : (d->grid_x
+// + 1.0 - x) * delta_dist_x;
+//     d->sy = (d->dir_y < 0) ? (y - d->grid_y) * delta_dist_y : (d->grid_y
+// + 1.0 - y) * delta_dist_y;
 
 //     // Bucle principal de raycasting
 //     while (!hit)
@@ -99,8 +138,9 @@ void	cast_render_raycast(t_cub3d *game)
 //         }
 
 //         // Asegura que no salga del mapa
-//         if (d->grid_x < 0 || d->grid_x >= game->map->width || d->grid_y < 0 || d->grid_y >= game->map->height)
-//             break;
+//         if (d->grid_x < 0 || d->grid_x >= game->map->width || d->grid_y < 0
+// || d->grid_y >= game->map->height)
+//             break ;
 
 //         // Detecta colisiones con paredes
 //         if (d->grid_int[d->grid_y][d->grid_x] > 0)
@@ -113,7 +153,8 @@ void	cast_render_raycast(t_cub3d *game)
 //                     : (d->grid_y - y + (1 - d->step_y) / 2) / d->dir_y;
 
 //     // Imprime datos de depuración
-//     printf("Ray (%d,%d) -> perp_dist: %f, angle: %f\n", d->grid_x, d->grid_y, ray.perp_dist, angle);
+//     printf("Ray (%d,%d) -> perp_dist: %f, angle: %f\n", d->grid_x, d->grid_y,
+// ray.perp_dist, angle);
 
 //     ray.dda = *d;
 
@@ -127,13 +168,12 @@ void	cast_render_raycast(t_cub3d *game)
 //     return (ray);
 // }
 
-
 // int darken_color(int color)
 // {
 // 	int r = ((color >> 16) & 0xFF) * 0.6;
 // 	int g = ((color >> 8) & 0xFF) * 0.6;
 // 	int b = (color & 0xFF) * 0.6;
-// 	return (r << 16) | (g << 8) | b;
+// 	return ((r << 16) | (g << 8) | b);
 // }
 
 // void cast_render_raycast(t_cub3d *game)
@@ -145,10 +185,12 @@ void	cast_render_raycast(t_cub3d *game)
 //         float ray_angle = game->player.angle + camera_x * (FOV / 2);
 
 //         // Dispara el rayo
-//         t_raycast ray = cast_ray(game, game->player.x / TILE_SIZE, game->player.y / TILE_SIZE, ray_angle);
+//         t_raycast ray = cast_ray(game, game->player.x / TILE_SIZE,
+// game->player.y / TILE_SIZE, ray_angle);
 
 //         // Calcula la distancia corregida
-//         float corrected_dist = ray.perp_dist * cos(ray_angle - game->player.angle);
+//         float corrected_dist = ray.perp_dist * cos(ray_angle
+// - game->player.angle);
 
 //         // Calcula la altura de la línea del rayo
 //         int line_height = (int)(SCREEN_HEIGHT / corrected_dist);
@@ -156,7 +198,8 @@ void	cast_render_raycast(t_cub3d *game)
 //         int draw_end = line_height / 2 + SCREEN_HEIGHT / 2;
 
 //         draw_start = (draw_start < 0) ? 0 : draw_start;
-//         draw_end = (draw_end >= SCREEN_HEIGHT) ? SCREEN_HEIGHT - 1 : draw_end;
+//         draw_end = (draw_end >= SCREEN_HEIGHT) ? SCREEN_HEIGHT
+// - 1 : draw_end;
 
 //         // Usa un color constante para probar
 //         int color = create_rgb(0, 123, 123, 123);
@@ -168,14 +211,8 @@ void	cast_render_raycast(t_cub3d *game)
 //         }
 
 //         // Depuración: imprime el ángulo y la distancia de cada rayo
-//         printf("Ray %d: angle = %f, perp_dist = %f, corrected_dist = %f, line_height = %d\n",
+//         printf("Ray %d: angle = %f, perp_dist = %f, corrected_dist = %f,
+// line_height = %d\n",
 //                x, ray_angle, ray.perp_dist, corrected_dist, line_height);
 //     }
 // }
-
-
-
-
-
-
-

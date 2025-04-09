@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/07 01:19:31 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:14:26 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_raycast
 	float		ray_angle;
 	float		dist;
 	float		wall_start;
+	// float		draw_end;
 	float		perp_dist;
 	int			column_width;
 	int			wall_height;
