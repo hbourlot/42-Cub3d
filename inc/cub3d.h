@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/06 18:11:42 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/07 01:19:31 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ typedef struct s_cub3d
 	t_map		*map;
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*img_ptr;
+	t_img		img_ptr;
 	char		*name;
 	t_sprite	*sprites;
 	t_player	player;

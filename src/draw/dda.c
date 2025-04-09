@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/06 18:29:27 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/07 00:47:42 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	dda(t_cub3d *game, t_raycast *raycast, float x0, float y0)
 {
 	t_dda	*dda;
 
+	printf("x- %f y-%f\n ", x0, y0);
 	dda = &raycast->dda;
 	dda->grid_int = game->map->map_world;
 	init_dda(dda, x0, y0, raycast->ray_angle);
@@ -100,6 +101,11 @@ void	dda(t_cub3d *game, t_raycast *raycast, float x0, float y0)
 			|| dda->grid_y >= game->map->height)
 			break ;
 	}
+	if (dda->hitside == 1)
+		raycast->wall_hit = y0/TILE_SIZE + dda->dist * dda->dir_y;
+	else
+		raycast->wall_hit = x0/TILE_SIZE + dda->dist * dda->dir_x;
+	raycast->wall_hit -= floor(raycast->wall_hit);
 	raycast->dist = raycast->dda.dist;
 	draw_ray_lines(game, dda, x0, y0);
 }
