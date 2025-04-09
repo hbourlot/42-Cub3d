@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:53:39 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:15:27 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	draw(t_cub3d *game)
 
 int	game_loop(t_cub3d *game)
 {
+	// cast_render_raycast(game);
+	// draw_map2d(game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, key_press, game);
 	mlx_loop_hook(game->mlx_ptr, draw, game);
 	mlx_loop(game->mlx_ptr);

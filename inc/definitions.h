@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/05 11:14:10 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/09 17:42:08 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 
 // world vars
 #define TILE_SIZE 16
-#define WALL_SIZE 16
+#define WALL_SIZE 64
 
 // others
 #define EPSILON 0.000001
