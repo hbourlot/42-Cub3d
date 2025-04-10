@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/10 16:00:43 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/10 19:15:17 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_player
 	float		pdx;
 	float		pdy;
 	float		angle;
+	float		collider;
 }				t_player;
 
 typedef struct s_line

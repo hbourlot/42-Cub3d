@@ -15,7 +15,7 @@ t_ray	cast_ray(t_map *map, double x, double y, double angle)
 	int		step_x;
 	int		step_y;
 
-	ray.dist = 1000000.0; // Valor grande como "infinito"
+	ray.dist = 1000000.0;
 	ray.hit_side = 0;
 	ray.tex_num = 0;
 	ray.wall_x = 0;
@@ -33,8 +33,14 @@ t_ray	cast_ray(t_map *map, double x, double y, double angle)
 		side_dist_y = (y - map_y) * delta_dist_y;
 	else
 		side_dist_y = (map_y + 1.0 - y) * delta_dist_y;
-	step_x = dir_x < 0 ? -1 : 1;
-	step_y = dir_y < 0 ? -1 : 1;
+	if (dir_x < 0)
+		step_x = -1;
+	else
+		step_x = 1;
+	if (dir_y < 0)
+		step_y = -1;
+	else
+		step_y = 1;
 	while (map->map_world[map_y][map_x] == 0)
 	{
 		if (side_dist_x < side_dist_y)
@@ -107,9 +113,11 @@ void	render(t_cub3d *game, t_player *p)
 		corrected_dist = ray.dist * cos(ray_angle - p->angle);
 		line_height = (int)(S_HEIGHT / corrected_dist);
 		draw_start = -line_height / 2 + S_HEIGHT / 2;
-		draw_start = draw_start < 0 ? 0 : draw_start;
+		if (draw_start < 0)
+			draw_start = 0;
 		draw_end = line_height / 2 + S_HEIGHT / 2;
-		draw_end = draw_end >= S_HEIGHT ? S_HEIGHT - 1 : draw_end;
+		if (draw_end >= S_HEIGHT)
+			draw_end = S_HEIGHT - 1;
 		tex = get_texture2(game, &ray);
 		tex_x = (int)(ray.wall_x * tex->width);
 		if ((!ray.hit_side && cos(ray_angle) > 0) || (ray.hit_side
