@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:53:39 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/10 00:07:52 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/10 14:47:37 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	draw(t_cub3d *game)
 {
-	cast_render_raycast(game);
+	// cast_render_raycast(game);
 	// draw_map2d(game);
 	return (0);
 }

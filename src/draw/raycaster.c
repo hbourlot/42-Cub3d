@@ -12,7 +12,7 @@ void	render_walls(t_cub3d *game, t_raycast *ray, t_img *tex)
 	int		tex_y;
 	int		color;
 
-	tex_x = (int)(ray->wall_hit * tex->width);
+	tex_x = (int)(ray->wall_x * tex->width);
 	if ((ray->dda.hitside == 0 && ray->dda.dir_x < 0) || (ray->dda.hitside == 1
 			&& ray->dda.dir_y < 0))
 		tex_x = tex->width - tex_x - 1;
@@ -28,6 +28,8 @@ void	render_walls(t_cub3d *game, t_raycast *ray, t_img *tex)
 		if (ray->screen_y >= 0 && ray->screen_y < SCREEN_HEIGHT)
 		{
 			tex_y = (int)tex_pos % tex->height;
+			if (tex_y >= tex->height)
+				tex_y = tex->height - 1;
 			color = get_texture_color(tex, tex_x, tex_y);
 			my_mlx_pixel_put(game, x, ray->screen_y, color);
 		}
@@ -49,7 +51,8 @@ void	cast_render_raycast(t_cub3d *game)
 		ray.ray_angle = game->player.angle + ray.alpha;
 		dda(game, &ray, game->player.x, game->player.y);
 		ray.perp_dist = ray.dist * cos(ray.alpha);
-		ray.wall_height = (int)(SCREEN_HEIGHT / ray.perp_dist);
+		printf("ray.dist %f ray.perp_dist %f\n",ray.dist, ray.perp_dist);
+		ray.wall_height = (int)( SCREEN_HEIGHT / ray.perp_dist);
 		ray.wall_start = SCREEN_HEIGHT / 2 - ray.wall_height / 2;
 		ray.x_start = i;
 		tex = get_texture(game, &ray);

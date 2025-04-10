@@ -8,7 +8,7 @@
 #include <time.h>
 
 #define TILE_SIZE 64
-#define MAP_SIZE 11
+#define MAP_SIZE 12
 #define WIDTH 640
 #define HEIGHT 480
 #define FOV 1.0472
@@ -102,7 +102,7 @@ int	get_texture_color(t_texture *tex, int x, int y)
 }
 
 // Algoritmo DDA para raycasting
-t_ray	cast_ray(double x, double y, double angle)
+t_ray cast_ray(double x, double y, double angle)
 {
 	t_ray	ray;
 	double	dir_x;
@@ -117,20 +117,23 @@ t_ray	cast_ray(double x, double y, double angle)
 	int		step_y;
 	int		hit;
 
-	ray = {INFINITY, 0, 0, 0};
+	ray.dist = 1000000.0;  // Valor grande como "infinito"
+	ray.hit_side = 0;
+	ray.tex_num = 0;
+	ray.wall_x = 0;
+
 	dir_x = cos(angle);
 	dir_y = sin(angle);
 	map_x = (int)x;
 	map_y = (int)y;
 	delta_dist_x = fabs(1 / dir_x);
 	delta_dist_y = fabs(1 / dir_y);
-	side_dist_x = dir_x < 0 ? (x - map_x) * delta_dist_x : (map_x + 1.0 - x)
-		* delta_dist_x;
-	side_dist_y = dir_y < 0 ? (y - map_y) * delta_dist_y : (map_y + 1.0 - y)
-		* delta_dist_y;
+	side_dist_x = dir_x < 0 ? (x - map_x) * delta_dist_x : (map_x + 1.0 - x) * delta_dist_x;
+	side_dist_y = dir_y < 0 ? (y - map_y) * delta_dist_y : (map_y + 1.0 - y) * delta_dist_y;
 	step_x = dir_x < 0 ? -1 : 1;
 	step_y = dir_y < 0 ? -1 : 1;
 	hit = 0;
+
 	while (!hit)
 	{
 		if (side_dist_x < side_dist_y)
@@ -149,8 +152,8 @@ t_ray	cast_ray(double x, double y, double angle)
 			break ;
 		if (map[map_x][map_y] > 0)
 		{
-			ray.dist = (ray.hit_side == 0) ? (map_x - x + (1 - step_x) / 2)
-				/ dir_x : (map_y - y + (1 - step_y) / 2) / dir_y;
+			ray.dist = (ray.hit_side == 0) ? (map_x - x + (1 - step_x) / 2) / dir_x
+										   : (map_y - y + (1 - step_y) / 2) / dir_y;
 			if (ray.hit_side == 0)
 			{
 				ray.wall_x = y + ray.dist * dir_y;
@@ -167,6 +170,7 @@ t_ray	cast_ray(double x, double y, double angle)
 	}
 	return (ray);
 }
+
 
 // Renderizar escena
 void	render(t_player *p)
