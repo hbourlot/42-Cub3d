@@ -6,13 +6,15 @@ t_img	*get_texture(t_cub3d *game, t_raycast *raycast)
 
 	if (raycast->dda.hitside == 0)
 	{
+		// Corregido: usamos EA si dir_x > 0 (este), WE si dir_x < 0 (oeste)
 		if (raycast->dda.dir_x > 0)
-			tex = game->sprites->we;
-		else
 			tex = game->sprites->ea;
+		else
+			tex = game->sprites->we;
 	}
 	else
 	{
+		// Norte (dir_y > 0) y Sur (dir_y < 0)
 		if (raycast->dda.dir_y > 0)
 			tex = game->sprites->no;
 		else

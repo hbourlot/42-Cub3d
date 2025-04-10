@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/09 16:25:26 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:23:58 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	dda(t_cub3d *game, t_raycast *raycast, float x0, float y0)
 			|| dda->grid_y >= game->map->height)
 			break ;
 	}
+	// printf("%d\n",dda->dist);
 	if (dda->hitside == 1)
 		raycast->wall_hit = y0 + dda->dist * dda->dir_y;
 	else
