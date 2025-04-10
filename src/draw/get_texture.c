@@ -23,14 +23,30 @@ t_img	*get_texture(t_cub3d *game, t_raycast *raycast)
 	return (tex);
 }
 
-int get_texture_color(t_img *tex, int x, int y)
+t_img	*get_texture2(t_cub3d *game, t_ray *ray)
 {
-    int color;
+	t_img	*tex;
 
-    // Aseguramos que las coordenadas x, y están dentro de la textura
-    if (x < 0 || x >= tex->width || y < 0 || y >= tex->height)
-        return (0x000000);  // Puedes cambiar esto por un color transparente o un color predeterminado
+	if (ray->tex_num == 0)
+		tex=game->sprites->so;
+	if (ray->tex_num == 1)
+		tex=game->sprites->ea;
+	if (ray->tex_num == 2)
+		tex=game->sprites->we;
+	if (ray->tex_num == 3)
+		tex=game->sprites->no;
+	return (tex);
+}
 
-    color = *(int *)(tex->addr + (y * tex->size_line) + (x * (tex->bpp / 8)));
-    return (color);
+int	get_texture_color(t_img *tex, int x, int y)
+{
+	int color;
+
+	// Aseguramos que las coordenadas x, y están dentro de la textura
+	if (x < 0 || x >= tex->width || y < 0 || y >= tex->height)
+		return (0x000000);
+			// Puedes cambiar esto por un color transparente o un color predeterminado
+
+	color = *(int *)(tex->addr + (y * tex->size_line) + (x * (tex->bpp / 8)));
+	return (color);
 }

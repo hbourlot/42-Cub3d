@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/10 18:03:07 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,11 @@ void	draw_player2d(t_cub3d *game)
 
 void	draw_background(t_cub3d *game)
 {
-	for (int x = SCREEN_WIDTH / 2; x < SCREEN_WIDTH; x++)
+	for (int x = S_WIDTH / 2; x < S_WIDTH; x++)
 	{
-		for (int y = 0; y < SCREEN_HEIGHT / 2; y++)
+		for (int y = 0; y < S_HEIGHT / 2; y++)
 			my_mlx_pixel_put(game, x, y, 0x00FFFF);
-		for (int y = SCREEN_HEIGHT / 2; y < SCREEN_HEIGHT; y++)
+		for (int y = S_HEIGHT / 2; y < S_HEIGHT; y++)
 			my_mlx_pixel_put(game, x, y, 0x6B4F3B);
 	}
 }
