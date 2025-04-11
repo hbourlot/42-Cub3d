@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normalize.c                                        :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 16:23:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/11 18:15:30 by hbourlot         ###   ########.fr       */
+/*   Created: 2025/04/11 14:40:32 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/04/11 14:51:29 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycasting.h"
+#ifndef DEBUG_H
+#define DEBUG_H
 
-t_vec3	normalize(t_vec3 v)
-{
-	float	mag;
-	t_vec3	result;
 
-	mag = magnitude(v);
-	result = (t_vec3){v.x / mag, v.y / mag, v.z / mag};
-	
-	return (result);
-}
+#include "cub3d.h"
+
+void	print_map(t_cub3d *game);
+void	print_map_detailed(t_cub3d *game);
+
+
+
+#endif
