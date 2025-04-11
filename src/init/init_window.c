@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:42:02 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/11 13:42:03 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:14:36 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ int	init_window(t_cub3d *game)
 	game->win_ptr = mlx_new_window(game->mlx_ptr, S_WIDTH, S_HEIGHT, "Cube-3D");
 	if (!game->win_ptr)
 		return (ft_printf_fd(2, ME_NW), -1);
-	game->main_img.img = mlx_new_image(game->mlx_ptr, S_WIDTH, S_HEIGHT);
-	if (!game->main_img.img)
-		return (ft_printf_fd(2, ME_NW), -1);
-	game->main_img.addr = mlx_get_data_addr(game->main_img.img,
-			&game->main_img.bpp, &game->main_img.size_line,
-			&game->main_img.endian);
-	if (!game->main_img.addr)
-		return (ft_printf_fd(2, ME_NW), -1);
+
 	return (0);
 }

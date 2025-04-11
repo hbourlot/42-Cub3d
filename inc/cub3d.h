@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 13:58:19 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:16:28 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct s_cub3d
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_img		main_img;
+	t_img		map_img;
 	char		*name;
 	t_sprite	*sprites;
 	t_player	player;
@@ -160,6 +161,7 @@ bool			invalid_file_name(t_map *map);
 // ***************************************************************************
 t_screen		*init_s_screen(void);
 int				init_s_map(t_map *map);
+int 			init_images(t_cub3d *game);
 int				init_s_sprite(t_cub3d *game);
 void			init_player(t_cub3d *game, int x, int y);
 int				init_game(t_cub3d *game, int argc, char *argv[]);
