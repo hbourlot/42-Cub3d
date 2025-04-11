@@ -12,7 +12,6 @@
 
 #include "cub3d.h"
 
-
 static int	init_sprite(t_cub3d *game, t_img **sprite, char *path)
 {
 	t_img	*new;

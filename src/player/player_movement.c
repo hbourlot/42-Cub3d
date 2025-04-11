@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:53:30 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/10 19:24:57 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:41:29 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void	rotate_player(t_player *player, int keycode)
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;
 }
+
 int	wall_collision(t_map *map, float new_x, float new_y, float collider)
 {
 	int			tile_x;
 	int			tile_y;
 	int			i;
 	const float	corners[4][2] = {{new_x - collider, new_y - collider}, {new_x
-			+ collider, new_y - collider}, {new_x - collider, new_y + collider},
-			{new_x + collider, new_y + collider}};
+		+ collider, new_y - collider}, {new_x - collider, new_y + collider},
+	{new_x + collider, new_y + collider}};
 
 	i = 0;
 	while (i < 4)
