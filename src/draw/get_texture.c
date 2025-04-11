@@ -42,10 +42,8 @@ int	get_texture_color(t_img *tex, int x, int y)
 {
 	int color;
 
-	// Aseguramos que las coordenadas x, y están dentro de la textura
 	if (x < 0 || x >= tex->width || y < 0 || y >= tex->height)
 		return (0x000000);
-			// Puedes cambiar esto por un color transparente o un color predeterminado
 
 	color = *(int *)(tex->addr + (y * tex->size_line) + (x * (tex->bpp / 8)));
 	return (color);

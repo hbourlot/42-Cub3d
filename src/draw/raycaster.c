@@ -1,15 +1,13 @@
 #include "cub3d.h"
-
-// Algoritmo DDA para raycasting
 t_ray	cast_ray(t_map *map, double x, double y, double angle)
 {
 	t_ray	ray;
-	double	dir_x;
-	double	dir_y;
-	int		map_x;
-	int		map_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
+	double	dir_x = cos(angle);
+	double	dir_y = -sin(angle);
+	int		map_x = (int)x;
+	int		map_y = (int)y;
+	double	delta_dist_x = fabs(1.0 / dir_x);
+	double	delta_dist_y = fabs(1.0 / dir_y);
 	double	side_dist_x;
 	double	side_dist_y;
 	int		step_x;
@@ -19,28 +17,28 @@ t_ray	cast_ray(t_map *map, double x, double y, double angle)
 	ray.hit_side = 0;
 	ray.tex_num = 0;
 	ray.wall_x = 0;
-	dir_x = cos(angle);
-	dir_y = -sin(angle);
-	map_x = (int)x;
-	map_y = (int)y;
-	delta_dist_x = fabs(1 / dir_x);
-	delta_dist_y = fabs(1 / dir_y);
+
 	if (dir_x < 0)
-		side_dist_x = (x - map_x) * delta_dist_x;
-	else
-		side_dist_x = (map_x + 1.0 - x) * delta_dist_x;
-	if (dir_y < 0)
-		side_dist_y = (y - map_y) * delta_dist_y;
-	else
-		side_dist_y = (map_y + 1.0 - y) * delta_dist_y;
-	if (dir_x < 0)
+	{
 		step_x = -1;
+		side_dist_x = (x - map_x) * delta_dist_x;
+	}
 	else
+	{
 		step_x = 1;
+		side_dist_x = (map_x + 1.0 - x) * delta_dist_x;
+	}
 	if (dir_y < 0)
+	{
 		step_y = -1;
+		side_dist_y = (y - map_y) * delta_dist_y;
+	}
 	else
+	{
 		step_y = 1;
+		side_dist_y = (map_y + 1.0 - y) * delta_dist_y;
+	}
+
 	while (map->map_world[map_y][map_x] == 0)
 	{
 		if (side_dist_x < side_dist_y)
@@ -55,36 +53,29 @@ t_ray	cast_ray(t_map *map, double x, double y, double angle)
 			map_y += step_y;
 			ray.hit_side = 1;
 		}
-		if (map_x < 0 || map_x >= map->width || map_y < 0
-			|| map_y >= map->height)
-			break ;
+		if (map_x < 0 || map_y < 0 || map_x >= map->width || map_y >= map->height)
+			break;
 	}
+
 	if (map_x >= 0 && map_x < map->width && map_y >= 0 && map_y < map->height)
 	{
 		if (ray.hit_side == 0)
-			ray.dist = (map_x - x + (1 - step_x) / 2) / dir_x;
-		else
-			ray.dist = (map_y - y + (1 - step_y) / 2) / dir_y;
-		if (ray.hit_side == 0)
 		{
-			if (dir_x > 0)
-				ray.tex_num = 2;
-			else
-				ray.tex_num = 3;
+			ray.dist = (map_x - x + (1 - step_x) / 2.0) / dir_x;
 			ray.wall_x = y + ray.dist * dir_y;
+			ray.tex_num = dir_x > 0 ? 2 : 3;
 		}
 		else
 		{
-			if (dir_y > 0)
-				ray.tex_num = 1;
-			else
-				ray.tex_num = 0;
+			ray.dist = (map_y - y + (1 - step_y) / 2.0) / dir_y;
 			ray.wall_x = x + ray.dist * dir_x;
+			ray.tex_num = dir_y > 0 ? 1 : 0;
 		}
 		ray.wall_x -= floor(ray.wall_x);
 	}
 	return (ray);
 }
+
 
 // Renderizar escena
 void	render(t_cub3d *game, t_player *p)
