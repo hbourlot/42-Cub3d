@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 09:37:06 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 09:39:47 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,27 @@ typedef struct s_line
 	float		y_inc;
 }				t_line;
 
+typedef struct s_ray
+{
+	double		dist;
+	int			hit_side;
+	int			tex_num;
+	double		wall_x;
+}				t_ray;
+
+typedef struct s_dda
+{
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	delta_dist_x ;
+	double	delta_dist_y ;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		step_x;
+	int		step_y;
+}t_dda;
 typedef struct s_cub3d
 {
 	t_map		*map;
@@ -103,13 +124,6 @@ typedef struct s_cub3d
 
 }				t_cub3d;
 
-typedef struct s_ray
-{
-	double		dist;
-	int			hit_side;
-	int			tex_num;
-	double		wall_x;
-}				t_ray;
 
 // ***************************************************************************
 // **							Utils Functions      						**
