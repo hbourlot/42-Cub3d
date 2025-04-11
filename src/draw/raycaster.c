@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:24:49 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/11 12:06:36 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:36:27 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	draw_walls(t_cub3d *game, t_ray *ray, t_draw *draw,
 	}
 }
 
-// Renderizar escena
+//*Render to image now
 void	render(t_cub3d *game, t_player *p)
 {
 	t_ray	ray;
