@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 13:34:03 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:59:14 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,22 @@ void	my_mlx_pixel_put(t_cub3d *game, int x, int y, int color)
 	mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, y, color);
 }
 
-void	draw_square(t_cub3d *game, int x, int y, int width, int height,
-		int color)
+void	draw_square(t_cub3d *game, int pos[2], int size, int color)
 {
-	for (int i = 0; i < height; i++)
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
 	{
-		for (int j = 0; j < width; j++)
+		j = 0;
+		while (j < size)
 		{
-			mlx_pixel_put(game->mlx_ptr, game->win_ptr, x + i, y + j, color);
+			mlx_pixel_put(game->mlx_ptr, game->win_ptr, pos[0] + i, pos[1] + j,
+				color);
+			j++;
 		}
+		i++;
 	}
 }
 
@@ -80,6 +87,7 @@ void	draw_map2d(t_cub3d *game)
 {
 	int	x;
 	int	y;
+	int	pos[2];
 	int	color;
 
 	y = 0;
@@ -92,8 +100,9 @@ void	draw_map2d(t_cub3d *game)
 				color = 0xFFFFFF;
 			else
 				color = 0x000000;
-			draw_square(game, x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE,
-				TILE_SIZE, color);
+			pos[0] = x * TILE_SIZE;
+			pos[1] = y * TILE_SIZE;
+			draw_square(game, pos, TILE_SIZE, color);
 			x++;
 		}
 		y++;
@@ -103,7 +112,9 @@ void	draw_map2d(t_cub3d *game)
 
 void	draw_player2d(t_cub3d *game)
 {
-	draw_square(game, game->player.x - game->player.collider, game->player.y
-		- game->player.collider, game->player.collider * 2,
-		game->player.collider * 2, 0xc0c0c0);
+	int	pos[2];
+
+	pos[0] = game->player.x - game->player.collider;
+	pos[1] = game->player.y - game->player.collider;
+	draw_square(game, pos, game->player.collider * 2, 0xc0c0c0);
 }

@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 13:36:15 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:58:19 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,7 @@ void			draw_map2d(t_cub3d *game);
 void			draw_player2d(t_cub3d *game);
 int				create_rgb(int t, int r, int g, int b);
 void			my_mlx_pixel_put(t_cub3d *game, int x, int y, int color);
-void			draw_square(t_cub3d *game, int x, int y, int width, int height,
-					int color);
+void			draw_square(t_cub3d *game, int pos[2], int size, int color);
 // void			draw_line(t_cub3d *game, float x0, float y0, float x1, float y1,
 // 					int color);
 
