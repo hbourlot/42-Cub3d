@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 00:59:35 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/10 19:24:18 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 00:23:05 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_player(t_cub3d *game, int x, int y)
 	player->y = player->y * TILE_SIZE + TILE_SIZE / 2;
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;
-	player->collider = TILE_SIZE/3;
+	player->collider = TILE_SIZE/2-2;
 }
 
 void	normalize_angle(float *angle)

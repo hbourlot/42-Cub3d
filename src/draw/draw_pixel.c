@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/10 18:03:07 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 09:10:43 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ void	draw_player2d(t_cub3d *game)
 {
 	// int	line_x;
 	// int	line_y;
-
-	draw_square(game, game->player.x - TILE_SIZE / 2, game->player.y - TILE_SIZE
-		/ 2, TILE_SIZE, TILE_SIZE, 0xc0c0c0);
+	draw_square(game, game->player.x - game->player.collider, game->player.y
+		- game->player.collider, game->player.collider*2, game->player.collider*2,
+		0xc0c0c0);
 	// draw_square(game, game->player.x, game->player.y, TILE_SIZE, TILE_SIZE,
 	// 	0xFFFF00);
 	// line_x = game->player.x + game->player.pdx * 3 * TILE_SIZE;

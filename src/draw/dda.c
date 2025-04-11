@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 15:01:42 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/10 15:40:16 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/10 20:04:58 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ static void	init_dda(t_dda *dda, float x0, float y0, float angle)
 	dda_set_step(dda, x0, y0);
 	dda->acum_x = dda->initial_x * dda->sx_norm;
 	dda->acum_y = dda->initial_y * dda->sy_norm;
-	dda->counter_x = 0;
-	dda->counter_y = 0;
 }
 
 void	draw_ray_lines(t_cub3d *game, t_dda *dda, float x0, float y0)
@@ -65,9 +63,9 @@ void	draw_ray_lines(t_cub3d *game, t_dda *dda, float x0, float y0)
 	// 	* (dda->counterX - 1) * dda->stepX, y0, 0x80CC80);
 	// draw_line(game, x0, y0, x0, y0 + dda->initialY * dda->stepY + TILE_SIZE
 	// 	* (dda->counterY - 1) * dda->stepY, 0xCC8080);
-	draw_line(game, x0, y0, x0 + dda->initial_x * dda->step_x + TILE_SIZE
-		* (dda->counter_x - 1) * dda->step_x, y0 + dda->initial_y * dda->step_y
-		+ TILE_SIZE * (dda->counter_y - 1) * dda->step_y, 0x8080CC);
+// 	draw_line(game, x0, y0, x0 + dda->initial_x * dda->step_x + TILE_SIZE
+// 		* (dda->counter_x - 1) * dda->step_x, y0 + dda->initial_y * dda->step_y
+// 		+ TILE_SIZE * (dda->counter_y - 1) * dda->step_y, 0x8080CC);
 }
 
 void	dda(t_cub3d *game, t_raycast *raycast, float x0, float y0)
@@ -86,7 +84,6 @@ void	dda(t_cub3d *game, t_raycast *raycast, float x0, float y0)
 			dda->dist = dda->acum_x;
 			dda->acum_x += dda->sx;
 			dda->hitside = 1;
-			dda->counter_x++;
 		}
 		else
 		{
@@ -94,20 +91,18 @@ void	dda(t_cub3d *game, t_raycast *raycast, float x0, float y0)
 			dda->dist = dda->acum_y;
 			dda->acum_y = dda->acum_y + dda->sy;
 			dda->hitside = 0;
-			dda->counter_y++;
 		}
 		if (dda->grid_x < 0 || dda->grid_y < 0
 			|| dda->grid_x >= game->map->width
 			|| dda->grid_y >= game->map->height)
 			break ;
 	}
-	// printf("%d\n",dda->dist);
 	if (dda->hitside == 1)
 		raycast->wall_x = y0 + dda->dist * dda->dir_y;
 	else
 		raycast->wall_x = x0 + dda->dist * dda->dir_x;
 	raycast->wall_x -= floor(raycast->wall_x);
-	printf("%f\n", raycast->wall_x);
+	// printf("%f\n", raycast->wall_x);
 	raycast->dist = raycast->dda.dist;
-	draw_ray_lines(game, dda, x0, y0);
+	// draw_ray_lines(game, dda, x0, y0);
 }
