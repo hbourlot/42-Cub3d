@@ -22,29 +22,50 @@
 // 	}
 // 	return (tex);
 // }
+void	set_texture(t_ray *ray, t_dda *dda)
+{
+	int	tex_num;
+
+	if (ray->wall_hit == 1)
+	{
+		if (ray->hit_side == 0)
+		{
+			if (dda->dir_x > 0)
+				ray->tex_num = 2;
+			else
+				ray->tex_num = 3;
+		}
+		else
+		{
+			if (dda->dir_y > 0)
+				ray->tex_num = 0;
+			else
+				ray->tex_num = 1;
+		}
+	}
+}
 
 t_img	*get_texture2(t_cub3d *game, t_ray *ray)
 {
 	t_img	*tex;
 
 	if (ray->tex_num == 0)
-		tex=game->sprites->so;
+		tex = game->sprites->so;
 	if (ray->tex_num == 1)
-		tex=game->sprites->ea;
+		tex = game->sprites->no;
 	if (ray->tex_num == 2)
-		tex=game->sprites->we;
+		tex = game->sprites->ea;
 	if (ray->tex_num == 3)
-		tex=game->sprites->no;
+		tex = game->sprites->we;
 	return (tex);
 }
 
 int	get_texture_color(t_img *tex, int x, int y)
 {
-	int color;
+	int	color;
 
 	if (x < 0 || x >= tex->width || y < 0 || y >= tex->height)
 		return (0x000000);
-
 	color = *(int *)(tex->addr + (y * tex->size_line) + (x * (tex->bpp / 8)));
 	return (color);
 }

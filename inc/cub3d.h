@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 09:39:47 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 10:48:36 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_ray
 	double		dist;
 	int			hit_side;
 	int			tex_num;
+	int			wall_hit;
 	double		wall_x;
 }				t_ray;
 
@@ -112,6 +113,15 @@ typedef struct s_dda
 	int		step_x;
 	int		step_y;
 }t_dda;
+typedef struct t_draw
+{
+	double	corrected_dist;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+
+}t_draw;
+
 typedef struct s_cub3d
 {
 	t_map		*map;
@@ -193,3 +203,4 @@ int				get_texture_color(t_img *tex, int x, int y);
 // t_img			*get_texture(t_cub3d *game, t_raycast *raycast);
 t_img			*get_texture2(t_cub3d *game, t_ray *ray);
 void			render(t_cub3d *game, t_player *p);
+void	set_texture(t_ray *ray, t_dda *dda);
