@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 14:16:28 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:53:43 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,3 +207,4 @@ t_img			*get_texture(t_cub3d *game, t_ray *ray);
 void			render(t_cub3d *game, t_player *p);
 void			set_texture(t_ray *ray, t_dda *dda);
 t_ray			cast_ray(t_map *map, double x, double y, double angle);
+void clear_main_img(t_cub3d *game);

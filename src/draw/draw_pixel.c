@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 13:59:14 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 15:00:27 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	draw_square(t_cub3d *game, int pos[2], int size, int color)
 
 void	draw_map2d(t_cub3d *game)
 {
+	// ft_memset(game->map_img.addr, 0x39, (game->map->width * TILE_SIZE)*(game->map->height * TILE_SIZE)
+	// * (game->main_img.bpp / 8));
 	int	x;
 	int	y;
 	int	pos[2];
@@ -108,6 +110,8 @@ void	draw_map2d(t_cub3d *game)
 		y++;
 	}
 	draw_player2d(game);
+	// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->map_img.img, 0,
+	// 	0);
 }
 
 void	draw_player2d(t_cub3d *game)
@@ -117,4 +121,14 @@ void	draw_player2d(t_cub3d *game)
 	pos[0] = game->player.x - game->player.collider;
 	pos[1] = game->player.y - game->player.collider;
 	draw_square(game, pos, game->player.collider * 2, 0xc0c0c0);
+}
+
+
+void clear_main_img(t_cub3d *game)
+{
+	ft_memset(game->main_img.addr, 0x33, S_WIDTH * S_HEIGHT
+		* (game->main_img.bpp / 8));
+	ft_memset(game->main_img.addr+(S_WIDTH * S_HEIGHT/2), 0x83, S_WIDTH * S_HEIGHT/2
+		* (game->main_img.bpp / 8));
+
 }

@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:24:49 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/11 14:36:27 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:53:58 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	render(t_cub3d *game, t_player *p)
 	int		x;
 	double	ray_angle;
 
-	ft_memset(game->main_img.addr, 0x33, S_WIDTH * S_HEIGHT
-		* (game->main_img.bpp / 8));
+
+	clear_main_img(game);
 	x = 0;
 	while (x < S_WIDTH)
 	{
@@ -78,4 +78,5 @@ void	render(t_cub3d *game, t_player *p)
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->main_img.img, 0,
 		0);
+
 }
