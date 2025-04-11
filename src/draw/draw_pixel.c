@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 12:02:19 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:34:03 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,41 @@
 // 	else
 // 		return (b);
 // }
+
+// void	draw_line(t_cub3d *game, float x0, float y0, float x1, float y1,
+// 		int color)
+// {
+// 	t_line	lines;
+// 	int		i;
+//
+// 	ft_memset(&lines, 0, sizeof(t_line));
+// 	i = 0;
+// 	lines.dx = x1 - x0;
+// 	lines.dy = y1 - y0;
+// 	lines.steps = get_greater_num(abs(lines.dx), abs(lines.dy));
+// 	lines.x_inc = (float)lines.dx / lines.steps;
+// 	lines.y_inc = (float)lines.dy / lines.steps;
+// 	while (i <= lines.steps)
+// 	{
+// 		mlx_pixel_put(game->mlx_ptr, game->win_ptr, round(x0), round(y0),
+// 			color);
+// 		x0 += lines.x_inc;
+// 		y0 += lines.y_inc;
+// 		i++;
+// 	}
+// }
+
+// void	draw_background(t_cub3d *game)
+// {
+// 	for (int x = S_WIDTH / 2; x < S_WIDTH; x++)
+// 	{
+// 		for (int y = 0; y < S_HEIGHT / 2; y++)
+// 			my_mlx_pixel_put(game, x, y, 0x00FFFF);
+// 		for (int y = S_HEIGHT / 2; y < S_HEIGHT; y++)
+// 			my_mlx_pixel_put(game, x, y, 0x6B4F3B);
+// 	}
+// }
+
 
 int	create_rgb(int t, int r, int g, int b)
 {
@@ -42,29 +77,6 @@ void	draw_square(t_cub3d *game, int x, int y, int width, int height,
 	}
 }
 
-// void	draw_line(t_cub3d *game, float x0, float y0, float x1, float y1,
-// 		int color)
-// {
-// 	t_line	lines;
-// 	int		i;
-
-// 	ft_memset(&lines, 0, sizeof(t_line));
-// 	i = 0;
-// 	lines.dx = x1 - x0;
-// 	lines.dy = y1 - y0;
-// 	lines.steps = get_greater_num(abs(lines.dx), abs(lines.dy));
-// 	lines.x_inc = (float)lines.dx / lines.steps;
-// 	lines.y_inc = (float)lines.dy / lines.steps;
-// 	while (i <= lines.steps)
-// 	{
-// 		mlx_pixel_put(game->mlx_ptr, game->win_ptr, round(x0), round(y0),
-// 			color);
-// 		x0 += lines.x_inc;
-// 		y0 += lines.y_inc;
-// 		i++;
-// 	}
-// }
-
 void	draw_map2d(t_cub3d *game)
 {
 	int	x;
@@ -75,7 +87,7 @@ void	draw_map2d(t_cub3d *game)
 	while (game->map->map_array && game->map->map_array[y])
 	{
 		x = 0;
-		while (game->map->map_array[y][x])
+		while (game->map->map_array[y][x] &&game->map->map_array[y][x] != '\n' )
 		{
 			if (game->map->map_array[y][x] == '1')
 				color = 0xFFFFFF;
@@ -97,13 +109,4 @@ void	draw_player2d(t_cub3d *game)
 		game->player.collider * 2, 0xc0c0c0);
 }
 
-// void	draw_background(t_cub3d *game)
-// {
-// 	for (int x = S_WIDTH / 2; x < S_WIDTH; x++)
-// 	{
-// 		for (int y = 0; y < S_HEIGHT / 2; y++)
-// 			my_mlx_pixel_put(game, x, y, 0x00FFFF);
-// 		for (int y = S_HEIGHT / 2; y < S_HEIGHT; y++)
-// 			my_mlx_pixel_put(game, x, y, 0x6B4F3B);
-// 	}
-// }
+
