@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 10:48:36 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:38:19 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,14 +113,21 @@ typedef struct s_dda
 	int		step_x;
 	int		step_y;
 }t_dda;
-typedef struct t_draw
+typedef struct s_draw
 {
 	double	corrected_dist;
 	int		line_height;
-	int		draw_start;
-	int		draw_end;
-
+	int		start;
+	int		end;
+	int x;
 }t_draw;
+typedef struct s_tex
+{
+	int		tex_x;
+	int		tex_y;
+	double	tex_pos;
+	int		color;
+} t_tex;
 
 typedef struct s_cub3d
 {
