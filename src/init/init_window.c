@@ -26,6 +26,5 @@ int	init_window(t_cub3d *game)
 	game->win_ptr = mlx_new_window(game->mlx_ptr, S_WIDTH, S_HEIGHT, "Cube-3D");
 	if (!game->win_ptr)
 		return (ft_printf_fd(2, ME_NW), -1);
-
 	return (0);
 }

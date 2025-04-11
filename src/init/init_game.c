@@ -16,8 +16,8 @@ int	init_game(t_cub3d *game, int argc, char *argv[])
 {
 	if (init_window(game) < 0)
 		return (-1);
-	if(init_images(game)< 0)
-		return(-1);
+	if (init_images(game) < 0)
+		return (-1);
 	init_player(game, 1, 1);
 	if (init_s_sprite(game))
 		return (1);

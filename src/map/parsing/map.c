@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:29:14 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:41:32 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	allocate_map_array(t_map *map, int i)
 	map->height = j;
 	return (SUCCESS);
 }
+
 static int	allocate_map_world(t_map *map)
 {
 	int	i;
