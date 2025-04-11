@@ -1,31 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_texture.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/11 11:50:04 by joralves          #+#    #+#             */
+/*   Updated: 2025/04/11 11:56:27 by joralves         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-// t_img	*get_texture(t_cub3d *game, t_raycast *raycast)
-// {
-// 	t_img	*tex;
-
-// 	if (raycast->dda.hitside == 0)
-// 	{
-// 		// Corregido: usamos EA si dir_x > 0 (este), WE si dir_x < 0 (oeste)
-// 		if (raycast->dda.dir_x > 0)
-// 			tex = game->sprites->ea;
-// 		else
-// 			tex = game->sprites->we;
-// 	}
-// 	else
-// 	{
-// 		// Norte (dir_y > 0) y Sur (dir_y < 0)
-// 		if (raycast->dda.dir_y > 0)
-// 			tex = game->sprites->no;
-// 		else
-// 			tex = game->sprites->so;
-// 	}
-// 	return (tex);
-// }
 void	set_texture(t_ray *ray, t_dda *dda)
 {
-	int	tex_num;
-
 	if (ray->wall_hit == 1)
 	{
 		if (ray->hit_side == 0)
@@ -45,7 +33,7 @@ void	set_texture(t_ray *ray, t_dda *dda)
 	}
 }
 
-t_img	*get_texture2(t_cub3d *game, t_ray *ray)
+t_img	*get_texture(t_cub3d *game, t_ray *ray)
 {
 	t_img	*tex;
 

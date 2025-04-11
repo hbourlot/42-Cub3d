@@ -11,7 +11,7 @@ CFLAGS			= -g -Wall #-Wextra -Werror
 MINILIB_FLAGS	= -Llib/minilibx-linux  -Lmlx -lmlx -lX11 -lXext -lm  #-lmlx_Linux -lX11 -lXext
 LIB				= libcube3d.a
 INCLUDE 		= inc/
-HEADERS			= inc/cub3d.h inc/definitions.h inc/error.h ./lib/libft/inc/libft.h ./lib/raycasting/inc/raycasting.h
+HEADERS			= inc/cub3d.h inc/definitions.h inc/error.h ./lib/libft/inc/libft.h
 SRC_DIR 		= src/
 BONUS_DIR 		= bonus/
 OBJ_DIR 		= obj/
@@ -26,7 +26,7 @@ C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map 											\
 				  utils/key_hook																				\
 																												\
 				  exit/free																						\
-				  draw/draw_pixel draw/raycaster draw/get_texture												\
+				  draw/draw_pixel draw/raycaster draw/get_texture draw/cast_ray												\
 																												\
 				  map/count_lines map/cub_array map/open														\
 				  map/parsing/map map/parsing/texture map/parsing/floor_ceiling									\
@@ -38,14 +38,13 @@ C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map 											\
 
 # -L./ -lminishell
 VALGRIND		= valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
-LINK			= -L./lib/libft -lft -L./lib/raycasting -lraycasting $(MINILIB_FLAGS)
+LINK			= -L./lib/libft -lft $(MINILIB_FLAGS)
 
 SRC_FILES 		= $(addprefix $(SRC_DIR), $(C_FUNCTIONS:=.c))
 OBJS_SRC 		= $(addprefix $(OBJ_DIR), $(SRC_FILES:%.c=%.o))
 
 # -- INCLUDES LIBRARIES
 LIBFT_LIB 		= ./lib/libft/libft.a
-RAYCASTING_LIB  = ./lib/raycasting/libraycasting.a 
 MINILIBX_LIB	= ./lib/minilibx-linux/libmlx.a
 
 
@@ -93,7 +92,7 @@ all:			$(NAME)
 $(MINILIBX_LIB):
 				make -s -C ./lib/minilibx-linux/
 
-$(NAME): 		$(MINILIBX) $(LIBFT_LIB) $(RAYCASTING_LIB) $(LIB) $(HEADERS)
+$(NAME): 		$(MINILIBX) $(LIBFT_LIB) $(LIB) $(HEADERS)
 				@$(CC) $(CFLAGS) $(LIB) $(LINK) -o $(NAME)
 				@echo "$(GREEN)Executable '$(RED)$(NAME)$(GREEN)' created successfully!$(RESET) ✅"
 
@@ -103,8 +102,8 @@ $(LIBFT_LIB):
 $(RAYCASTING_LIB):
 				@make -s -C ./lib/raycasting/
 
-$(LIB):			$(OBJS_SRC) main.o
-				@ar rcs $@ $(OBJS_SRC) main.o
+$(LIB):			$(OBJS_SRC) $(OBJ_DIR)main.o
+				@ar rcs $@ $(OBJS_SRC) $(OBJ_DIR)main.o
 				@echo "$(CYAN)library '$(YELLOW)$(LIB)$(CYAN)' created successfully!$(RESET)"
 
 $(OBJ_DIR)%.o:	%.c $(INCLUDE)
@@ -112,18 +111,16 @@ $(OBJ_DIR)%.o:	%.c $(INCLUDE)
 				$(call print_compile_msg, $<)
 				@$(CC) $(CFLAGS) -c $< -I./$(INCLUDE) -o $@
 
-main.o:			main.c $(INCLUDE)#inc/cube3d.h inc/definitions.h inc/error.h
+$(OBJ_DIR)main.o:	main.c $(INCLUDE)#inc/cube3d.h inc/definitions.h inc/error.h
 				$(call print_compile_msg, $<)
 				@$(CC) -c main.c $(CFLAGS) -I./$(INCLUDE) -o $@
 
 clean:
 				@make clean -s -C ./lib/libft
-				@make clean -s -C ./lib/raycasting
 				$(call clean_func)
 
 fclean: 		clean
 				@make fclean -s -C ./lib/libft
-				@make fclean -s -C ./lib/raycasting
 				@$(call fclean_func)
 
 re: 			fclean all

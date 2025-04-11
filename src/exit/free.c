@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/10 15:42:48 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:58:36 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,6 @@ static void	free_sprites(t_cub3d *game, t_sprite *sprites)
 	{
 		mlx_destroy_image(game->mlx_ptr, sprites->we->img);
 		free(sprites->we);
-	}
-	if (sprites->dirt)
-	{
-		mlx_destroy_image(game->mlx_ptr, sprites->dirt->img);
-		free(sprites->dirt);
 	}
 }
 

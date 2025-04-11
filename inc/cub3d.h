@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 11:38:19 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 11:57:12 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,6 @@ bool			invalid_file_name(t_map *map);
 t_screen		*init_s_screen(void);
 int				init_s_map(t_map *map);
 int				init_s_sprite(t_cub3d *game);
-int				init_dirt_sprite(t_cub3d *game);
 void			init_player(t_cub3d *game, int x, int y);
 int				init_game(t_cub3d *game, int argc, char *argv[]);
 int				init_s_cube3d(t_cub3d **game, int argc, char *argv[]);
@@ -171,8 +170,6 @@ int				init_s_cube3d(t_cub3d **game, int argc, char *argv[]);
 // ***************************************************************************
 void			draw_map2d(t_cub3d *game);
 void			draw_player2d(t_cub3d *game);
-void			draw_background(t_cub3d *game);
-void			cast_render_raycast(t_cub3d *game);
 int				create_rgb(int t, int r, int g, int b);
 void			my_mlx_pixel_put(t_cub3d *game, int x, int y, int color);
 void			draw_square(t_cub3d *game, int x, int y, int width, int height,
@@ -203,11 +200,9 @@ void			rotate_player(t_player *player, int keycode);
 void			locate_spawn_point(t_player *player, t_map *map);
 void			move_player(t_map *map, t_player *player, int keycode);
 
-// void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
-int				init_dirt_sprite(t_cub3d *game);
-// void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
+
 int				get_texture_color(t_img *tex, int x, int y);
-// t_img			*get_texture(t_cub3d *game, t_raycast *raycast);
-t_img			*get_texture2(t_cub3d *game, t_ray *ray);
+t_img			*get_texture(t_cub3d *game, t_ray *ray);
 void			render(t_cub3d *game, t_player *p);
-void	set_texture(t_ray *ray, t_dda *dda);
+void			set_texture(t_ray *ray, t_dda *dda);
+t_ray			cast_ray(t_map *map, double x, double y, double angle);
