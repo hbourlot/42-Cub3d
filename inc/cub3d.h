@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/10 19:15:17 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 09:37:06 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,48 +91,6 @@ typedef struct s_line
 	float		y_inc;
 }				t_line;
 
-typedef struct s_dda
-{
-	char		**grid;
-	int			**grid_int;
-	int			grid_x;
-	int			grid_y;
-	float		dir_x;
-	float		dir_y;
-	float		sx_norm;
-	float		sy_norm;
-	float		sx;
-	float		sy;
-	float		initial_x;
-	float		initial_y;
-	int			step_x;
-	int			step_y;
-	float		acum_x;
-	float		acum_y;
-	float		dist;
-	int			counter_x;
-	int			counter_y;
-	int			hitside;
-}				t_dda;
-
-typedef struct s_raycast
-{
-	float		alpha;
-	float		ray_angle;
-	float		dist;
-	float		wall_start;
-	// float		draw_end;
-	float		perp_dist;
-	int			column_width;
-	int			wall_height;
-	int			x_start;
-	int			x_end;
-	double		wall_x;
-	double		hit_y;
-	int			screen_y;
-	t_dda		dda;
-}				t_raycast;
-
 typedef struct s_cub3d
 {
 	t_map		*map;
@@ -216,8 +174,8 @@ void			move_player(t_map *map, t_player *player, int keycode);
 
 // void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
 int				init_dirt_sprite(t_cub3d *game);
-void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
+// void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
 int				get_texture_color(t_img *tex, int x, int y);
-t_img			*get_texture(t_cub3d *game, t_raycast *raycast);
+// t_img			*get_texture(t_cub3d *game, t_raycast *raycast);
 t_img			*get_texture2(t_cub3d *game, t_ray *ray);
 void			render(t_cub3d *game, t_player *p);
