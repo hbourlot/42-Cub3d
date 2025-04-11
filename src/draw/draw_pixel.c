@@ -54,7 +54,6 @@
 // 	}
 // }
 
-
 int	create_rgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
@@ -87,7 +86,7 @@ void	draw_map2d(t_cub3d *game)
 	while (game->map->map_array && game->map->map_array[y])
 	{
 		x = 0;
-		while (game->map->map_array[y][x] &&game->map->map_array[y][x] != '\n' )
+		while (game->map->map_array[y][x] && game->map->map_array[y][x] != '\n')
 		{
 			if (game->map->map_array[y][x] == '1')
 				color = 0xFFFFFF;
@@ -108,5 +107,3 @@ void	draw_player2d(t_cub3d *game)
 		- game->player.collider, game->player.collider * 2,
 		game->player.collider * 2, 0xc0c0c0);
 }
-
-

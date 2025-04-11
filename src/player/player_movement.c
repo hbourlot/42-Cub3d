@@ -29,8 +29,8 @@ int	wall_collision(t_map *map, float new_x, float new_y, float collider)
 	int			tile_y;
 	int			i;
 	const float	corners[4][2] = {{new_x - collider, new_y - collider}, {new_x
-		+ collider, new_y - collider}, {new_x - collider, new_y + collider},
-	{new_x + collider, new_y + collider}};
+			+ collider, new_y - collider}, {new_x - collider, new_y + collider},
+			{new_x + collider, new_y + collider}};
 
 	i = 0;
 	while (i < 4)
