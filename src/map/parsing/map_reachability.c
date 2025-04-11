@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 15:35:03 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/04 22:28:21 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:48:04 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,30 @@ static int invalid_chars(t_map *map, int x, int y)
 	return (0);
 }
 
-static int allocate_visited(t_map *map, bool ***map_visited)
+static bool **allocate_visited(t_map *map)
 {
-	*map_visited = ft_calloc(map->height, sizeof(bool *));
+	bool	**map_visited;
+	int		i;
+	
+	i = 0;
+	map_visited = ft_calloc(map->height, sizeof(bool *));
 	if (!map_visited)
 		return (-1);
-	return (0);
+	
+	while (i < map->height)
+	{
+		map_visited[i] = ft_calloc(map->width, sizeof(bool));
+		if (!map_visited[i])
+		{
+			while (i--)
+				free(map_visited[i]);
+			free(map_visited);
+			ft_printf_fd(2, ME_MALLOC);
+			return (NULL);
+		}
+		i++;
+	}
+	return (map_visited);
 }
 
 static int flood_fill(t_map *map, int x, int y, bool **map_visited)
@@ -56,12 +74,9 @@ int	map_reachability(t_cub3d *game, t_map *map, int x, int y)
 {
 	bool	**map_visited;
 
-	if (allocate_visited(map, &map_visited) < 0)
-	{
-		ft_printf_fd(2, ME_MALLOC);
+	map_visited = allocate_visited(map);
+	if (!map_visited)
 		return (-1);
-	}
-	printf("x:%d || y:%d adssadaasads\n", x, y);
 	if (flood_fill(map, x, y, map_visited))
 	{
 		ft_printf_fd(2, ME_MINFO);

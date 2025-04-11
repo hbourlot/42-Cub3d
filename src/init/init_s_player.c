@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 00:59:35 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/04 22:32:38 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:37:20 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ void	init_player(t_cub3d *game, int x, int y)
 
 	player = &game->player;
 	locate_spawn_point(&game->player, game->map);
-
 	init_rotation(player);
-	player->x = player->x * TILE_SIZE + TILE_SIZE / 2;
-	player->y = player->y * TILE_SIZE + TILE_SIZE / 2;
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;
 }

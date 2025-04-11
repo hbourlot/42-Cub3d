@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   locate_spawn_point.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:13:30 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:01:48 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:37:11 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,6 @@ void	locate_spawn_point(t_player *player, t_map *map)
 		}
 		i++;
 	}
+	player->x = player->x * TILE_SIZE + TILE_SIZE / 2;
+	player->y = player->y * TILE_SIZE + TILE_SIZE / 2;
 }

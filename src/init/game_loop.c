@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:53:39 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/04 22:32:14 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:33:58 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	draw(t_cub3d *game)
 
 int	game_loop(t_cub3d *game)
 {
-	if (map_reachability(game, game->map, game->player.x, game->player.y))
+	if (map_reachability(game, game->map, game->player.x/TILE_SIZE, game->player.y/TILE_SIZE))
 		return (-1);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, key_press, game);
 	mlx_loop_hook(game->mlx_ptr, draw, game);
