@@ -14,19 +14,17 @@
 
 static int	allocate_fc(char **ptr_ref, char *src)
 {
-	char **split;
+	char	**split;
 
 	split = ft_split(src, ' ');
 	if (!split)
 		return (-1);
-	
 	*ptr_ref = ft_strdup(split[1]);
 	if (!*ptr_ref)
 		return (free_split(split), -1);
 	free_split(split);
 	return (SUCCESS);
 }
-
 
 static int	set_fc(t_map *map, char *src)
 {
@@ -73,7 +71,7 @@ static bool	parse_color(char *color)
 	return (free_split(split), true);
 }
 
-static bool parse_line(char *src)
+static bool	parse_line(char *src)
 {
 	char	**split;
 	int		words;
@@ -105,7 +103,7 @@ bool	parse_fc(t_map *map)
 	{
 		c = map->cub_array[i][0];
 		if (c == '1' || c == '2' || c == '\t' || c == ' ')
-			break;
+			break ;
 		if (parse_line(map->cub_array[i]))
 		{
 			if (set_fc(map, map->cub_array[i]) < 0)

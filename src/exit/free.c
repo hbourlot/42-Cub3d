@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:22:15 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,16 @@ static void	free_sprites(t_cub3d *game, t_sprite *sprites)
 		mlx_destroy_image(game->mlx_ptr, sprites->we->img);
 		free(sprites->we);
 	}
-	if (sprites->dirt)
-	{
-		mlx_destroy_image(game->mlx_ptr, sprites->dirt->img);
-		free(sprites->dirt);
-	}
 }
 
 void	free_game(t_cub3d *game)
 {
 	free_map(game->map);
 	free_sprites(game, game->sprites);
-	if (game->mlx_ptr && game->img_ptr)
-		mlx_destroy_image(game->mlx_ptr, game->img_ptr);
+	if (game->mlx_ptr && game->map_img.img)
+		mlx_destroy_image(game->mlx_ptr, game->map_img.img);
+	if (game->mlx_ptr && game->main_img.img)
+		mlx_destroy_image(game->mlx_ptr, game->main_img.img);
 	if (game->mlx_ptr && game->win_ptr)
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	if (game->mlx_ptr)

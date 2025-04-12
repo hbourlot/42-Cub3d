@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:08:25 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:01:30 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 14:42:34 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ static int	allocate_path(char **path_ref, char *src)
 	return (-1);
 }
 
-static int	set_path(t_map *map, char *src, const char *compass[], int *priority)
+static int	set_path(t_map *map, char *src, const char *compass[],
+		int *priority)
 {
-	int	i;
-	int	status;
-	int	(*cmp)(const char *, const char *, size_t i);
-	int	(*alloc)(char **, char *);
-	const char **paths[4] = { &map->no, &map->so, &map->we, &map->ea};
-	
+	int			i;
+	int			status;
+	int			(*cmp)(const char *, const char *, size_t i);
+	int			(*alloc)(char **, char *);
+	const char	**paths[4] = {&map->no, &map->so, &map->we, &map->ea};
+
 	status = -1;
 	i = 0;
 	cmp = ft_strncmp;
@@ -78,6 +79,7 @@ static bool	parse_line(char *src, const char *compass[])
 		return (false);
 	return (true);
 }
+
 //* [] Still got to check it there's './'
 //* [X] Need to make sure if must be in the strict order of NO SO WE EA
 //* [X] Need to make sure it ends with .xpm

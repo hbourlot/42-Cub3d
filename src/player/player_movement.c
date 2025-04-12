@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:53:30 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/01 01:01:52 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:46:34 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ void	rotate_player(t_player *player, int keycode)
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;
 }
-int	wall_collision(t_map *map, float new_x, float new_y)
+
+int	wall_collision(t_map *map, float new_x, float new_y, float collider)
 {
 	int			tile_x;
 	int			tile_y;
 	int			i;
-	const float	corners[4][2] = {{new_x - TILE_SIZE / 2, new_y - TILE_SIZE / 2},
-			{new_x + TILE_SIZE / 2, new_y - TILE_SIZE / 2}, {new_x - TILE_SIZE
-			/ 2, new_y + TILE_SIZE / 2}, {new_x + TILE_SIZE / 2, new_y
-			+ TILE_SIZE / 2}};
+	const float	corners[4][2] = {{new_x - collider, new_y - collider}, {new_x
+		+ collider, new_y - collider}, {new_x - collider, new_y + collider},
+	{new_x + collider, new_y + collider}};
 
 	i = 0;
 	while (i < 4)
@@ -50,8 +50,8 @@ void	check_collision(t_player *player, t_map *map, float new_x, float new_y)
 	int	collision_x;
 	int	collision_y;
 
-	collision_x = wall_collision(map, new_x, player->y);
-	collision_y = wall_collision(map, player->x, new_y);
+	collision_x = wall_collision(map, new_x, player->y, player->collider);
+	collision_y = wall_collision(map, player->x, new_y, player->collider);
 	if (!collision_x && !collision_y)
 	{
 		player->x = new_x;

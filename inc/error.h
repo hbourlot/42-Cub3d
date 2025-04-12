@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/04 22:20:10 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/12 13:31:28 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #define ME_MALLOC "Error: Malloc!\n"
 #define ME_MF "Error: mlx_init fail!\n"
 #define ME_NW "Error: mlx_new_window fail!\n"
+#define ME_NI "Error: mlx_new_image fail!\n"
 #define ME_IMP "Error: Invalid map path!\n"
 #define ME_FD "Error: Opening file!\n"
 #define ME_EM "Error: Map is empty!\n"

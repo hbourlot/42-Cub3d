@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
 static bool	invalid_cub_name(const char *path)
 {
@@ -27,7 +27,7 @@ static bool	invalid_cub_name(const char *path)
 	return (0);
 }
 
-static  bool xpm_end(const char *src)
+static bool	xpm_end(const char *src)
 {
 	int			len;
 	const char	end[] = ".xpm";
@@ -45,8 +45,8 @@ bool	invalid_file_name(t_map *map)
 {
 	if (invalid_cub_name(map->path))
 		return (false);
-	if (!xpm_end(map->ea) || !xpm_end(map->no)
-		|| !xpm_end(map->so) || !xpm_end(map->we))
+	if (!xpm_end(map->ea) || !xpm_end(map->no) || !xpm_end(map->so)
+		|| !xpm_end(map->we))
 		return (true);
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:55:38 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/11 13:42:56 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ int	key_press(int keycode, t_cub3d *game)
 		move_player(game->map, &game->player, keycode);
 	if (keycode == XK_a || keycode == XK_d)
 		rotate_player(&game->player, keycode);
-	mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	return (0);
 }
