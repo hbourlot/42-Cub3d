@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:19:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/12 13:31:24 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:35:00 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@
 
 
 #define SPEED 2.0
-#define ROT_SPEED DR * 5
+#define KEY_ROT_SPEED DR * 5
+#define MOUSE_ROT_SPEED DR * 1.5
 
 // world vars
 #define TILE_SIZE 16
@@ -46,3 +47,8 @@
 
 // others
 #define EPSILON 0.000001
+
+//
+#define KEY_SIGNAL 1
+#define MOUSE_SIGNAL 2
+

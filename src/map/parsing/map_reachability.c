@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 15:35:03 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/12 07:46:52 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:35:55 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int invalid_chars(t_map *map, int x, int y)
 {
 	const char *chars[] = {"1", "0", "N", "S", "E", "W", "\n", NULL};
 	
-	printf("x: %d | y: %d\n", x, y);
+	// printf("x: %d | y: %d\n", x, y);
 	if (!ft_strstr_any(&map->map_array[y][x], chars))
 	{
-		printf("map_array[%d][%d]: '%c' value: %d\n", y, x , map->map_array[y][x], map->map_array[y][x]);
+		// printf("map_array[%d][%d]: '%c' value: %d\n", y, x , map->map_array[y][x], map->map_array[y][x]);
 		// printf("OVER HERE\n");
 		exit(0);
 		return (-1);

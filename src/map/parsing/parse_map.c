@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/12 13:35:06 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:11:09 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	allocate_map_array(t_map *map, int i)
 			return (ft_printf_fd(2, ME_MALLOC), -1);
 		}
 		len = ft_strlen(map->map_array[j]);
-		if (map->map_array[j][len - 1] == '\n' && len > 1)
+		if (len > 1 && map->map_array[j][len - 1] == '\n')
 			map->map_array[j][len - 1] = '\0';
 		j++;
 		i++;
