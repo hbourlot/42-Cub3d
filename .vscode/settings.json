@@ -3,6 +3,8 @@
 		"array": "c",
 		"cube3d.h": "c",
 		"raycasting.h": "c",
-		"random": "cpp"
+		"random": "cpp",
+		"complex": "c",
+		"cub3d.h": "c"
 	}
 }

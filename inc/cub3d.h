@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/12 13:31:13 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:32:39 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@ typedef struct s_cub3d
 	char		*name;
 	t_sprite	*sprites;
 	t_player	player;
+	int			mouse_x;
+	int			mouse_y;
 
 }				t_cub3d;
 
@@ -149,6 +151,7 @@ typedef struct s_cub3d
 // **							Utils Functions      						**
 // ***************************************************************************
 int				key_press(int keycode, t_cub3d *game);
+int				mouse_signal(int x, int y, t_cub3d *game);
 
 // ***************************************************************************
 // **							map/parsing Functions 						**
@@ -185,6 +188,7 @@ void			draw_square(t_cub3d *game, int pos[2], int size, int color);
 // ***************************************************************************
 void			free_game(t_cub3d *game);
 
+
 // ***************************************************************************
 // **							Map Functions   							**
 // ***************************************************************************
@@ -197,15 +201,14 @@ int				count_lines(const char *path);
 void 			map_range(t_map *map);
 int				map_reachability(t_cub3d *game, t_map *map, int x, int y);
 
-
-
 // ***************************************************************************
 // **							Player Functions   							**
 // ***************************************************************************
 void			normalize_angle(float *angle);
-void			rotate_player(t_player *player, int keycode);
+void			rotate_player(t_player *player, int keycode, int signal);
 void			locate_spawn_point(t_player *player, t_map *map);
 void			move_player(t_map *map, t_player *player, int keycode);
+void			mouse_handler(t_cub3d *game);
 
 
 int				get_texture_color(t_img *tex, int x, int y);
@@ -213,4 +216,4 @@ t_img			*get_texture(t_cub3d *game, t_ray *ray);
 void			render(t_cub3d *game, t_player *p);
 void			set_texture(t_ray *ray, t_dda *dda);
 t_ray			cast_ray(t_map *map, double x, double y, double angle);
-void clear_main_img(t_cub3d *game);
+void 			clear_main_img(t_cub3d *game);
