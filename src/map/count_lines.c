@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-static int lines_in_cub(int fd)
+static int	lines_in_cub(int fd)
 {
 	char	*line;
 	int		nbr_of_line;
@@ -28,10 +28,10 @@ static int lines_in_cub(int fd)
 	return (nbr_of_line);
 }
 
-int count_lines(const char *path)
+int	count_lines(const char *path)
 {
-	int fd;
-	int nbr_of_lines;
+	int	fd;
+	int	nbr_of_lines;
 
 	fd = open_cub(path);
 	if (fd < 0)

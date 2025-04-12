@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:53:39 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/12 06:59:19 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/12 13:31:40 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	draw(t_cub3d *game)
 {
-	cast_render_raycast(game);
+	render(game, &game->player);
 	draw_map2d(game);
 	return (0);
 }

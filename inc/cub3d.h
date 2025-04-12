@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 14:48:45 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/12 13:31:13 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_img
 
 typedef struct s_sprite
 {
-	t_img		*dirt;
+	// t_img		*dirt;
 	t_img		*no;
 	t_img		*so;
 	t_img		*we;
@@ -81,67 +81,69 @@ typedef struct s_player
 	float		pdx;
 	float		pdy;
 	float		angle;
+	float		collider;
 }				t_player;
 
-typedef struct s_line
+// typedef struct s_line
+// {
+// 	int			dx;
+// 	int			dy;
+// 	int			steps;
+// 	float		x_inc;
+// 	float		y_inc;
+// }				t_line;
+
+typedef struct s_ray
 {
-	int			dx;
-	int			dy;
-	int			steps;
-	float		x_inc;
-	float		y_inc;
-}				t_line;
+	double		dist;
+	int			hit_side;
+	int			tex_num;
+	int			wall_hit;
+	double		wall_x;
+}				t_ray;
 
 typedef struct s_dda
 {
-	char		**grid;
-	int			**grid_int;
-	int			grid_x;
-	int			grid_y;
-	float		dir_x;
-	float		dir_y;
-	float		sx_norm;
-	float		sy_norm;
-	float		sx;
-	float		sy;
-	float		initial_x;
-	float		initial_y;
-	int			step_x;
-	int			step_y;
-	float		acum_x;
-	float		acum_y;
-	float		dist;
-	int			counter_x;
-	int			counter_y;
-	int			hitside;
-}				t_dda;
-
-typedef struct s_raycast
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	delta_dist_x ;
+	double	delta_dist_y ;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		step_x;
+	int		step_y;
+}t_dda;
+typedef struct s_draw
 {
-	float		alpha;
-	float		ray_angle;
-	float		dist;
-	float		wall_start;
-	float		perp_dist;
-	int			column_width;
-	int			wall_height;
-	int			x_start;
-	int			x_end;
-	int			screen_y;
-	t_dda		dda;
-}				t_raycast;
+	double	corrected_dist;
+	int		line_height;
+	int		start;
+	int		end;
+	int x;
+}t_draw;
+typedef struct s_tex
+{
+	int		tex_x;
+	int		tex_y;
+	double	tex_pos;
+	int		color;
+} t_tex;
 
 typedef struct s_cub3d
 {
 	t_map		*map;
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*img_ptr;
+	t_img		main_img;
+	t_img		map_img;
 	char		*name;
 	t_sprite	*sprites;
 	t_player	player;
 
 }				t_cub3d;
+
 
 // ***************************************************************************
 // **							Utils Functions      						**
@@ -161,8 +163,8 @@ bool			invalid_file_name(t_map *map);
 // ***************************************************************************
 t_screen		*init_s_screen(void);
 int				init_s_map(t_map *map);
+int 			init_images(t_cub3d *game);
 int				init_s_sprite(t_cub3d *game);
-int				init_dirt_sprite(t_cub3d *game);
 void			init_player(t_cub3d *game, int x, int y);
 int				init_game(t_cub3d *game, int argc, char *argv[]);
 int				init_s_cube3d(t_cub3d **game, int argc, char *argv[]);
@@ -172,14 +174,11 @@ int				init_s_cube3d(t_cub3d **game, int argc, char *argv[]);
 // ***************************************************************************
 void			draw_map2d(t_cub3d *game);
 void			draw_player2d(t_cub3d *game);
-void			draw_background(t_cub3d *game);
-void			cast_render_raycast(t_cub3d *game);
 int				create_rgb(int t, int r, int g, int b);
 void			my_mlx_pixel_put(t_cub3d *game, int x, int y, int color);
-void			draw_square(t_cub3d *game, int x, int y, int width, int height,
-					int color);
-void			draw_line(t_cub3d *game, float x0, float y0, float x1, float y1,
-					int color);
+void			draw_square(t_cub3d *game, int pos[2], int size, int color);
+// void			draw_line(t_cub3d *game, float x0, float y0, float x1, float y1,
+// 					int color);
 
 // ***************************************************************************
 // **							Exit Functions      						**
@@ -208,5 +207,10 @@ void			rotate_player(t_player *player, int keycode);
 void			locate_spawn_point(t_player *player, t_map *map);
 void			move_player(t_map *map, t_player *player, int keycode);
 
-// void			dda(t_cub3d *game, t_raycast *raycast, float x0, float y0);
-int				init_dirt_sprite(t_cub3d *game);
+
+int				get_texture_color(t_img *tex, int x, int y);
+t_img			*get_texture(t_cub3d *game, t_ray *ray);
+void			render(t_cub3d *game, t_player *p);
+void			set_texture(t_ray *ray, t_dda *dda);
+t_ray			cast_ray(t_map *map, double x, double y, double angle);
+void clear_main_img(t_cub3d *game);
