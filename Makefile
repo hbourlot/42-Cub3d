@@ -130,7 +130,7 @@ bonus:			all
 r:
 	@make -s
 	@./$(NAME) ./map/basic.cub
-
+	
 v:
 	@make -s
-	@$(VALGRIND) ./$(NAME) ./map/basic.cub
+	@$(VALGRIND) ./$(NAME) ./map/ex1.cub
