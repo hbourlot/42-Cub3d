@@ -24,7 +24,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#define		abss(a, b)  if (a > b) a else b
+#define bool _Bool
+#include <stdbool.h>
 
 typedef struct s_img
 {

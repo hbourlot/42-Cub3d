@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 15:35:03 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 15:04:57 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/12 07:46:52 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 static int invalid_chars(t_map *map, int x, int y)
 {
-	const char *chars[] = {"1", "0", "N", "S", "E", "W", NULL};
+	const char *chars[] = {"1", "0", "N", "S", "E", "W", "\n", NULL};
 	
-	// printf("x: %d | y: %d\n", x, y);
+	printf("x: %d | y: %d\n", x, y);
 	if (!ft_strstr_any(&map->map_array[y][x], chars))
 	{
-		printf("map_array[%x][%d]: '%c' value: %d\n", y, x , map->map_array[y][x], map->map_array[y][x]);
+		printf("map_array[%d][%d]: '%c' value: %d\n", y, x , map->map_array[y][x], map->map_array[y][x]);
 		// printf("OVER HERE\n");
 		exit(0);
 		return (-1);
@@ -34,7 +34,7 @@ static bool **allocate_visited(t_map *map)
 {
 	bool	**map_visited;
 	int		i;
-	
+
 	i = 0;
 	map_visited = ft_calloc(map->height, sizeof(bool *));
 	if (!map_visited)
@@ -42,7 +42,6 @@ static bool **allocate_visited(t_map *map)
 	
 	while (i < map->height)
 	{
-		printf("map->width: %d\n", map->width);
 		map_visited[i] = ft_calloc(map->width, sizeof(bool));
 		if (!map_visited[i])
 		{
@@ -58,15 +57,17 @@ static bool **allocate_visited(t_map *map)
 
 static int flood_fill(t_map *map, int x, int y, bool **map_visited)
 {
-	if (x < 0 || y < 0 || y >= map->height || x >= ft_strlen(map->map_array[y]))
-		return 0;
+	// printf("map->map_array[%d]: len -> %ld\n", y, ft_strlen(map->map_array[y]));
+	// printf("x: %d\n", x);
+	if (x < 0 || y < 0 || y >= map->height || x >= ft_strlen(map->map_array[y]) || map_visited[y][x])
+		return (0);
 	if (invalid_chars(map, x, y))
 		return (ft_printf_fd(2, ME_MINFO), -1);
     map_visited[y][x] = true;
     flood_fill(map, x + 1, y, map_visited);
     flood_fill(map, x - 1, y, map_visited);
-    flood_fill(map, y + 1, y, map_visited);
-    flood_fill(map, y - 1, y, map_visited);
+    flood_fill(map, x, y + 1, map_visited);
+    flood_fill(map, x, y - 1, map_visited);
 
     return (0);
 }
@@ -76,11 +77,15 @@ int	map_reachability(t_cub3d *game, t_map *map, int x, int y)
 {
 	bool	**map_visited;
 
+	// printf("map->height: %d\n", map->height);
+	// printf("x: %d | y: %d\n", x, y);
+	// printf("char: '%c'\n", map->map_array[y][x]);
 	// print_map(game);
 	// print_map_detailed(game);
 	map_visited = allocate_visited(map);
 	if (!map_visited)
 		return (-1);
+	// printf("map->height: %d\n", map->height);
 	if (flood_fill(map, x, y, map_visited))
 		return (-1);
 	return (0);
