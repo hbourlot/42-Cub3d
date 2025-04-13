@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:53:30 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/12 21:50:42 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/13 10:00:07 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,9 @@ void	move_player(t_map *map, t_player *player, int keycode)
 
 void	mouse_handler(t_cub3d *game)
 {
-	
-	mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
+	// mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
 	mlx_mouse_move(game->mlx_ptr, game->win_ptr, MAP_WIDTH / 2, MAP_HEIGHT / 2);
 	game->mouse_x = S_WIDTH / 2;
 	game->mouse_y = S_HEIGHT / 2;
 	mlx_hook(game->win_ptr, MotionNotify, PointerMotionMask, mouse_signal, game);
-
 }

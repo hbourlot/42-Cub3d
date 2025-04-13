@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CUB3D_H
+#define CUB3D_H
 
 #include "../lib/libft/inc/libft.h"
 #include "../lib/minilibx-linux/mlx.h"
@@ -217,3 +218,5 @@ void			render(t_cub3d *game, t_player *p);
 void			set_texture(t_ray *ray, t_dda *dda);
 t_ray			cast_ray(t_map *map, double x, double y, double angle);
 void 			clear_main_img(t_cub3d *game);
+
+#endif

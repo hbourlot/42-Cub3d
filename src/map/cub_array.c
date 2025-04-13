@@ -40,7 +40,7 @@ static int	fill_cub_array(char **cub_array, const char *path)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		cub_array[i] = line;
 		i++;
 	}
