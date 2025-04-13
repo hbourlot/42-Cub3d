@@ -7,4 +7,5 @@ cmake-build-debug
 CMakeLists.txt
 *.o
 cub3D
+.idea/
 *.a
