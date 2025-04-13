@@ -12,22 +12,22 @@
 
 #include "cub3d.h"
 
-void map_range(t_map *map)
+void	map_range(t_map *map)
 {
-    int i;
-    int j;
-    
-    i = 0;
-    while(map->map_array[i])
-    {
-        j = 0;
-        while(map->map_array[i][j])
-        {
-            j++;
-            if (j > map->width)
-                map->width = j;
-        }
-       i++; 
-    }
-    map->height = i;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map->map_array[i])
+	{
+		j = 0;
+		while (map->map_array[i][j])
+		{
+			j++;
+			if (j > map->width)
+				map->width = j;
+		}
+		i++;
+	}
+	map->height = i;
 }

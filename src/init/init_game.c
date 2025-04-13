@@ -22,7 +22,7 @@ int	init_game(t_cub3d *game, int argc, char *argv[])
 	if (init_s_sprite(game))
 		return (1);
 	if (map_reachability(game, game->map, game->player.x/TILE_SIZE, game->player.y/TILE_SIZE))
-		return (-1);
+		return (ft_printf_fd(2, "Error: Map isn't surrounded by walls!"), -1);
 	if (game_loop(game))
 		return (-1);
 	return (0);
