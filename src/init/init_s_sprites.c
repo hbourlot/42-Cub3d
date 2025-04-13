@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 01:01:03 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/11 11:59:12 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/13 23:06:22 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	init_s_sprite(t_cub3d *game)
 	if (init_sprite(game, &game->sprites->ea, (char *)game->map->ea))
 		return (ft_printf_fd(2, ME_MALLOC), -1);
 	if (init_sprite(game, &game->sprites->we, (char *)game->map->we))
+		return (ft_printf_fd(2, ME_MALLOC), -1);
+	if (init_sprite(game, &game->sprites->door, "texture/castledoors.xpm"))
 		return (ft_printf_fd(2, ME_MALLOC), -1);
 	return (SUCCESS);
 }

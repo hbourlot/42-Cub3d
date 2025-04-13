@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/12 13:31:13 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/13 23:05:04 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_sprite
 	t_img		*so;
 	t_img		*we;
 	t_img		*ea;
+	t_img		*door;
 	t_img		*floor;
 	t_img		*ceiling;
 }				t_sprite;
@@ -104,32 +105,32 @@ typedef struct s_ray
 
 typedef struct s_dda
 {
-	double	dir_x;
-	double	dir_y;
-	int		map_x;
-	int		map_y;
-	double	delta_dist_x ;
-	double	delta_dist_y ;
-	double	side_dist_x;
-	double	side_dist_y;
-	int		step_x;
-	int		step_y;
-}t_dda;
+	double		dir_x;
+	double		dir_y;
+	int			map_x;
+	int			map_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	int			step_x;
+	int			step_y;
+}				t_dda;
 typedef struct s_draw
 {
-	double	corrected_dist;
-	int		line_height;
-	int		start;
-	int		end;
-	int x;
-}t_draw;
+	double		corrected_dist;
+	int			line_height;
+	int			start;
+	int			end;
+	int			x;
+}				t_draw;
 typedef struct s_tex
 {
-	int		tex_x;
-	int		tex_y;
-	double	tex_pos;
-	int		color;
-} t_tex;
+	int			tex_x;
+	int			tex_y;
+	double		tex_pos;
+	int			color;
+}				t_tex;
 
 typedef struct s_cub3d
 {
@@ -143,7 +144,6 @@ typedef struct s_cub3d
 	t_player	player;
 
 }				t_cub3d;
-
 
 // ***************************************************************************
 // **							Utils Functions      						**
@@ -163,7 +163,7 @@ bool			invalid_file_name(t_map *map);
 // ***************************************************************************
 t_screen		*init_s_screen(void);
 int				init_s_map(t_map *map);
-int 			init_images(t_cub3d *game);
+int				init_images(t_cub3d *game);
 int				init_s_sprite(t_cub3d *game);
 void			init_player(t_cub3d *game, int x, int y);
 int				init_game(t_cub3d *game, int argc, char *argv[]);
@@ -194,10 +194,8 @@ int				game_loop(t_cub3d *game);
 int				open_cub(const char *path);
 int				init_window(t_cub3d *game);
 int				count_lines(const char *path);
-void 			map_range(t_map *map);
+void			map_range(t_map *map);
 int				map_reachability(t_cub3d *game, t_map *map, int x, int y);
-
-
 
 // ***************************************************************************
 // **							Player Functions   							**
@@ -207,10 +205,10 @@ void			rotate_player(t_player *player, int keycode);
 void			locate_spawn_point(t_player *player, t_map *map);
 void			move_player(t_map *map, t_player *player, int keycode);
 
-
 int				get_texture_color(t_img *tex, int x, int y);
 t_img			*get_texture(t_cub3d *game, t_ray *ray);
 void			render(t_cub3d *game, t_player *p);
 void			set_texture(t_ray *ray, t_dda *dda);
 t_ray			cast_ray(t_map *map, double x, double y, double angle);
-void clear_main_img(t_cub3d *game);
+void			clear_main_img(t_cub3d *game);
+void			print_map_2(t_cub3d *game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:40:08 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/12 07:10:50 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:13:18 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,28 @@ void print_map(t_cub3d *game)
 			j++;
 		}
 		printf(" -> lenth: %ld | height: %d", ft_strlen(game->map->map_array[i]), i + 1);
+		printf("\n");
+		i++;
+	}
+	printf("--- END DEBUG MAP ---\n");	
+}
+void print_map_2(t_cub3d *game)
+{
+	int	i;
+	int	j;
+	char c;
+
+	i = 0;
+	printf("--- START DEBUG MAP ---\n");
+	while (game->map->map_array[i])
+	{
+		j = 0;
+		while (game->map->map_array[i][j])
+		{
+			c = game->map->map_array[i][j];
+			printf("%c", c);
+			j++;
+		}
 		printf("\n");
 		i++;
 	}

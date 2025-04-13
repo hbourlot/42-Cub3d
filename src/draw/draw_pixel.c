@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/12 13:38:45 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:03:58 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,38 @@ void	my_mlx_pixel_put(t_cub3d *game, int x, int y, int color)
 // 		10);
 // }
 
+void	copy_main_img(t_cub3d *game)
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int	*main_pixels;
+	int	*map_pixels;
+	int	map_line;
+	int	offset_x;
+	int	offset_y;
+	int	main_px;
+
+	width = game->map->width * TILE_SIZE;
+	height = game->map->height * TILE_SIZE;
+	main_pixels = (int *)game->main_img.addr;
+	map_pixels = (int *)game->map_img.addr;
+	int main_line = game->main_img.size_line / 4; // 4 bytes per pixel
+	map_line = game->map_img.size_line / 4;
+	// Posición en pantalla donde va el minimapa
+	offset_x = 10;
+	offset_y = 10;
+	for (y = 0; y < height; y++)
+	{
+		for (x = 0; x < width; x++)
+		{
+			main_px = main_pixels[(y + offset_y) * main_line + (x + offset_x)];
+			map_pixels[y * map_line + x] = main_px;
+		}
+	}
+}
+
 void	draw_map2d(t_cub3d *game)
 {
 	int	x;
@@ -148,8 +180,9 @@ void	draw_map2d(t_cub3d *game)
 	int	pos[2];
 	int	color;
 
-	ft_memset(game->map_img.addr, 0x90, ((game->map->width) * TILE_SIZE)
-		* (game->map->height * TILE_SIZE) * (game->map_img.bpp / 8));
+	// ft_memset(game->map_img.addr, 0x00, ((game->map->width) * TILE_SIZE)
+	// 	* (game->map->height * TILE_SIZE) * (game->map_img.bpp / 8));
+	copy_main_img(game);
 	y = 0;
 	while (game->map->map_array && game->map->map_array[y])
 	{

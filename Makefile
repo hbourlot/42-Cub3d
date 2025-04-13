@@ -130,4 +130,4 @@ r:
 	
 v:
 	@make -s
-	@$(VALGRIND) ./$(NAME) ./map/ex1.cub
+	@$(VALGRIND) ./$(NAME) ./map/basic.cub

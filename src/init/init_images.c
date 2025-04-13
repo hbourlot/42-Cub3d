@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:14:00 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/12 13:38:28 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:14:30 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	init_images(t_cub3d *game)
 {
 	t_map	*map;
-
+	print_map_2(game);
 	map = game->map;
 	game->main_img.img = mlx_new_image(game->mlx_ptr, S_WIDTH, S_HEIGHT);
 	if (!game->main_img.img)

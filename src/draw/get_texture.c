@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:50:04 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/11 11:56:27 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/13 23:06:34 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	set_texture(t_ray *ray, t_dda *dda)
 				ray->tex_num = 1;
 		}
 	}
+	if (ray->wall_hit == 2)
+		ray->tex_num = 4;
 }
 
 t_img	*get_texture(t_cub3d *game, t_ray *ray)
@@ -45,6 +47,8 @@ t_img	*get_texture(t_cub3d *game, t_ray *ray)
 		tex = game->sprites->ea;
 	if (ray->tex_num == 3)
 		tex = game->sprites->we;
+	if(ray->tex_num == 4)
+		tex= game->sprites->door;
 	return (tex);
 }
 
