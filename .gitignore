@@ -3,7 +3,10 @@ lib/raycasting/obj/
 lib/libft/obj/
 lib/libft/libft.a
 lib/raycasting/libraycasting.a
-
+cmake-build-debug
+CMakeLists.txt
 *.o
 cub3D
+.idea/
 *.a
+.idea/

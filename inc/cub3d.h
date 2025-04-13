@@ -6,26 +6,27 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/13 23:05:04 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/13 23:16:35 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#ifndef CUB3D_H
+# define CUB3D_H
 
-#include "../lib/libft/inc/libft.h"
-#include "../lib/minilibx-linux/mlx.h"
-#include "definitions.h"
-#include "error.h"
-#include <X11/X.h>      // Button press
-#include <X11/keysym.h> // Key device
-#include <fcntl.h>
-#include <math.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#define bool _Bool
-#include <stdbool.h>
+# include "../lib/libft/inc/libft.h"
+# include "../lib/minilibx-linux/mlx.h"
+# include "definitions.h"
+# include "error.h"
+# include <X11/X.h>      // Button press
+# include <X11/keysym.h> // Key device
+# include <fcntl.h>
+# include <math.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# define bool _Bool
+# include <stdbool.h>
 
 typedef struct s_img
 {
@@ -142,6 +143,8 @@ typedef struct s_cub3d
 	char		*name;
 	t_sprite	*sprites;
 	t_player	player;
+	int			mouse_x;
+	int			mouse_y;
 
 }				t_cub3d;
 
@@ -149,6 +152,7 @@ typedef struct s_cub3d
 // **							Utils Functions      						**
 // ***************************************************************************
 int				key_press(int keycode, t_cub3d *game);
+int				mouse_signal(int x, int y, t_cub3d *game);
 
 // ***************************************************************************
 // **							map/parsing Functions 						**
@@ -201,7 +205,7 @@ int				map_reachability(t_cub3d *game, t_map *map, int x, int y);
 // **							Player Functions   							**
 // ***************************************************************************
 void			normalize_angle(float *angle);
-void			rotate_player(t_player *player, int keycode);
+void			rotate_player(t_player *player, int keycode, int signal);
 void			locate_spawn_point(t_player *player, t_map *map);
 void			move_player(t_map *map, t_player *player, int keycode);
 
@@ -211,4 +215,6 @@ void			render(t_cub3d *game, t_player *p);
 void			set_texture(t_ray *ray, t_dda *dda);
 t_ray			cast_ray(t_map *map, double x, double y, double angle);
 void			clear_main_img(t_cub3d *game);
-void			print_map_2(t_cub3d *game);
+void			mouse_handler(t_cub3d *game);
+
+#endif

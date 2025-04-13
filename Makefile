@@ -20,13 +20,13 @@ COMPILED_FILES	= 0
 OS				= $(shell uname)
 
 NAME			= cub3D
-C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map init/init_images  													\
+C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map init/init_images  								\
 				  	init/init_window init/init_game init/init_s_player init/init_s_sprites							\
 				  																									\
-				  	utils/key_hook utils/debug																					\
+				  	utils/signal_hook utils/debug																	\
 																													\
 				  	exit/free																						\
-				  	draw/draw_pixel	draw/raycaster draw/get_texture draw/cast_ray																		\
+				  	draw/draw_pixel	draw/raycaster draw/get_texture draw/cast_ray									\
 																													\
 				  	map/count_lines map/cub_array map/open															\
 				  	map/parsing/parse_map map/parsing/texture map/parsing/floor_ceiling								\
@@ -126,7 +126,7 @@ bonus:			all
 
 r:
 	@make -s
-	@./$(NAME) ./map/basic.cub
+	@./$(NAME) ./map/ex1.cub
 	
 v:
 	@make -s
