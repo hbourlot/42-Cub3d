@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:55:38 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/14 01:40:44 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/14 02:03:52 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int	key_press(int keycode, t_cub3d *game)
 	if (keycode == XK_a || keycode == XK_d || keycode == XK_Left
 		|| keycode == XK_Right)
 		rotate_player(&game->player, keycode, KEY_SIGNAL);
+	if (keycode == XK_space)
+		collision_door(game);
 	return (0);
 }

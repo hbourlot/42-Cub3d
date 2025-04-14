@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:48:00 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/11 11:51:50 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:59:57 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init_s_dda(t_dda *dda, double x, double y, double angle)
 
 void	perform_dda_loop(t_map *map, t_ray *ray, t_dda *dda)
 {
-	while (map->map_world[dda->map_y][dda->map_x] == 0)
+	while (map->map_world[dda->map_y][dda->map_x] == 0 || map->map_world[dda->map_y][dda->map_x] == 3)
 	{
 		if (dda->side_dist_x < dda->side_dist_y)
 		{

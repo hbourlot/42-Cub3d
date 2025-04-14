@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/14 01:32:55 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/14 02:08:31 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,8 @@ void	draw_player2d(t_cub3d *game, t_player *p)
 	draw_square_img(&game->map_img, pos, p->collider * 2, 0xc0c0c0);
 	f_pos[0] = p->x;
 	f_pos[1] = p->y;
-	p->director[0] = p->x + p->pdx * TILE_SIZE;
-	p->director[1] = p->y + p->pdy * TILE_SIZE;
+	p->director[0] = p->x + (p->pdx) * TILE_SIZE;
+	p->director[1] = p->y + (p->pdy) * TILE_SIZE;
 	draw_line(game, f_pos, p->director, create_rgb(0, 255, 0, 0));
 }
 

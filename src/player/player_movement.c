@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:53:30 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/14 01:35:35 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/14 02:09:56 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	rotate_player(t_player *player, int keycode, int signal)
 	if (keycode == XK_d || keycode == XK_Right)
 		player->angle -= rot_speed;
 	normalize_angle(&player->angle);
+	// player->pdx = cos(player->angle);
+	// player->pdy = -sin(player->angle);
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;
 }
@@ -35,8 +37,8 @@ int	wall_collision(t_map *map, float new_x, float new_y, float collider)
 	int			tile_y;
 	int			i;
 	const float	corners[4][2] = {{new_x - collider, new_y - collider}, {new_x
-		+ collider, new_y - collider}, {new_x - collider, new_y + collider},
-	{new_x + collider, new_y + collider}};
+			+ collider, new_y - collider}, {new_x - collider, new_y + collider},
+			{new_x + collider, new_y + collider}};
 
 	i = 0;
 	while (i < 4)
@@ -44,7 +46,8 @@ int	wall_collision(t_map *map, float new_x, float new_y, float collider)
 		tile_x = (int)(corners[i][0] / TILE_SIZE);
 		tile_y = (int)(corners[i][1] / TILE_SIZE);
 		if (tile_x < 0 || tile_x >= map->width || tile_y < 0
-			|| tile_y >= map->height || map->map_world[tile_y][tile_x] == 1)
+			|| tile_y >= map->height || map->map_world[tile_y][tile_x] == 1
+			|| map->map_world[tile_y][tile_x] == 2)
 			return (1);
 		i++;
 	}
@@ -97,4 +100,23 @@ void	mouse_handler(t_cub3d *game)
 	game->mouse_y = S_HEIGHT / 2;
 	mlx_hook(game->win_ptr, MotionNotify, PointerMotionMask, mouse_signal,
 		game);
+}
+
+int	collision_door(t_cub3d *game)
+{
+	int dir_pos[2];
+
+	dir_pos[0] = game->player.director[0] / TILE_SIZE;
+	dir_pos[1] = game->player.director[1] / TILE_SIZE;
+	if (game->map->map_world[dir_pos[1]][dir_pos[0]] == 2)
+	{
+		printf("Opening door\n");
+		game->map->map_world[dir_pos[1]][dir_pos[0]] = 3;
+	}
+	else if (game->map->map_world[dir_pos[1]][dir_pos[0]] == 3)
+	{
+		printf("Closing door\n");
+		game->map->map_world[dir_pos[1]][dir_pos[0]] = 2;
+	}
+	return (0);
 }

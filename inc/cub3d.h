@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/14 01:22:36 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:51:25 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,5 +216,6 @@ void			set_texture(t_ray *ray, t_dda *dda);
 t_ray			cast_ray(t_map *map, double x, double y, double angle);
 void			clear_main_img(t_cub3d *game);
 void			mouse_handler(t_cub3d *game);
+int				collision_door(t_cub3d *game);
 
 #endif
