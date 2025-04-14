@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/13 23:16:35 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:22:36 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,17 @@ typedef struct s_player
 	float		pdy;
 	float		angle;
 	float		collider;
+	float		director[2];
 }				t_player;
 
-// typedef struct s_line
-// {
-// 	int			dx;
-// 	int			dy;
-// 	int			steps;
-// 	float		x_inc;
-// 	float		y_inc;
-// }				t_line;
+typedef struct s_line
+{
+	int			dx;
+	int			dy;
+	int			steps;
+	float		x_inc;
+	float		y_inc;
+}				t_line;
 
 typedef struct s_ray
 {
@@ -176,11 +177,10 @@ int				init_s_cube3d(t_cub3d **game, int argc, char *argv[]);
 // ***************************************************************************
 // **							Draw Functions       						**
 // ***************************************************************************
-void			draw_map2d(t_cub3d *game);
-void			draw_player2d(t_cub3d *game);
+// void			draw_player2d(t_cub3d *game);
+void			draw_player2d(t_cub3d *game, t_player *p);
+void			draw_map2d(t_cub3d *game, t_map *map);
 int				create_rgb(int t, int r, int g, int b);
-void			my_mlx_pixel_put(t_cub3d *game, int x, int y, int color);
-void			draw_square(t_cub3d *game, int pos[2], int size, int color);
 // void			draw_line(t_cub3d *game, float x0, float y0, float x1, float y1,
 // 					int color);
 

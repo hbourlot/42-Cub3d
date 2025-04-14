@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/13 23:13:42 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:34:06 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static int	allocate_map_world(t_map *map)
 				map->map_world[i][j] = 1;
 			else if (map->map_array[i][j] == '2')
 				map->map_world[i][j] = 2;
+			// else if (map->map_array[i][j] == '0')
+			// map->map_world[i][j] = -1;
 			else
 				map->map_world[i][j] = 0;
 		}
@@ -106,7 +108,7 @@ static int	parse_map_aux(t_map *map, int *i)
 bool	parse_map(t_map *map)
 {
 	int			i;
-	const char	*valid_chars = "102NSEW \t\n";
+	const char	*valid_chars = "012NSEW \t\n";
 
 	if (parse_map_aux(map, &i) < 0)
 		return (ft_printf_fd(2, ME_MINFO), true);
