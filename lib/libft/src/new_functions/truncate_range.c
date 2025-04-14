@@ -15,20 +15,20 @@
 /// @brief Truncates a range of characters from a string.
 /// Removes `n` characters starting from index `start` in the given string.
 /// The string is modified in place, and the trailing part of the string
-/// is shifted to fill the removed range. The string is properly 
+/// is shifted to fill the removed range. The string is properly
 ///	null-terminated.
 /// @param src Pointer to the string to modify. The string must be
 /// dynamically allocated or modifiable.
 /// @param start The starting index from which characters will be removed.
 /// Must be non-negative and within the length of the string.
-/// @param bytes The number of characters to remove. Must be non-negative 
+/// @param bytes The number of characters to remove. Must be non-negative
 ///	and such that `start + n` does not exceed the length of the string.
 /// @return 0 on success, -1 if the parameters are invalid or out of bounds.
 int	truncate_range(char *src, int start, int bytes)
 {
-	int		length;
-	int		i;
-	int		pos;
+	int	length;
+	int	i;
+	int	pos;
 
 	if (!src || start < 0 || bytes < 0)
 		return (-1);

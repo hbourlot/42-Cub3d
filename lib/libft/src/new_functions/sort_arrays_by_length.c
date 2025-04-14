@@ -16,9 +16,9 @@
 /// @param arr The array of src to sort.
 void	sort_strings_by_length_desc(char **arr)
 {
-	int			i;
-	int			j;
-	char		*temp;
+	int		i;
+	int		j;
+	char	*temp;
 
 	i = 0;
 	while (arr[i])

@@ -13,11 +13,11 @@
 #include "libft.h"
 
 /// @brief Searches for the first occurrence of any substring
-///			 from the `needles` array in the string `haystack`.
+///				from the `needles` array in the string `haystack`.
 /// @param haystack The main string to be searched.
 /// @param needles An array of substrings to search for in `haystack`.
 /// @return A pointer to the first occurrence of any substring from
-///		 `needles` in `haystack`, or NULL if no match is found.
+///			`needles` in `haystack`, or NULL if no match is found.
 char	*ft_strstr_any(const char *haystack, const char **needles)
 {
 	size_t	i;
