@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:53:30 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/14 02:09:56 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:19:59 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	rotate_player(t_player *player, int keycode, int signal)
 	if (keycode == XK_d || keycode == XK_Right)
 		player->angle -= rot_speed;
 	normalize_angle(&player->angle);
-	// player->pdx = cos(player->angle);
-	// player->pdy = -sin(player->angle);
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;
 }
@@ -95,7 +93,7 @@ void	move_player(t_map *map, t_player *player, int keycode)
 void	mouse_handler(t_cub3d *game)
 {
 	// mlx_mouse_hide(game->mlx_ptr, game->win_ptr);
-	mlx_mouse_move(game->mlx_ptr, game->win_ptr, MAP_WIDTH / 2, MAP_HEIGHT / 2);
+	mlx_mouse_move(game->mlx_ptr, game->win_ptr, S_WIDTH / 2, S_HEIGHT / 2);
 	game->mouse_x = S_WIDTH / 2;
 	game->mouse_y = S_HEIGHT / 2;
 	mlx_hook(game->win_ptr, MotionNotify, PointerMotionMask, mouse_signal,
@@ -104,7 +102,7 @@ void	mouse_handler(t_cub3d *game)
 
 int	collision_door(t_cub3d *game)
 {
-	int dir_pos[2];
+	int	dir_pos[2];
 
 	dir_pos[0] = game->player.director[0] / TILE_SIZE;
 	dir_pos[1] = game->player.director[1] / TILE_SIZE;
