@@ -29,8 +29,9 @@ C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map init/init_images
 				  	draw/draw_pixel	draw/raycaster draw/get_texture draw/cast_ray									\
 																													\
 				  	map/count_lines map/cub_array map/open															\
-				  	map/parsing/parse_map map/parsing/texture map/parsing/floor_ceiling								\
-				  	map/parsing/name map/parsing/utils  map/parse map/map_range map/parsing/map_reachability		\
+				  	map/parsing/parse_map map/parsing/parse_texture map/parsing/parse_fc							\
+				  	map/parsing/invalid_file_name  map/parse map/map_range											\
+					map/parsing/map_reachability map/parsing/check_unique_textures									\
 				  																									\
 					player/locate_spawn_point player/player_movement												\
 

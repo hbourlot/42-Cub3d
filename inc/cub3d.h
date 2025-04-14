@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/12 21:32:39 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/14 13:29:32 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct s_dda
 	int		step_x;
 	int		step_y;
 }t_dda;
+
 typedef struct s_draw
 {
 	double	corrected_dist;
@@ -124,6 +125,7 @@ typedef struct s_draw
 	int		end;
 	int x;
 }t_draw;
+
 typedef struct s_tex
 {
 	int		tex_x;
@@ -161,6 +163,8 @@ bool			parse_fc(t_map *map);
 bool			parse_map(t_map *map);
 bool			parse_texture(t_map *map);
 bool			invalid_file_name(t_map *map);
+int				check_unique_textures(t_map *map);
+
 
 // ***************************************************************************
 // **							Initialize Functions 						**
