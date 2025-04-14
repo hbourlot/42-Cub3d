@@ -34,7 +34,7 @@ UPD_SRC			=  ft_itoa_iter ft_linelen ft_nbrlen ft_strcmp ft_lstduplicate ft_lsti
 					ft_strcmps ft_strstr_any find_string_match free_pointers ft_printf_fd				\
 					all_same_char get_last_node get_offset insert_string truncate_range					\
 					truncate_character ft_strjoin_char ft_atol ft_isspaces all_spaces init_prev			\
-					split_metadata
+					split_metadata contains_char
 
 BONUS			= ft_lstnew ft_lstadd_front ft_lstsize ft_lstadd_back ft_lstmap ft_lstiter ft_lstlast 	\
 					ft_lstdelone ft_lstclear															\

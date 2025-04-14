@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 /// @brief Returns a pointer to a static split metadata structure.
 /// @return Pointer to the static t_split_meta structure.

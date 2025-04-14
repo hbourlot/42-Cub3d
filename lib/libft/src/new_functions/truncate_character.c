@@ -32,7 +32,7 @@ int	truncate_character(char *src, const char character)
 			j = i;
 			while (src[j + 1])
 			{
-				src[j] = src [j + 1];
+				src[j] = src[j + 1];
 				j++;
 			}
 			src[j] = '\0';
