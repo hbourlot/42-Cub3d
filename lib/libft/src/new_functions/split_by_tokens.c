@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 20:26:52 by hbourlot          #+#    #+#             */
-/*   Updated: 2024/12/09 16:19:58 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:04:00 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	sort_tokens_by_length(const char *tokens[])
 }
 
 /// @brief Skips tokens in the string and returns a pointer to the
-///			 first non-token character.
+///				first non-token character.
 /// @param src Pointer to the input string.
 /// @param tokens The array of tokens to skip.
 /// @return Pointer to the first non-token character.

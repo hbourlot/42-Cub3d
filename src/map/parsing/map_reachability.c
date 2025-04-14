@@ -42,7 +42,8 @@ static int	flood_fill(t_map *map, int x, int y, bool **map_visited)
 		return (-1);
 	if (map_visited[y][x])
 		return (0);
-	if (map->map_array[y][x] == '0' || map->map_array[y][x] == 'S')
+
+	if (map->map_array[y][x] == '0' || contains_char("SNEW", map->map_array[y][x]))
 	{
 		map_visited[y][x] = true;
 		if (flood_fill(map, x + 1, y, map_visited) || flood_fill(map, x - 1, y,

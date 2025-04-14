@@ -13,7 +13,7 @@
 #include "libft.h"
 
 /// @brief Compares two integers to determine if the first
-///		 is greater than the second.
+///			is greater than the second.
 /// @param a The first integer to compare.
 /// @param b The second integer to compare.
 /// @return Returns 1 if a is greater than b, otherwise returns 0.

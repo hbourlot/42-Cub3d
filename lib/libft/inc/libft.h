@@ -23,10 +23,10 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef	struct	s_split_meta
+typedef struct s_split_meta
 {
-	size_t	word_count;
-	char	**address_ptr;
+	size_t			word_count;
+	char			**address_ptr;
 }					t_split_meta;
 
 // ! Functions in "./SRC/"
@@ -100,6 +100,7 @@ int					ft_check_duplicate(t_list **lst);
 int					stack_value(t_list **node, int idx);
 int					stack_idx(t_list **node, int value);
 int					is_str_longer(char *src1, char *src2);
+int					contains_char(const char *str, char c);
 void				ft_printf_fd(int fd, const char *fmt, ...);
 bool				all_same_char(const char *src, char c);
 char				*ft_strcpy(char *dest, const char *src);
