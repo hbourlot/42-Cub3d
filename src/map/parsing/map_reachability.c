@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 15:35:03 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/14 01:33:26 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/14 15:23:57 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	flood_fill(t_map *map, int x, int y, bool **map_visited)
 	return (0);
 }
 
-void	free_visited(bool **map_visited)
+static void	free_visited(bool **map_visited)
 {
 	int	i;
 
@@ -69,7 +69,7 @@ void	free_visited(bool **map_visited)
 	free(map_visited);
 }
 
-void	reload_map_visited(bool **map_visited)
+static void	reload_map_visited(bool **map_visited)
 {
 	int	i;
 
