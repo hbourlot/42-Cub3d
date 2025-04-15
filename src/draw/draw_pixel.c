@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/15 01:00:50 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/15 10:38:13 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,44 +66,44 @@ void	draw_square_img(t_img *img, int pos[2], int size, int color)
 	int	i;
 	int	j;
 
-	for (i = 0; i < size; i++)
+	i = 0;
+	while (i < size)
 	{
-		for (j = 0; j < size; j++)
+		j = 0;
+		while (j < size)
 		{
 			put_pixel_img(img, pos[0] + i, pos[1] + j, color);
+			j++;
 		}
+		i++;
 	}
 }
 
-void	copy_main_img(t_cub3d *game)
+void	copy_main_img(t_cub3d *game, int pos_x, int pos_y)
 {
 	int	x;
 	int	y;
-	int	width;
-	int	height;
 	int	*main_pixels;
 	int	*map_pixels;
 	int	map_line;
-	int	offset_x;
-	int	offset_y;
 	int	main_px;
+	int	main_line;
 
-	width = game->map->width * TILE_SIZE;
-	height = game->map->height * TILE_SIZE;
 	main_pixels = (int *)game->main_img.addr;
 	map_pixels = (int *)game->map_img.addr;
-	int main_line = game->main_img.size_line / 4; // 4 bytes per pixel
+	main_line = game->main_img.size_line / 4;
 	map_line = game->map_img.size_line / 4;
-	// Posición en pantalla donde va el minimapa
-	offset_x = 10;
-	offset_y = 10;
-	for (y = 0; y < height; y++)
+	y = 0;
+	while (y < game->map->height * TILE_SIZE)
 	{
-		for (x = 0; x < width; x++)
+		x = 0;
+		while (x < game->map->width * TILE_SIZE)
 		{
-			main_px = main_pixels[(y + offset_y) * main_line + (x + offset_x)];
+			main_px = main_pixels[(y + pos_y) * main_line + (x + pos_x)];
 			map_pixels[y * map_line + x] = main_px;
+			x++;
 		}
+		y++;
 	}
 }
 
@@ -129,7 +129,7 @@ void	draw_map2d(t_cub3d *game, t_map *map)
 	int	pos[2];
 	int	color;
 
-	copy_main_img(game);
+	copy_main_img(game, 10, 10);
 	y = 0;
 	while (map->map_array && map->map_array[y])
 	{
@@ -185,8 +185,3 @@ void	clear_main_img(t_cub3d *game)
 		x++;
 	}
 }
-
-// void	my_mlx_pixel_put(t_cub3d *game, int x, int y, int color)
-// {
-// 	mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, y, color);
-// }
