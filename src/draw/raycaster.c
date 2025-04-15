@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:24:49 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/14 23:44:25 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/15 09:41:58 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,10 @@ static void	draw_walls(t_cub3d *game, t_ray *ray, t_draw *draw,
 void	render(t_cub3d *game, t_player *p)
 {
 	t_ray	ray;
-	t_ray	new_ray;
 	t_draw	draw;
 	int		x;
 	double	ray_angle;
-	float	z_buffer;
 
-	z_buffer = 1000000.0;
 	clear_main_img(game);
 	x = 0;
 	while (x < S_WIDTH)
@@ -74,16 +71,6 @@ void	render(t_cub3d *game, t_player *p)
 		ray_angle = p->angle + FOV / 2 - (x * FOV / S_WIDTH);
 		ray = cast_ray(game->map, p->x / TILE_SIZE, p->y / TILE_SIZE,
 				ray_angle);
-		// if (ray.wall_hit == 3)
-		// {
-		// 	printf("ray.wall_hit %d\n", ray.wall_hit);
-		// 	printf("ray.dist %f\n", ray.dist);
-		// 	game->map->map_world[ray.map_y][ray.map_x] = 0;
-		// 	new_ray = cast_ray(game->map, p->x / TILE_SIZE, p->y / TILE_SIZE,
-		// 			ray_angle);
-		// 	printf("new_ray.dist %f\n", new_ray.dist);
-		// 	game->map->map_world[ray.map_y][ray.map_x] = 3;
-		// }
 		draw = prepare_draw(&ray, p, ray_angle, x);
 		draw_walls(game, &ray, &draw, ray_angle);
 		x++;
