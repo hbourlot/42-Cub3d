@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:53:30 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/15 01:01:00 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/15 01:42:22 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	wall_collision(t_map *map, float new_x, float new_y, float collider)
 	int			tile_x;
 	int			tile_y;
 	int			i;
+	t_door		*door;
 	const float	corners[4][2] = {{new_x - collider, new_y - collider}, {new_x
 			+ collider, new_y - collider}, {new_x - collider, new_y + collider},
 			{new_x + collider, new_y + collider}};
@@ -45,9 +46,10 @@ int	wall_collision(t_map *map, float new_x, float new_y, float collider)
 	{
 		tile_x = (int)(corners[i][0] / TILE_SIZE);
 		tile_y = (int)(corners[i][1] / TILE_SIZE);
+		door = find_door(map, tile_x, tile_y);
 		if (tile_x < 0 || tile_x >= map->width || tile_y < 0
 			|| tile_y >= map->height || map->map_world[tile_y][tile_x] == 1
-			|| map->map_world[tile_y][tile_x] == 2)
+			|| (door && !door->is_open))
 			return (1);
 		i++;
 	}
