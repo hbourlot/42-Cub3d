@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/14 01:51:25 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/15 01:33:18 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ typedef struct s_img
 	int			endian;
 }				t_img;
 
+typedef struct s_door
+{
+	int			x;
+	int			y;
+	int			is_open;
+	// double timer; // Para animaciones
+}				t_door;
+
 typedef struct s_sprite
 {
 	// t_img		*dirt;
@@ -47,7 +55,8 @@ typedef struct s_sprite
 	t_img		*so;
 	t_img		*we;
 	t_img		*ea;
-	t_img		*door;
+	t_img		*door_close;
+	t_img		*door_open;
 	t_img		*floor;
 	t_img		*ceiling;
 }				t_sprite;
@@ -60,6 +69,8 @@ typedef struct s_screen
 
 typedef struct s_map
 {
+	t_door		*doors;
+	int			num_doors;
 	const char	*path;
 	char		**cub_array;
 	char		**map_array;
@@ -103,6 +114,8 @@ typedef struct s_ray
 	int			tex_num;
 	int			wall_hit;
 	double		wall_x;
+	int			map_x;
+	int			map_y;
 }				t_ray;
 
 typedef struct s_dda
@@ -146,6 +159,7 @@ typedef struct s_cub3d
 	t_player	player;
 	int			mouse_x;
 	int			mouse_y;
+	float		z_buffer[S_WIDTH];
 
 }				t_cub3d;
 
@@ -170,6 +184,7 @@ t_screen		*init_s_screen(void);
 int				init_s_map(t_map *map);
 int				init_images(t_cub3d *game);
 int				init_s_sprite(t_cub3d *game);
+int				init_doors(t_map *map);
 void			init_player(t_cub3d *game, int x, int y);
 int				init_game(t_cub3d *game, int argc, char *argv[]);
 int				init_s_cube3d(t_cub3d **game, int argc, char *argv[]);
@@ -212,10 +227,13 @@ void			move_player(t_map *map, t_player *player, int keycode);
 int				get_texture_color(t_img *tex, int x, int y);
 t_img			*get_texture(t_cub3d *game, t_ray *ray);
 void			render(t_cub3d *game, t_player *p);
-void			set_texture(t_ray *ray, t_dda *dda);
+void			set_texture(t_map *map, t_ray *ray, t_dda *dda);
 t_ray			cast_ray(t_map *map, double x, double y, double angle);
 void			clear_main_img(t_cub3d *game);
 void			mouse_handler(t_cub3d *game);
 int				collision_door(t_cub3d *game);
-
+// void			init_s_ray(t_ray *ray);
+// void			init_s_dda(t_dda *dda, double x, double y, double angle);
+// void			fill_s_ray(t_ray *ray, t_dda *dda, double x, double y);
+t_door			*find_door(t_map *map, int x, int y);
 #endif

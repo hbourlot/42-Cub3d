@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:53:30 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/14 15:19:59 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/15 01:01:00 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	rotate_player(t_player *player, int keycode, int signal)
 	normalize_angle(&player->angle);
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;
+	// player->director[0] = cos(player->angle);
+	// player->director[1] = -sin(player->angle);
 }
 
 int	wall_collision(t_map *map, float new_x, float new_y, float collider)
@@ -102,19 +104,20 @@ void	mouse_handler(t_cub3d *game)
 
 int	collision_door(t_cub3d *game)
 {
-	int	dir_pos[2];
+	int		dir_pos[2];
+	t_door	*door;
 
 	dir_pos[0] = game->player.director[0] / TILE_SIZE;
 	dir_pos[1] = game->player.director[1] / TILE_SIZE;
-	if (game->map->map_world[dir_pos[1]][dir_pos[0]] == 2)
+	door = find_door(game->map, dir_pos[0], dir_pos[1]);
+	if (!door)
+		return (0);
+	if (door->is_open == 0)
 	{
-		printf("Opening door\n");
-		game->map->map_world[dir_pos[1]][dir_pos[0]] = 3;
+		door->is_open = 1;
 	}
-	else if (game->map->map_world[dir_pos[1]][dir_pos[0]] == 3)
-	{
-		printf("Closing door\n");
-		game->map->map_world[dir_pos[1]][dir_pos[0]] = 2;
-	}
+	else
+		door->is_open = 0;
+	printf("door status %d\n", door->is_open);
 	return (0);
 }

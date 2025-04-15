@@ -6,14 +6,16 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:50:04 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/14 01:39:57 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/15 01:32:41 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	set_texture(t_ray *ray, t_dda *dda)
+void	set_texture(t_map *map, t_ray *ray, t_dda *dda)
 {
+	t_door	*door;
+
 	if (ray->wall_hit == 1)
 	{
 		if (ray->hit_side == 0)
@@ -32,7 +34,15 @@ void	set_texture(t_ray *ray, t_dda *dda)
 		}
 	}
 	if (ray->wall_hit == 2)
-		ray->tex_num = 4;
+	{
+		door = find_door(map, dda->map_x, dda->map_y);
+		if (!door)
+			return ;
+		if (door->is_open)
+			ray->tex_num = 5;
+		else
+			ray->tex_num = 4;
+	}
 }
 
 t_img	*get_texture(t_cub3d *game, t_ray *ray)
@@ -48,7 +58,9 @@ t_img	*get_texture(t_cub3d *game, t_ray *ray)
 	if (ray->tex_num == 3)
 		tex = game->sprites->we;
 	if (ray->tex_num == 4)
-		tex = game->sprites->door;
+		tex = game->sprites->door_close;
+	if (ray->tex_num == 5)
+		tex = game->sprites->door_open;
 	return (tex);
 }
 

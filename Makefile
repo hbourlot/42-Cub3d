@@ -21,7 +21,7 @@ OS				= $(shell uname)
 
 NAME			= cub3D
 C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map init/init_images  								\
-				  	init/init_window init/init_game init/init_s_player init/init_s_sprites							\
+				  	init/init_window init/init_game init/init_s_player init/init_s_sprites init/init_s_door				\
 				  																									\
 				  	utils/signal_hook utils/debug																	\
 																													\
