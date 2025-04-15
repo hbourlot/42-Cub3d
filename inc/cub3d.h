@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/15 01:33:18 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:59:06 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define bool _Bool
 # include <stdbool.h>
 
+
 typedef struct s_img
 {
 	void		*img;
@@ -40,13 +41,7 @@ typedef struct s_img
 	int			endian;
 }				t_img;
 
-typedef struct s_door
-{
-	int			x;
-	int			y;
-	int			is_open;
-	// double timer; // Para animaciones
-}				t_door;
+
 
 typedef struct s_sprite
 {
@@ -66,6 +61,34 @@ typedef struct s_screen
 	int			width;
 	int			height;
 }				t_screen;
+
+typedef struct s_dda
+{
+	double		dir_x;
+	double		dir_y;
+	int			map_x;
+	int			map_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	int			step_x;
+	int			step_y;
+}				t_dda;
+
+typedef struct s_door
+{
+	int			x;
+	int			y;
+	int			is_open;
+	int			wall_hit;
+	int hit_side;
+	double		wall_x;
+	double		dist;
+	t_dda dda;
+	// t_ray		ray;
+	// double timer; // Para animaciones
+}				t_door;
 
 typedef struct s_map
 {
@@ -116,21 +139,10 @@ typedef struct s_ray
 	double		wall_x;
 	int			map_x;
 	int			map_y;
+	t_door *door;
 }				t_ray;
 
-typedef struct s_dda
-{
-	double		dir_x;
-	double		dir_y;
-	int			map_x;
-	int			map_y;
-	double		delta_dist_x;
-	double		delta_dist_y;
-	double		side_dist_x;
-	double		side_dist_y;
-	int			step_x;
-	int			step_y;
-}				t_dda;
+
 typedef struct s_draw
 {
 	double		corrected_dist;
@@ -225,7 +237,7 @@ void			locate_spawn_point(t_player *player, t_map *map);
 void			move_player(t_map *map, t_player *player, int keycode);
 
 int				get_texture_color(t_img *tex, int x, int y);
-t_img			*get_texture(t_cub3d *game, t_ray *ray);
+t_img			*get_texture(t_cub3d *game, int tex_num);
 void			render(t_cub3d *game, t_player *p);
 void			set_texture(t_map *map, t_ray *ray, t_dda *dda);
 t_ray			cast_ray(t_map *map, double x, double y, double angle);
@@ -236,4 +248,6 @@ int				collision_door(t_cub3d *game);
 // void			init_s_dda(t_dda *dda, double x, double y, double angle);
 // void			fill_s_ray(t_ray *ray, t_dda *dda, double x, double y);
 t_door			*find_door(t_map *map, int x, int y);
+// t_door *populate_door(t_map *map, t_dda *dda, int x, int y);
+t_door *populate_door(t_map *map, t_dda *dda , t_ray *ray);
 #endif

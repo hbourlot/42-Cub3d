@@ -6,11 +6,24 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:01:17 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/15 00:52:09 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/15 15:51:17 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_door *populate_door(t_map *map, t_dda *dda , t_ray *ray)
+{
+	t_door *door = find_door(map,dda->map_x,dda->map_y);
+	if(!door)
+		return(NULL);
+	door->dda.step_x = dda->step_x;
+	door->dda.step_y = dda->step_y;
+	door->dda.dir_y = dda->dir_y;
+	door->dda.dir_x = dda->dir_x;
+	door->hit_side = ray->hit_side;
+	return(door);
+}
 
 t_door	*find_door(t_map *map, int x, int y)
 {

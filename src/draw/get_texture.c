@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:50:04 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/15 11:21:53 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:00:46 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,21 @@ void	set_texture(t_map *map, t_ray *ray, t_dda *dda)
 		set_texture_door(map, ray, dda);
 }
 
-t_img	*get_texture(t_cub3d *game, t_ray *ray)
+t_img	*get_texture(t_cub3d *game, int tex_num)
 {
 	t_img	*tex;
 
-	if (ray->tex_num == 0)
+	if (tex_num == 0)
 		tex = game->sprites->so;
-	if (ray->tex_num == 1)
+	if (tex_num == 1)
 		tex = game->sprites->no;
-	if (ray->tex_num == 2)
+	if (tex_num == 2)
 		tex = game->sprites->ea;
-	if (ray->tex_num == 3)
+	if (tex_num == 3)
 		tex = game->sprites->we;
-	if (ray->tex_num == 4)
+	if (tex_num == 4)
 		tex = game->sprites->door_close;
-	if (ray->tex_num == 5)
+	if (tex_num == 5)
 		tex = game->sprites->door_open;
 	return (tex);
 }
