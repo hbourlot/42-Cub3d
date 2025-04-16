@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/16 16:09:11 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/16 19:07:35 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,44 @@ void	draw_square_img(t_img *img, int pos[2], int size, int color)
 	}
 }
 
+void	draw_player2d(t_cub3d *game, t_player *p)
+{
+	int		pos[2];
+	float	f_pos[2];
+
+	pos[0] = p->x - p->collider;
+	pos[1] = p->y - p->collider;
+	draw_square_img(&game->map_img, pos, p->collider * 2, 0xc0c0c0);
+	f_pos[0] = p->x;
+	f_pos[1] = p->y;
+	p->director[0] = p->x + (p->pdx) * TILE_SIZE;
+	p->director[1] = p->y + (p->pdy) * TILE_SIZE;
+	// p->director[0] = p->x + p->director[0] * TILE_SIZE;
+	// p->director[1] = p->y + p->director[1] * TILE_SIZE;
+	draw_line(game, f_pos, p->director, create_rgb(0, 255, 0, 0));
+}
+
+void	clear_main_img(t_cub3d *game)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x < S_WIDTH)
+	{
+		y = 0;
+		while (y < S_HEIGHT)
+		{
+			if (y < S_HEIGHT / 2)
+				put_pixel_img(&game->main_img, x, y, 0x4B4B4B);
+			if (y > S_HEIGHT / 2 && y < S_HEIGHT)
+				put_pixel_img(&game->main_img, x, y, 0x2F2F2F);
+			y++;
+		}
+		x++;
+	}
+}
+
 void	copy_main_img(t_cub3d *game, int pos_x, int pos_y)
 {
 	int	x;
@@ -148,42 +186,4 @@ void	draw_map2d(t_cub3d *game, t_map *map)
 	draw_player2d(game, &game->player);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->map_img.img, 10,
 		10);
-}
-
-void	draw_player2d(t_cub3d *game, t_player *p)
-{
-	int		pos[2];
-	float	f_pos[2];
-
-	pos[0] = p->x - p->collider;
-	pos[1] = p->y - p->collider;
-	draw_square_img(&game->map_img, pos, p->collider * 2, 0xc0c0c0);
-	f_pos[0] = p->x;
-	f_pos[1] = p->y;
-	p->director[0] = p->x + (p->pdx) * TILE_SIZE;
-	p->director[1] = p->y + (p->pdy) * TILE_SIZE;
-	// p->director[0] = p->x + p->director[0] * TILE_SIZE;
-	// p->director[1] = p->y + p->director[1] * TILE_SIZE;
-	draw_line(game, f_pos, p->director, create_rgb(0, 255, 0, 0));
-}
-
-void	clear_main_img(t_cub3d *game)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (x < S_WIDTH)
-	{
-		y = 0;
-		while (y < S_HEIGHT)
-		{
-			if (y < S_HEIGHT / 2)
-				put_pixel_img(&game->main_img, x, y, 0x4B4B4B);
-			if (y > S_HEIGHT / 2 && y < S_HEIGHT)
-				put_pixel_img(&game->main_img, x, y, 0x2F2F2F);
-			y++;
-		}
-		x++;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/16 17:50:34 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:23:42 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_img
 
 typedef struct s_sprite
 {
-	// t_img		*dirt;
 	t_img		*no;
 	t_img		*so;
 	t_img		*we;
@@ -78,7 +77,7 @@ typedef struct s_door
 	int			x;
 	int			y;
 	int			is_open;
-	// double timer; // Para animaciones
+	// double timer;
 }				t_door;
 
 typedef struct s_map
@@ -127,9 +126,9 @@ typedef struct s_ray
 	int			hit_side;
 	int			tex_num;
 	int			wall_hit;
-	double		wall_x;
 	int			map_x;
 	int			map_y;
+	double		wall_x;
 	t_door		*door;
 }				t_ray;
 
@@ -162,7 +161,6 @@ typedef struct s_cub3d
 	t_player	player;
 	int			mouse_x;
 	int			mouse_y;
-	float		z_buffer[S_WIDTH];
 
 }				t_cub3d;
 
@@ -195,12 +193,9 @@ int				init_s_cube3d(t_cub3d **game, int argc, char *argv[]);
 // ***************************************************************************
 // **							Draw Functions       						**
 // ***************************************************************************
-// void			draw_player2d(t_cub3d *game);
-void			draw_player2d(t_cub3d *game, t_player *p);
+// void			draw_player2d(t_cub3d *game, t_player *p);
 void			draw_map2d(t_cub3d *game, t_map *map);
 int				create_rgb(int t, int r, int g, int b);
-// void			draw_line(t_cub3d *game, float x0, float y0, float x1, float y1,
-// 					int color);
 
 // ***************************************************************************
 // **							Exit Functions      						**
@@ -235,10 +230,7 @@ t_ray			cast_ray(t_map *map, double x, double y, double angle);
 void			clear_main_img(t_cub3d *game);
 void			mouse_handler(t_cub3d *game);
 int				collision_door(t_cub3d *game);
-// void			init_s_ray(t_ray *ray);
-// void			init_s_dda(t_dda *dda, double x, double y, double angle);
-// void			fill_s_ray(t_ray *ray, t_dda *dda, double x, double y);
 t_door			*find_door(t_map *map, int x, int y);
-// t_door *populate_door(t_map *map, t_dda *dda, int x, int y);
-t_door			*populate_door(t_map *map, t_dda *dda, t_ray *ray);
+void			put_pixel_img(t_img *img, int x, int y, int color);
+t_ray			cast_ray_door(t_map *map, double x, double y, double angle);
 #endif

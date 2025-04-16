@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:48:00 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/16 17:53:11 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:23:25 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ void	init_s_dda(t_dda *dda, double x, double y, double angle)
 
 void	perform_dda_loop(t_map *map, t_ray *ray, t_dda *dda)
 {
-	int	hit;
-
-	hit = 0;
-	while (!hit)
+	while (map->map_world[dda->map_y][dda->map_x] == 0)
 	{
 		if (dda->side_dist_x < dda->side_dist_y)
 		{
@@ -78,11 +75,6 @@ void	perform_dda_loop(t_map *map, t_ray *ray, t_dda *dda)
 		if (dda->map_x < 0 || dda->map_y < 0 || dda->map_x >= map->width
 			|| dda->map_y >= map->height)
 			break ;
-		if (map->map_world[dda->map_y][dda->map_x] == 1)
-			hit = 1;
-		ray->door = find_door(map, dda->map_x,dda->map_y);
-		if (ray->door && !ray->door->is_open)
-			hit = 1;
 	}
 }
 
@@ -110,11 +102,66 @@ t_ray	cast_ray(t_map *map, double x, double y, double angle)
 	init_s_dda(&dda, x, y, angle);
 	perform_dda_loop(map, &ray, &dda);
 	ray.wall_hit = map->map_world[dda.map_y][dda.map_x];
+	ray.map_x = dda.map_x;
+	ray.map_y = dda.map_y;
+	if (ray.wall_hit == 2)
+		ray.door = find_door(map, dda.map_x, dda.map_y);
 	if (dda.map_x >= 0 && dda.map_x < map->width && dda.map_y >= 0
 		&& dda.map_y < map->height)
-	{
 		fill_s_ray(&ray, &dda, x, y);
+	set_texture(map, &ray, &dda);
+	return (ray);
+}
+
+void	perform_dda_loop_door(t_map *map, t_ray *ray, t_dda *dda)
+{
+	int		hit;
+	t_door	*door;
+
+	hit = 0;
+	while (!hit)
+	{
+		if (dda->side_dist_x < dda->side_dist_y)
+		{
+			dda->side_dist_x += dda->delta_dist_x;
+			dda->map_x += dda->step_x;
+			ray->hit_side = 0;
+		}
+		else
+		{
+			dda->side_dist_y += dda->delta_dist_y;
+			dda->map_y += dda->step_y;
+			ray->hit_side = 1;
+		}
+		door = find_door(map, dda->map_x, dda->map_y);
+		if (door && !door->is_open)
+			hit = 1;
+		else if (door && door->is_open)
+			continue ;
+		if (map->map_world[dda->map_y][dda->map_x] == 1)
+			hit = 1;
+		if (dda->map_x < 0 || dda->map_y < 0 || dda->map_x >= map->width
+			|| dda->map_y >= map->height)
+			break ;
 	}
+}
+
+t_ray	cast_ray_door(t_map *map, double x, double y, double angle)
+{
+	t_ray	ray;
+	t_dda	dda;
+
+	init_s_ray(&ray);
+	init_s_dda(&dda, x, y, angle);
+	perform_dda_loop_door(map, &ray, &dda);
+	ray.wall_hit = map->map_world[dda.map_y][dda.map_x];
+	ray.map_x = dda.map_x;
+	ray.map_y = dda.map_y;
+	if (ray.wall_hit == 2)
+		ray.door = find_door(map, dda.map_x, dda.map_y);
+	if (dda.map_x >= 0 && dda.map_x < map->width && dda.map_y >= 0
+		&& dda.map_y < map->height)
+		fill_s_ray(&ray, &dda, x, y);
 	set_texture(map, &ray, &dda);
 	return (ray);
 }
