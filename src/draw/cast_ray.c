@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:48:00 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/15 15:49:11 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:35:12 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	perform_dda_loop(t_map *map, t_ray *ray, t_dda *dda)
 			break ;
 		if (map->map_world[dda->map_y][dda->map_x] == 1)
 			hit = 1;
-		if(!ray->door)
+		if (!ray->door)
 			ray->door = populate_door(map, dda, ray);
 		if (ray->door && !ray->door->is_open)
 			hit = 1;
@@ -127,12 +127,11 @@ t_ray	cast_ray(t_map *map, double x, double y, double angle)
 	ray.wall_hit = map->map_world[dda.map_y][dda.map_x];
 	if (dda.map_x >= 0 && dda.map_x < map->width && dda.map_y >= 0
 		&& dda.map_y < map->height)
-		{
-
+	{
+		fill_s_ray(&ray, &dda, x, y);
+		if (ray.door && ray.door->is_open)
 			fill_s_ray(&ray, &dda, x, y);
-			if (ray.door && ray.door->is_open)
-			fill_s_ray(&ray, &dda, x, y);
-		}
+	}
 	set_texture(map, &ray, &dda);
 	return (ray);
 }

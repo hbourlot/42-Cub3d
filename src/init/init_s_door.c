@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:01:17 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/15 15:51:17 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:05:52 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_door	*find_door(t_map *map, int x, int y)
 	}
 	return (NULL);
 }
+
 static void	count_doors(t_map *map)
 {
 	int	y;

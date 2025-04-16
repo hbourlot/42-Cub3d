@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/15 12:18:15 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/16 16:09:11 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ void	draw_player2d(t_cub3d *game, t_player *p)
 	f_pos[1] = p->y;
 	p->director[0] = p->x + (p->pdx) * TILE_SIZE;
 	p->director[1] = p->y + (p->pdy) * TILE_SIZE;
+	// p->director[0] = p->x + p->director[0] * TILE_SIZE;
+	// p->director[1] = p->y + p->director[1] * TILE_SIZE;
 	draw_line(game, f_pos, p->director, create_rgb(0, 255, 0, 0));
 }
 
