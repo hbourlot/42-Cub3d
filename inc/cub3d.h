@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/15 15:59:06 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/16 17:50:34 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # define bool _Bool
 # include <stdbool.h>
 
-
 typedef struct s_img
 {
 	void		*img;
@@ -40,8 +39,6 @@ typedef struct s_img
 	int			color;
 	int			endian;
 }				t_img;
-
-
 
 typedef struct s_sprite
 {
@@ -81,12 +78,6 @@ typedef struct s_door
 	int			x;
 	int			y;
 	int			is_open;
-	int			wall_hit;
-	int hit_side;
-	double		wall_x;
-	double		dist;
-	t_dda dda;
-	// t_ray		ray;
 	// double timer; // Para animaciones
 }				t_door;
 
@@ -139,9 +130,8 @@ typedef struct s_ray
 	double		wall_x;
 	int			map_x;
 	int			map_y;
-	t_door *door;
+	t_door		*door;
 }				t_ray;
-
 
 typedef struct s_draw
 {
@@ -151,6 +141,7 @@ typedef struct s_draw
 	int			end;
 	int			x;
 }				t_draw;
+
 typedef struct s_tex
 {
 	int			tex_x;
@@ -249,5 +240,5 @@ int				collision_door(t_cub3d *game);
 // void			fill_s_ray(t_ray *ray, t_dda *dda, double x, double y);
 t_door			*find_door(t_map *map, int x, int y);
 // t_door *populate_door(t_map *map, t_dda *dda, int x, int y);
-t_door *populate_door(t_map *map, t_dda *dda , t_ray *ray);
+t_door			*populate_door(t_map *map, t_dda *dda, t_ray *ray);
 #endif
