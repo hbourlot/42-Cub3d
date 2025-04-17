@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 01:02:50 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 01:13:51 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:01:05 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,19 @@ static void	copy_main_img(t_cub3d *game, int pos_x, int pos_y)
 	int	x;
 	int	y;
 	int	*main_pixels;
-	int	*map_pixels;
-	int	map_line;
 	int	main_px;
-	int	main_line;
 
 	main_pixels = (int *)game->main_img.addr;
-	map_pixels = (int *)game->map_img.addr;
-	main_line = game->main_img.size_line / 4;
-	map_line = game->map_img.size_line / 4;
 	y = 0;
 	while (y < game->map->height * TILE_SIZE)
 	{
 		x = 0;
 		while (x < game->map->width * TILE_SIZE)
 		{
-			main_px = main_pixels[(y + pos_y) * main_line + (x + pos_x)];
-			map_pixels[y * map_line + x] = main_px;
+			main_px = main_pixels[(y + pos_y) * (game->main_img.size_line / 4)
+				+ (x + pos_x)];
+			((int *)game->map_img.addr)[y * (game->map_img.size_line / 4)
+				+ x] = main_px;
 			x++;
 		}
 		y++;
