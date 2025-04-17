@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 02:10:09 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 13:49:27 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	free_sprites(t_cub3d *game, t_sprite *sprites)
 {
 	int			i;
 	const t_img	*all_sprites[] = {sprites->no, sprites->so, sprites->we,
-		sprites->ea, sprites->door_close, sprites->door_open};
+		sprites->ea, sprites->door_close, sprites->door_open, NULL};
 
 	i = 0;
 	while (i < 6)
