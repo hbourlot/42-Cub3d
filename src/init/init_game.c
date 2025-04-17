@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:00:36 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 01:37:54 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:46:26 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	init_game(t_cub3d *game)
 	init_player(game);
 	if (init_s_sprite(game))
 		return (1);
-	if (map_reachability(game, game->map, game->player.x / TILE_SIZE,
-			game->player.y / TILE_SIZE))
+	if (map_reachability(game->map))
 		return (ft_printf_fd(2, "Error: Map isn't surrounded by walls!"), -1);
 	if (game_loop(game))
 		return (-1);

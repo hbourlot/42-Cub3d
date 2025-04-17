@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 15:35:03 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/14 16:07:58 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:47:50 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static bool	**allocate_visited(t_map *map)
 
 static int	flood_fill(t_map *map, int x, int y, bool **map_visited)
 {
-	if (x < 0 || y < 0 || y >= map->height || x >= ft_strlen(map->map_array[y]))
+	if (x < 0 || y < 0 || y >= map->height || (size_t)x >= ft_strlen(map->map_array[y]))
 		return (-1);
 	if (map_visited[y][x])
 		return (0);
@@ -81,7 +81,7 @@ static void	reload_map_visited(bool **map_visited)
 	}
 }
 
-int	map_reachability(t_cub3d *game, t_map *map, int x, int y)
+int	map_reachability(t_map *map)
 {
 	bool	**map_visited;
 	int		i;

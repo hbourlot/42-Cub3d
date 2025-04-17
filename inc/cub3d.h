@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 01:37:23 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:45:44 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ int				open_cub(const char *path);
 int				init_window(t_cub3d *game);
 int				count_lines(const char *path);
 void			map_range(t_map *map);
-int				map_reachability(t_cub3d *game, t_map *map, int x, int y);
+int				map_reachability(t_map *map);
 
 // ***************************************************************************
 // **							Player Functions   							**
