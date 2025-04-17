@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:24:49 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 01:19:21 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 14:58:17 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	render(t_cub3d *game, t_player *p)
 	x = 0;
 	while (x < S_WIDTH)
 	{
-		ray_angle = p->angle + FOV / 2 - (x * FOV / S_WIDTH);
+		ray_angle = p->angle + (PI / 3) / 2 - (x * (PI / 3) / S_WIDTH);
 		ray = cast_ray(game->map, p->x / TILE_SIZE, p->y / TILE_SIZE,
 				ray_angle);
 		draw = prepare_draw(&ray, p, ray_angle, x);
