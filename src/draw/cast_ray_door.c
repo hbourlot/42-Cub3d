@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 01:05:55 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 01:07:06 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:16:41 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ t_ray	cast_ray_door(t_map *map, double x, double y, double angle)
 	init_s_dda(&dda, x, y, angle);
 	perform_dda_loop_door(map, &ray, &dda, door);
 	ray.wall_hit = map->map_world[dda.map_y][dda.map_x];
-	ray.map_x = dda.map_x;
-	ray.map_y = dda.map_y;
-	if (ray.wall_hit == 2)
-		ray.door = find_door(map, dda.map_x, dda.map_y);
 	if (dda.map_x >= 0 && dda.map_x < map->width && dda.map_y >= 0
 		&& dda.map_y < map->height)
 		fill_s_ray(&ray, &dda, x, y);

@@ -33,7 +33,7 @@ C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map init/init_images
 				  	map/parsing/parse_map map/parsing/texture map/parsing/floor_ceiling								\
 				  	map/parsing/name map/parsing/utils  map/parse map/map_range map/parsing/map_reachability		\
 				  																									\
-					player/locate_spawn_point player/player_movement												\
+					player/locate_spawn_point player/player_movement player/player_collision						\
 
 
 

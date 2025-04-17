@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:55:38 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/14 02:03:52 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:38:20 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	mouse_signal(int x, int y, t_cub3d *game)
 {
 	int	dx;
 
+	(void)y;
 	dx = x - game->mouse_x;
 	if (dx < 0)
 		rotate_player(&game->player, XK_a, MOUSE_SIGNAL);

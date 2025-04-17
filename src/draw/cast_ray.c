@@ -6,20 +6,11 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:48:00 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 01:07:19 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:19:14 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	init_s_ray(t_ray *ray)
-{
-	ray->dist = 1000000.0;
-	ray->hit_side = 0;
-	ray->tex_num = 0;
-	ray->wall_x = 0;
-	ray->door = NULL;
-}
 
 static void	init_s_dda_aux(t_dda *dda, double x, double y)
 {
@@ -102,8 +93,6 @@ t_ray	cast_ray(t_map *map, double x, double y, double angle)
 	init_s_dda(&dda, x, y, angle);
 	perform_dda_loop(map, &ray, &dda);
 	ray.wall_hit = map->map_world[dda.map_y][dda.map_x];
-	ray.map_x = dda.map_x;
-	ray.map_y = dda.map_y;
 	if (ray.wall_hit == 2)
 		ray.door = find_door(map, dda.map_x, dda.map_y);
 	if (dda.map_x >= 0 && dda.map_x < map->width && dda.map_y >= 0

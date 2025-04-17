@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 01:07:32 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:37:23 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,9 +186,9 @@ int				init_s_map(t_map *map);
 int				init_images(t_cub3d *game);
 int				init_s_sprite(t_cub3d *game);
 int				init_doors(t_map *map);
-void			init_player(t_cub3d *game, int x, int y);
-int				init_game(t_cub3d *game, int argc, char *argv[]);
-int				init_s_cube3d(t_cub3d **game, int argc, char *argv[]);
+void			init_player(t_cub3d *game);
+int				init_game(t_cub3d *game);
+int				init_s_cube3d(t_cub3d **game, char *argv[]);
 
 // ***************************************************************************
 // **							Draw Functions       						**
@@ -220,6 +220,8 @@ int				map_reachability(t_cub3d *game, t_map *map, int x, int y);
 void			normalize_angle(float *angle);
 void			rotate_player(t_player *player, int keycode, int signal);
 void			locate_spawn_point(t_player *player, t_map *map);
+void			check_collision(t_player *player, t_map *map, float new_x,
+					float new_y);
 void			move_player(t_map *map, t_player *player, int keycode);
 
 int				get_texture_color(t_img *tex, int x, int y);

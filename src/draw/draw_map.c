@@ -6,13 +6,13 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 01:02:50 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 01:03:59 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:13:51 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_square_img(t_img *img, int pos[2], int size, int color)
+static void	draw_square_img(t_img *img, int pos[2], int size, int color)
 {
 	int	i;
 	int	j;
@@ -30,7 +30,7 @@ void	draw_square_img(t_img *img, int pos[2], int size, int color)
 	}
 }
 
-void	copy_main_img(t_cub3d *game, int pos_x, int pos_y)
+static void	copy_main_img(t_cub3d *game, int pos_x, int pos_y)
 {
 	int	x;
 	int	y;
@@ -58,7 +58,7 @@ void	copy_main_img(t_cub3d *game, int pos_x, int pos_y)
 	}
 }
 
-void	draw_player2d(t_cub3d *game, t_player *p)
+static void	draw_player2d(t_cub3d *game, t_player *p)
 {
 	int		pos[2];
 	float	f_pos[2];

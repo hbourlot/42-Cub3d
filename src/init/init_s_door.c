@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:01:17 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 00:46:58 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:30:39 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,13 @@ static void	count_doors(t_map *map)
 	map->num_doors = count;
 }
 
-int	init_doors(t_map *map)
+static void	init_doors_aux(t_map *map)
 {
-	int	y;
 	int	x;
+	int	y;
 	int	i;
 
 	i = 0;
-	count_doors(map);
-	if (map->num_doors == 0)
-		return (0);
-	map->doors = malloc(map->num_doors * sizeof(t_door));
-	if (!map->doors)
-		return (-1);
 	y = -1;
 	while (++y < map->height)
 	{
@@ -76,5 +70,16 @@ int	init_doors(t_map *map)
 			}
 		}
 	}
+}
+
+int	init_doors(t_map *map)
+{
+	count_doors(map);
+	if (map->num_doors == 0)
+		return (0);
+	map->doors = malloc(map->num_doors * sizeof(t_door));
+	if (!map->doors)
+		return (-1);
+	init_doors_aux(map);
 	return (0);
 }
