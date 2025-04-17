@@ -6,23 +6,24 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/14 17:21:56 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:54:53 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	free_world(int **world)
+void	free_world(int **world)
 {
 	int	i;
 
 	i = 0;
-	while (world[i])
+	while (world && world[i])
 	{
 		free(world[i]);
 		i++;
 	}
-	free(world);
+	if (world)
+		free(world);
 }
 
 static void	free_map(t_map *map)
@@ -78,6 +79,11 @@ static void	free_sprites(t_cub3d *game, t_sprite *sprites)
 	{
 		mlx_destroy_image(game->mlx_ptr, sprites->door_close->img);
 		free(sprites->door_close);
+	}
+	if (sprites->door_open)
+	{
+		mlx_destroy_image(game->mlx_ptr, sprites->door_open->img);
+		free(sprites->door_open);
 	}
 }
 

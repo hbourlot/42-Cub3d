@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:24:49 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 00:41:35 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:57:54 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,17 @@ static void	draw_walls(t_cub3d *game, t_ray *ray, t_draw *draw,
 	}
 }
 
-void	render_door(t_cub3d *game, t_player *p, t_ray *ray, float ray_angle,
-		int x)
+void	render_door(t_cub3d *game, t_ray *ray, float ray_angle, int x)
 {
-	double	new_x;
-	double	new_y;
-	t_ray	second_ray;
-	t_draw	second_draw;
+	double		new_x;
+	double		new_y;
+	t_ray		second_ray;
+	t_draw		second_draw;
+	t_player	*p;
 
-	new_x = p->x /* / TILE_SIZE */ + cos(ray_angle) * (ray->dist);
-	new_y = p->y /* / TILE_SIZE */ - sin(ray_angle) * (ray->dist);
+	p = &game->player;
+	new_x = p->x + cos(ray_angle) * (ray->dist);
+	new_y = p->y - sin(ray_angle) * (ray->dist);
 	new_x /= TILE_SIZE;
 	new_y /= TILE_SIZE;
 	second_ray = cast_ray_door(game->map, new_x, new_y, ray_angle);
@@ -89,7 +90,7 @@ void	render(t_cub3d *game, t_player *p)
 				ray_angle);
 		draw = prepare_draw(&ray, p, ray_angle, x);
 		if (ray.door && ray.door->is_open)
-			render_door(game, p, &ray, ray_angle, x);
+			render_door(game, &ray, ray_angle, x);
 		draw_walls(game, &ray, &draw, ray_angle);
 		x++;
 	}

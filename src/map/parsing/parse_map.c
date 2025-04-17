@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/14 15:10:51 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:55:18 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,13 @@ static int	allocate_map_world(t_map *map)
 		j = -1;
 		map->map_world[i] = ft_calloc(map->width + 1, sizeof(int));
 		if (!map->map_array[i])
-		{
-			while (i-- > 0)
-				free(map->map_world[i]);
-			free(map->map_world);
-			return (ft_printf_fd(2, ME_MALLOC), -1);
-		}
+			free_world(map->map_world);
 		while (map->map_array[i][++j] && map->map_array[i][j] != '\n')
 		{
 			if (map->map_array[i][j] == '1')
 				map->map_world[i][j] = 1;
 			else if (map->map_array[i][j] == '2')
 				map->map_world[i][j] = 2;
-			// else if (map->map_array[i][j] == '0')
-			// map->map_world[i][j] = -1;
 			else
 				map->map_world[i][j] = 0;
 		}

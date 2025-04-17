@@ -6,13 +6,11 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:01:17 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/16 17:50:37 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:46:58 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 t_door	*find_door(t_map *map, int x, int y)
 {
@@ -63,24 +61,20 @@ int	init_doors(t_map *map)
 	map->doors = malloc(map->num_doors * sizeof(t_door));
 	if (!map->doors)
 		return (-1);
-	y = 0;
-	while (y < map->height)
+	y = -1;
+	while (++y < map->height)
 	{
-		x = 0;
-		while (x < map->width)
+		x = -1;
+		while (++x < map->width)
 		{
 			if (map->map_world[y][x] == 2)
 			{
 				map->doors[i].x = x;
 				map->doors[i].y = y;
 				map->doors[i].is_open = 0;
-				// map->doors[i].timer = 0.0;
-				// map->map_world[y][x] = 0;
 				i++;
 			}
-			x++;
 		}
-		y++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 00:23:42 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:07:32 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,4 +233,10 @@ int				collision_door(t_cub3d *game);
 t_door			*find_door(t_map *map, int x, int y);
 void			put_pixel_img(t_img *img, int x, int y, int color);
 t_ray			cast_ray_door(t_map *map, double x, double y, double angle);
+void			free_world(int **world);
+void			draw_line(t_cub3d *game, float initial[2], float final[2],
+					int color);
+void			init_s_ray(t_ray *ray);
+void			init_s_dda(t_dda *dda, double x, double y, double angle);
+void			fill_s_ray(t_ray *ray, t_dda *dda, double x, double y);
 #endif

@@ -1,65 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_pixel.c                                       :+:      :+:    :+:   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/06 15:06:21 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/16 19:07:35 by joralves         ###   ########.fr       */
+/*   Created: 2025/04/17 01:02:50 by joralves          #+#    #+#             */
+/*   Updated: 2025/04/17 01:03:59 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	put_pixel_img(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x < 0 || y < 0)
-		return ;
-	if (x >= img->width || y >= img->height)
-		return ;
-	dst = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	get_greater_num(int a, int b)
-{
-	if (a > b)
-		return (a);
-	else
-		return (b);
-}
-
-void	draw_line(t_cub3d *game, float initial[2], float final[2], int color)
-{
-	t_line	lines;
-	int		i;
-
-	ft_memset(&lines, 0, sizeof(t_line));
-	i = 0;
-	lines.dx = final[0] - initial[0];
-	lines.dy = final[1] - initial[1];
-	lines.steps = get_greater_num(abs(lines.dx), abs(lines.dy));
-	lines.x_inc = (float)lines.dx / lines.steps;
-	lines.y_inc = (float)lines.dy / lines.steps;
-	while (i <= lines.steps)
-	{
-		if (initial[0] < game->map->width * TILE_SIZE
-			&& initial[1] < game->map->height * TILE_SIZE)
-			put_pixel_img(&game->map_img, round(initial[0]), round(initial[1]),
-				color);
-		initial[0] += lines.x_inc;
-		initial[1] += lines.y_inc;
-		i++;
-	}
-}
-
-int	create_rgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
 
 void	draw_square_img(t_img *img, int pos[2], int size, int color)
 {
@@ -76,44 +27,6 @@ void	draw_square_img(t_img *img, int pos[2], int size, int color)
 			j++;
 		}
 		i++;
-	}
-}
-
-void	draw_player2d(t_cub3d *game, t_player *p)
-{
-	int		pos[2];
-	float	f_pos[2];
-
-	pos[0] = p->x - p->collider;
-	pos[1] = p->y - p->collider;
-	draw_square_img(&game->map_img, pos, p->collider * 2, 0xc0c0c0);
-	f_pos[0] = p->x;
-	f_pos[1] = p->y;
-	p->director[0] = p->x + (p->pdx) * TILE_SIZE;
-	p->director[1] = p->y + (p->pdy) * TILE_SIZE;
-	// p->director[0] = p->x + p->director[0] * TILE_SIZE;
-	// p->director[1] = p->y + p->director[1] * TILE_SIZE;
-	draw_line(game, f_pos, p->director, create_rgb(0, 255, 0, 0));
-}
-
-void	clear_main_img(t_cub3d *game)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (x < S_WIDTH)
-	{
-		y = 0;
-		while (y < S_HEIGHT)
-		{
-			if (y < S_HEIGHT / 2)
-				put_pixel_img(&game->main_img, x, y, 0x4B4B4B);
-			if (y > S_HEIGHT / 2 && y < S_HEIGHT)
-				put_pixel_img(&game->main_img, x, y, 0x2F2F2F);
-			y++;
-		}
-		x++;
 	}
 }
 
@@ -143,6 +56,21 @@ void	copy_main_img(t_cub3d *game, int pos_x, int pos_y)
 		}
 		y++;
 	}
+}
+
+void	draw_player2d(t_cub3d *game, t_player *p)
+{
+	int		pos[2];
+	float	f_pos[2];
+
+	pos[0] = p->x - p->collider;
+	pos[1] = p->y - p->collider;
+	draw_square_img(&game->map_img, pos, p->collider * 2, 0xc0c0c0);
+	f_pos[0] = p->x;
+	f_pos[1] = p->y;
+	p->director[0] = p->x + (p->pdx) * TILE_SIZE;
+	p->director[1] = p->y + (p->pdy) * TILE_SIZE;
+	draw_line(game, f_pos, p->director, create_rgb(0, 255, 0, 0));
 }
 
 static int	set_color_map(char c)

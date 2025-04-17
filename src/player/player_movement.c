@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:53:30 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/16 16:08:05 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 00:44:53 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	rotate_player(t_player *player, int keycode, int signal)
 	normalize_angle(&player->angle);
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;
-	player->director[0] = cos(player->angle)*(SPEED /2);
-	player->director[1] = -sin(player->angle)* (SPEED/2);
 }
 
 int	wall_collision(t_map *map, float new_x, float new_y, float collider)
@@ -38,8 +36,8 @@ int	wall_collision(t_map *map, float new_x, float new_y, float collider)
 	int			i;
 	t_door		*door;
 	const float	corners[4][2] = {{new_x - collider, new_y - collider}, {new_x
-			+ collider, new_y - collider}, {new_x - collider, new_y + collider},
-			{new_x + collider, new_y + collider}};
+		+ collider, new_y - collider}, {new_x - collider, new_y + collider},
+	{new_x + collider, new_y + collider}};
 
 	i = 0;
 	while (i < 4)
@@ -115,11 +113,8 @@ int	collision_door(t_cub3d *game)
 	if (!door)
 		return (0);
 	if (door->is_open == 0)
-	{
 		door->is_open = 1;
-	}
 	else
 		door->is_open = 0;
-	printf("door status %d\n", door->is_open);
 	return (0);
 }
