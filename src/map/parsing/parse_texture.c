@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:08:25 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/20 17:24:30 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:30:37 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,13 @@ static int set_path(t_map *map, char *line, const char *compass[])
 	status = 0;
 	while(i < 4)
 	{
-		if (ft_strncmp(line, compass[i], 2) == CMP_OK && !*paths[i])
+		if (ft_strncmp(line, compass[i], 2) == CMP_OK)
 		{
+			if (*paths[i])
+				return (ft_printf_fd(2, ME_MMA) ,-1);
 			status = allocate_path((char **)paths[i], line);
+			if (status == -1)
+				return (ft_printf_fd(2, ME_MALLOC), -1);
 			break;
 		}
 		i++;
@@ -96,7 +100,7 @@ bool	parse_texture(t_map *map)
 		if (parse_line(map->cub_array[i], compass))
 		{
 			if (set_path(map, map->cub_array[i], compass) < 0)
-				return (ft_printf_fd(2, ME_MALLOC), true);
+				return (true);
 			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
 		}
 		i++;

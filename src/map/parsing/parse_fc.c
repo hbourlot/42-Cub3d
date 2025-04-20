@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:28:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/20 16:55:26 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:41:17 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	allocate_fc(char **ptr_ref, char *src)
 		return (-1);
 	*ptr_ref = ft_strdup(split[1]);
 	if (!*ptr_ref)
-		return (free_split(split), -1);
+	return (free_split(split), -1);
 	free_split(split);
 	return (SUCCESS);
 }
@@ -33,12 +33,15 @@ static int	set_fc(t_map *map, char *src)
 
 	status = -1;
 	c = src[0];
-	if (c == 'F' && !map->ceiling)
+
+	if ((c == 'F' && map->floor) || (c == 'C' && map->ceiling))
+		return (ft_printf_fd(2, ME_MMA), status);
+	if (c == 'F')
 		status = allocate_fc((char **)&map->floor, src);
-	if (c == 'C' && map->floor)
+	if (c == 'C')
 		status = allocate_fc((char **)&map->ceiling, src);
-	if (c == 'F' || c == 'C')
-		status = 0;
+	if (status < 0)
+		ft_printf_fd(2, ME_MALLOC);
 	return (status);
 }
 
@@ -107,7 +110,7 @@ bool	parse_fc(t_map *map)
 		if (parse_line(map->cub_array[i]))
 		{
 			if (set_fc(map, map->cub_array[i]) < 0)
-				return (ft_printf_fd(2, ME_MALLOC), -1);
+				return (-1);
 			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
 		}
 		i++;
