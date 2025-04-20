@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:30:43 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/03/01 08:33:05 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:03:50 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ char	**ft_split(char const *s, char c)
 	if (NULL == s)
 		return (NULL);
 	meta_data->word_count = count_words_in_string(s, c);
-	meta_data->address_ptr = ft_calloc((meta_data->word_count + 1), sizeof(char *));
+	meta_data->address_ptr = ft_calloc((meta_data->word_count + 1),
+			sizeof(char *));
 	if (!meta_data->address_ptr)
 		return (NULL);
 	meta_data->address_ptr[meta_data->word_count] = NULL;

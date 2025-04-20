@@ -1,10 +1,13 @@
 # Colors and formatting
-RED				=\033[1;31m
+RED				= \033[1;31m
 YELLOW 			= \033[1;33m
 ORANGE 			= \033[1;38;5;214m
 GREEN 			= \033[1;32m
 CYAN 			= \033[1;36m
 RESET 			= \033[0m
+UP				= "\033[A"
+CUT				= "\033[K"
+
 
 CC				= cc
 CFLAGS			= -Wall -Wextra -Werror
@@ -50,17 +53,22 @@ OBJS_SRC		= $(addprefix $(OBJ_DIR), $(SRC_FILES:%.c=%.o))
 # OBJS_BONUS		= $(addprefix $(OBJ_DIR), $(BONUS_FILES:%.c=%.o))
 
 
-ifeq ($(OS), Darwin)
-	PRINT_CMD = printf
-	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
-else
-	PRINT_CMD = echo -n
-	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))% ] $(ORANGE)Compiling [$1]... $(RESET)"
-endif
+# ifeq ($(OS), Darwin)
+# PRINT_CMD = printf
+# MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
+# else
+# PRINT_CMD = echo -n
+# MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))% ] $(ORANGE)Compiling [$1]... $(RESET)"
+# endif
+
+PRINT_CMD = printf
+MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
 
 # Function to print the compilation message
 define print_compile_msg
 	$(eval COMPILED_FILES = $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@printf "%300s\r"
+	@printf $(UP) $(CUT)
 	@$(PRINT_CMD) $(MSG)
 endef
 
@@ -90,7 +98,7 @@ $(NAME):		$(OBJS_SRC)
 
 $(OBJ_DIR)%.o: 	%.c
 				@mkdir -p $(dir $@)
-				$(call print_compile_msg, $<)
+				$(call print_compile_msg,$<)
 				@$(CC) $(CFLAGS) -c -I./$(LIB_DIR) $< -o $@
 	
 clean:

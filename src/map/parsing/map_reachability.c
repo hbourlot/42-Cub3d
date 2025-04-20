@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_reachability.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/04 15:35:03 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/13 11:21:28 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:54:00 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ static bool	**allocate_visited(t_map *map)
 
 static int	flood_fill(t_map *map, int x, int y, bool **map_visited)
 {
-	if (x < 0 || y < 0 || y >= map->height || x >= ft_strlen(map->map_array[y]))
+	if (x < 0 || y < 0 || y >= map->height
+		|| (size_t)x >= ft_strlen(map->map_array[y]))
 		return (-1);
 	if (map_visited[y][x])
 		return (0);
-
-	if (map->map_array[y][x] == '0' || contains_char("SNEW", map->map_array[y][x]))
+	if (map->map_array[y][x] == '0' || map->map_array[y][x] == '2'
+		|| contains_char("SNEW", map->map_array[y][x]))
 	{
 		map_visited[y][x] = true;
 		if (flood_fill(map, x + 1, y, map_visited) || flood_fill(map, x - 1, y,
@@ -56,7 +57,7 @@ static int	flood_fill(t_map *map, int x, int y, bool **map_visited)
 	return (0);
 }
 
-void	free_visited(bool **map_visited)
+static void	free_visited(bool **map_visited)
 {
 	int	i;
 
@@ -69,7 +70,7 @@ void	free_visited(bool **map_visited)
 	free(map_visited);
 }
 
-void	reload_map_visited(bool **map_visited)
+static void	reload_map_visited(bool **map_visited)
 {
 	int	i;
 
@@ -81,7 +82,7 @@ void	reload_map_visited(bool **map_visited)
 	}
 }
 
-int	map_reachability(t_cub3d *game, t_map *map, int x, int y)
+int	map_reachability(t_map *map)
 {
 	bool	**map_visited;
 	int		i;

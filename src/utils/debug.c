@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:40:08 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/13 10:03:36 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:40:36 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "debug.h"
 
-void print_map_detailed(t_cub3d *game)
+void	print_map_detailed(t_cub3d *game)
 {
-	int	i;
-	int	j;
-	char c;
+	int		i;
+	int		j;
+	char	c;
 
 	i = 0;
 	printf("--- START DEBUG MAP ---\n");
@@ -34,11 +34,11 @@ void print_map_detailed(t_cub3d *game)
 	printf("--- END DEBUG MAP ---\n");
 }
 
-void print_map(t_cub3d *game)
+void	print_map(t_cub3d *game)
 {
-	int	i;
-	int	j;
-	char c;
+	int		i;
+	int		j;
+	char	c;
 
 	i = 0;
 	printf("--- START DEBUG MAP ---\n");
@@ -53,5 +53,5 @@ void print_map(t_cub3d *game)
 		}
 		i++;
 	}
-	printf("\n--- END DEBUG MAP ---\n");	
+	printf("\n--- END DEBUG MAP ---\n");
 }

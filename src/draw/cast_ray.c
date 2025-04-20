@@ -6,21 +6,13 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:48:00 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/11 11:51:50 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:19:14 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_s_ray(t_ray *ray)
-{
-	ray->dist = 1000000.0;
-	ray->hit_side = 0;
-	ray->tex_num = 0;
-	ray->wall_x = 0;
-}
-
-void	init_s_dda_aux(t_dda *dda, double x, double y)
+static void	init_s_dda_aux(t_dda *dda, double x, double y)
 {
 	if (dda->dir_x < 0)
 	{
@@ -89,7 +81,6 @@ void	fill_s_ray(t_ray *ray, t_dda *dda, double x, double y)
 		ray->dist = (dda->map_y - y + (1 - dda->step_y) / 2.0) / dda->dir_y;
 		ray->wall_x = x + ray->dist * dda->dir_x;
 	}
-	set_texture(ray, dda);
 	ray->wall_x -= floor(ray->wall_x);
 }
 
@@ -102,8 +93,11 @@ t_ray	cast_ray(t_map *map, double x, double y, double angle)
 	init_s_dda(&dda, x, y, angle);
 	perform_dda_loop(map, &ray, &dda);
 	ray.wall_hit = map->map_world[dda.map_y][dda.map_x];
+	if (ray.wall_hit == 2)
+		ray.door = find_door(map, dda.map_x, dda.map_y);
 	if (dda.map_x >= 0 && dda.map_x < map->width && dda.map_y >= 0
 		&& dda.map_y < map->height)
 		fill_s_ray(&ray, &dda, x, y);
+	set_texture(map, &ray, &dda);
 	return (ray);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_s_cube3d.c                                    :+:      :+:    :+:   */
+/*   init_s_cub3d.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:11:01 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 16:27:45 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:36:27 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_screen	*init_s_screen(void)
 	return (&screen);
 }
 
-int	init_s_cube3d(t_cub3d **game, int argc, char *argv[])
+int	init_s_cube3d(t_cub3d **game, char *argv[])
 {
 	static t_cub3d	data;
 	static t_map	map;

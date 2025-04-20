@@ -5,9 +5,11 @@ ORANGE 			= \033[1;38;5;214m
 GREEN 			= \033[1;32m
 CYAN 			= \033[1;36m
 RESET 			= \033[0m
+UP				=	"\033[A"
+CUT				=	"\033[K"
 
 CC				= cc
-CFLAGS			= -g -Wall #-Wextra -Werror 
+CFLAGS			= -g -Wall -Wextra #-Werror 
 MINILIB_FLAGS	= -Llib/minilibx-linux  -Lmlx -lmlx -lX11 -lXext -lm  #-lmlx_Linux -lX11 -lXext
 LIB				= libcube3d.a
 INCLUDE 		= inc/
@@ -15,25 +17,26 @@ HEADERS			= inc/cub3d.h inc/definitions.h inc/error.h ./lib/libft/inc/libft.h
 SRC_DIR 		= src/
 BONUS_DIR 		= bonus/
 OBJ_DIR 		= obj/
-TOTAL_FILES		= $(shell echo $$(($(words $(OBJS_SRC)) + 1)))
+TOTAL_FILES		= $(shell echo $$(($(words $(OBJS_SRC)))))
 COMPILED_FILES	= 0
 OS				= $(shell uname)
 
 NAME			= cub3D
 C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map init/init_images  								\
-				  	init/init_window init/init_game init/init_s_player init/init_s_sprites							\
+				  	init/init_window init/init_game init/init_s_player init/init_s_sprites init/init_s_door				\
 				  																									\
 				  	utils/signal_hook utils/debug																	\
 																													\
 				  	exit/free																						\
-				  	draw/draw_pixel	draw/raycaster draw/get_texture draw/cast_ray									\
+				  	draw/draw_img draw/draw_map draw/draw_line draw/raycaster draw/get_texture 						\
+					draw/cast_ray draw/draw_line draw/cast_ray_door													\
 																													\
 				  	map/count_lines map/cub_array map/open															\
 				  	map/parsing/parse_map map/parsing/parse_texture map/parsing/parse_fc							\
-				  	map/parsing/invalid_file_name  map/parse map/map_range											\
+				  	map/parsing/invalid_file_name  map/parse_s_map map/map_range											\
 					map/parsing/map_reachability map/parsing/check_unique_textures									\
 				  																									\
-					player/locate_spawn_point player/player_movement												\
+					player/locate_spawn_point player/player_movement player/player_collision						\
 
 
 
@@ -49,18 +52,24 @@ LIBFT_LIB 		= ./lib/libft/libft.a
 MINILIBX_LIB	= ./lib/minilibx-linux/libmlx.a
 
 
-ifeq ($(OS), Darwin)
-	PRINT_CMD = printf
-	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
-else
-	PRINT_CMD = echo -n
-	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))% ] $(ORANGE)Compiling [$1]... $(RESET)"
-endif
+# ifeq ($(OS), Darwin)
+# 	PRINT_CMD = printf
+# 	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
+# else
+# 	PRINT_CMD = echo -n
+# 	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))% ] $(ORANGE)Compiling [$1]... $(RESET)"
+# endif
+
+PRINT_CMD = printf
+MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
 
 # Function to print the compilation message
 define print_compile_msg
 	$(eval COMPILED_FILES = $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@$(PRINT_CMD) "%400s\r"
+	@$(PRINT_CMD) $(UP) $(CUT)
 	@$(PRINT_CMD) $(MSG)
+
 endef
 
 define clean_func
@@ -106,11 +115,11 @@ $(LIB):			$(OBJS_SRC) $(OBJ_DIR)main.o
 
 $(OBJ_DIR)%.o:	%.c $(INCLUDE)
 				@mkdir -p $(dir $@)
-				$(call print_compile_msg, $<)
+				$(call print_compile_msg,$<)
 				@$(CC) $(CFLAGS) -c $< -I./$(INCLUDE) -o $@
 
 $(OBJ_DIR)main.o:	main.c $(INCLUDE)#inc/cube3d.h inc/definitions.h inc/error.h
-					$(call print_compile_msg, $<)
+					$(call print_compile_msg,$<)
 					@$(CC) -c main.c $(CFLAGS) -I./$(INCLUDE) -o $@
 
 clean:

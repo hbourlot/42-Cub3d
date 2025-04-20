@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
+/*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:08:25 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/11 14:42:34 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/20 17:24:30 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,21 @@ static int	allocate_path(char **path_ref, char *src)
 	return (-1);
 }
 
-static int	set_path(t_map *map, char *src, const char *compass[],
-		int *priority)
+static int set_path(t_map *map, char *line, const char *compass[])
 {
 	int			i;
+	const char **paths[4] = {&map->no, &map->so, &map->we, &map->ea};
 	int			status;
-	int			(*cmp)(const char *, const char *, size_t i);
-	int			(*alloc)(char **, char *);
-	const char	**paths[4] = {&map->no, &map->so, &map->we, &map->ea};
-
-	status = -1;
 	i = 0;
-	cmp = ft_strncmp;
-	alloc = allocate_path;
-	if (*priority < 4 && cmp(src, compass[*priority], 2) == CMP_OK)
-		status = alloc((char **)paths[*priority], src);
-	if (status == 0)
-		(*priority)++;
-	while (compass[i])
+	
+	status = 0;
+	while(i < 4)
 	{
-		if (cmp(src, compass[i], 2) == CMP_OK)
-			status = 0;
+		if (ft_strncmp(line, compass[i], 2) == CMP_OK && !*paths[i])
+		{
+			status = allocate_path((char **)paths[i], line);
+			break;
+		}
 		i++;
 	}
 	return (status);
@@ -67,7 +61,10 @@ static bool	parse_line(char *src, const char *compass[])
 {
 	char	**split;
 	int		words;
+	const char *FC[] = {"F", "C", NULL};
 
+	if (ft_strcmps(src, FC) == CMP_OK)
+		return (false);
 	split = ft_split(src, ' ');
 	if (!split)
 		return (ft_printf_fd(2, ME_MALLOC), -1);
@@ -77,6 +74,7 @@ static bool	parse_line(char *src, const char *compass[])
 		return (false);
 	if (src[2] != ' ' || words != 2)
 		return (false);
+
 	return (true);
 }
 
@@ -86,16 +84,18 @@ static bool	parse_line(char *src, const char *compass[])
 bool	parse_texture(t_map *map)
 {
 	int			i;
-	int			priority;
-	const char	*compass[] = {"NO", "SO", "WE", "EA", NULL};
-
+	const char	*compass[] = {"NO", "SO", "WE", "EA", "F", "C", NULL};
+	char		c;
+	
 	i = 0;
-	priority = 0;
-	while (map->cub_array[i] && i < 4)
+	while (map->cub_array[i])
 	{
+		c = map->cub_array[i][0];
+		if (c == '1' || c == '2' || c == '\t' || c == ' ')
+			break ;
 		if (parse_line(map->cub_array[i], compass))
 		{
-			if (set_path(map, map->cub_array[i], compass, &priority) < 0)
+			if (set_path(map, map->cub_array[i], compass) < 0)
 				return (ft_printf_fd(2, ME_MALLOC), true);
 			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
 		}

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub_array.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:56:43 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/04 18:27:10 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/17 01:41:19 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static char	**allocate_cub_array(int nbr_of_lines, t_map *map)
+static char	**allocate_cub_array(int nbr_of_lines)
 {
 	char	**cub_array;
 
@@ -50,7 +50,7 @@ static int	fill_cub_array(char **cub_array, const char *path)
 
 int	cub_array(t_map *map)
 {
-	map->cub_array = allocate_cub_array(map->nbr_of_lines, map);
+	map->cub_array = allocate_cub_array(map->nbr_of_lines);
 	if (!map->cub_array)
 		return (-1);
 	if (fill_cub_array(map->cub_array, map->path) < 0)
