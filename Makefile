@@ -5,6 +5,8 @@ ORANGE 			= \033[1;38;5;214m
 GREEN 			= \033[1;32m
 CYAN 			= \033[1;36m
 RESET 			= \033[0m
+UP				=	"\033[A"
+CUT				=	"\033[K"
 
 CC				= cc
 CFLAGS			= -g -Wall -Wextra #-Werror 
@@ -49,18 +51,24 @@ LIBFT_LIB 		= ./lib/libft/libft.a
 MINILIBX_LIB	= ./lib/minilibx-linux/libmlx.a
 
 
-ifeq ($(OS), Darwin)
-	PRINT_CMD = printf
-	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
-else
-	PRINT_CMD = echo -n
-	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))% ] $(ORANGE)Compiling [$1]... $(RESET)"
-endif
+# ifeq ($(OS), Darwin)
+# 	PRINT_CMD = printf
+# 	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
+# else
+# 	PRINT_CMD = echo -n
+# 	MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))% ] $(ORANGE)Compiling [$1]... $(RESET)"
+# endif
+
+PRINT_CMD = printf
+MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
 
 # Function to print the compilation message
 define print_compile_msg
 	$(eval COMPILED_FILES = $(shell echo $$(($(COMPILED_FILES) + 1))))
+	@$(PRINT_CMD) "%400s\r"
+	@$(PRINT_CMD) $(UP)
 	@$(PRINT_CMD) $(MSG)
+
 endef
 
 define clean_func
@@ -106,7 +114,7 @@ $(LIB):			$(OBJS_SRC) $(OBJ_DIR)main.o
 
 $(OBJ_DIR)%.o:	%.c $(INCLUDE)
 				@mkdir -p $(dir $@)
-				$(call print_compile_msg, $<)
+				$(call print_compile_msg,$<)
 				@$(CC) $(CFLAGS) -c $< -I./$(INCLUDE) -o $@
 
 $(OBJ_DIR)main.o:	main.c $(INCLUDE)#inc/cube3d.h inc/definitions.h inc/error.h
