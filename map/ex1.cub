@@ -4,7 +4,7 @@ WE ./texture/wall/wall3.xpm
 EA ./texture/wall/grass_block.xpm
 C 225,30,0
 
-F 220,100,0
+F 200,100,100
 
         1111111111111111111111111
         1000000000110000000000001

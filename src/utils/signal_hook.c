@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_hook.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:55:38 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/28 22:08:01 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:08:28 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	key_press(int keycode, t_cub3d *game)
 	if (keycode == XK_Escape)
 	{
 		ft_printf_fd(1, "You pressed %d (Esc)\n", keycode);
-		free_game(1);
+		free_game(0);
 	}
 	if (keycode == XK_w || keycode == XK_s || keycode == XK_Up
 		|| keycode == XK_Down)
