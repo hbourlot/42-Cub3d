@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_fc.c                                         :+:      :+:    :+:   */
+/*   init_fc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:28:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/28 22:28:15 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:25:39 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ static bool	parse_color(char *color)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = -1;
 	split = ft_split(color, ',');
 	if (split_metadata()->word_count != 3)
 		return (free_split(split), false);
-	while (i < 3)
+	while (++i < 3)
 	{
 		j = -1;
+		truncate_character(split[i], '\n');
 		if (ft_strlen(split[i]) > 3)
 			return (free_split(split), false);
 		while (split[i][++j])
@@ -71,7 +72,6 @@ static bool	parse_color(char *color)
 		j = ft_atoi(split[i]);
 		if (j < 0 || j > 255)
 			return (free_split(split), false);
-		i++;
 	}
 	return (free_split(split), true);
 }
@@ -89,8 +89,10 @@ static bool	parse_line(char *src)
 	words = split_metadata()->word_count;
 	if (ft_strlen(split[0]) != 1 || words != 2)
 		return (free_split(split), false);
-	if (!parse_color(split[1]))
+	if (!parse_color(split[1])) {
+		
 		return (free_split(split), false);
+	}
 	free_split(split);
 	if (c != 'F' && c != 'C')
 		return (false);
@@ -111,12 +113,17 @@ void	init_fc(t_map *map, t_sprite *sprite)
 			break ;
 		if (parse_line(map->cub_array[i]))
 		{
-			if (set_fc(sprite, map->cub_array[i]) < 0)
+			
+			if (set_fc(sprite, map->cub_array[i]) < 0) {
 				free_game(1);
+			}
 			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
 		}
 		++i;
 	}
 	if (!sprite->ceiling || !sprite->floor)
+	{
+
 		return (ft_printf_fd(2, ME_MMA), free_game(1));
+	}
 }
