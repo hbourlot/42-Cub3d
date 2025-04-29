@@ -33,7 +33,7 @@ void	init_s_cub3d(t_cub3d *game, char *argv[])
 	init_doors(game->map);
 	init_player(game);
 	init_s_sprite(game);
-	if (map_reachability(game->map)) 
+	if (map_reachability(game->map))
 	{
 		ft_printf_fd(2, "Error: Map isn't surrounded by walls!");
 		free_game(1);

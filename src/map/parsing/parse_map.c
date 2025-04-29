@@ -79,7 +79,6 @@ static bool	is_map_valid(char **cub_array, const char *valid_chars, int i)
 				printf("valid_chars: %s\n", valid_chars);
 				printf("cub_array[i]: %s\n", cub_array[i]);
 				printf("OVER HERE\n");
-				
 				return (false);
 			}
 			j++;
@@ -121,7 +120,6 @@ bool	parse_map(t_map *map)
 	}
 	else
 	{
-
 		return (ft_printf_fd(2, ME_MINFO), true);
 	}
 	return (SUCCESS);

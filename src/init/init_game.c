@@ -14,6 +14,5 @@
 
 void	init_game(t_cub3d *game)
 {
-
 	game_loop(game);
 }

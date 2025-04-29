@@ -27,7 +27,7 @@ C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_images  								\
 				  	init/init_fc																					\
 				  	utils/signal_hook utils/debug																	\
 																													\
-				  	exit/free																						\
+				  	exit/free_game																						\
 				  	draw/draw_img draw/draw_map draw/draw_line draw/raycaster draw/get_texture 						\
 					draw/cast_ray draw/draw_line draw/cast_ray_door													\
 																													\

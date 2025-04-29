@@ -76,7 +76,7 @@ void	init_doors(t_map *map)
 {
 	count_doors(map);
 	if (map->num_doors == 0)
-		return;
+		return ;
 	map->doors = ft_calloc((map->num_doors + 1), sizeof(t_door));
 	if (!map->doors)
 		free_game(1);

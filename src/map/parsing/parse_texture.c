@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:08:25 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/20 17:30:37 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/29 18:59:29 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,24 @@ static int	allocate_path(char **path_ref, char *src)
 	return (-1);
 }
 
-static int set_path(t_map *map, char *line, const char *compass[])
+static int	set_path(t_map *map, char *line, const char *compass[])
 {
 	int			i;
-	const char **paths[4] = {&map->no, &map->so, &map->we, &map->ea};
+	const char	**paths[4] = {&map->no, &map->so, &map->we, &map->ea};
 	int			status;
+
 	i = 0;
-	
 	status = 0;
-	while(i < 4)
+	while (i < 4)
 	{
 		if (ft_strncmp(line, compass[i], 2) == CMP_OK)
 		{
 			if (*paths[i])
-				return (ft_printf_fd(2, ME_MMA) ,-1);
+				return (ft_printf_fd(2, ME_MMA), -1);
 			status = allocate_path((char **)paths[i], line);
 			if (status == -1)
 				return (ft_printf_fd(2, ME_MALLOC), -1);
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -63,11 +63,11 @@ static int set_path(t_map *map, char *line, const char *compass[])
 
 static bool	parse_line(char *src, const char *compass[])
 {
-	char	**split;
-	int		words;
-	const char *FC[] = {"F", "C", NULL};
+	char		**split;
+	int			words;
+	const char	*fc[] = {"F", "C", NULL};
 
-	if (ft_strcmps(src, FC) == CMP_OK)
+	if (ft_strcmps(src, fc) == CMP_OK)
 		return (false);
 	split = ft_split(src, ' ');
 	if (!split)
@@ -78,7 +78,6 @@ static bool	parse_line(char *src, const char *compass[])
 		return (false);
 	if (src[2] != ' ' || words != 2)
 		return (false);
-
 	return (true);
 }
 
@@ -90,7 +89,7 @@ bool	parse_texture(t_map *map)
 	int			i;
 	const char	*compass[] = {"NO", "SO", "WE", "EA", "F", "C", NULL};
 	char		c;
-	
+
 	i = 0;
 	while (map->cub_array[i])
 	{

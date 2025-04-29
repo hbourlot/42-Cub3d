@@ -24,7 +24,7 @@ static int	allocate_fc(int *ptr_ref, char *src)
 	if (!rgb)
 		return (free_split(split_addr), -1);
 	free_split(split_addr);
-	*ptr_ref = create_rgb(0 ,ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
+	*ptr_ref = create_rgb(0, ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
 	free_split(rgb);
 	return (SUCCESS);
 }
@@ -36,7 +36,6 @@ static int	set_fc(t_sprite *sprite, char *src)
 
 	status = -1;
 	c = src[0];
-
 	if ((c == 'F' && sprite->floor) || (c == 'C' && sprite->ceiling))
 		return (ft_printf_fd(2, ME_MMA), status);
 	if (c == 'F')
