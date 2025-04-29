@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   count_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:03:23 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:01:36 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:36:48 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int	count_lines(const char *path)
 
 	fd = open_cub(path);
 	if (fd < 0)
-		return (ft_printf_fd(2, ME_FD), -1);
+	{
+		ft_printf_fd(2, ME_FD);
+		free_game(1);
+	}
 	nbr_of_lines = lines_in_cub(fd);
 	close(fd);
 	return (nbr_of_lines);

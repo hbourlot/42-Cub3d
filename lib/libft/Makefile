@@ -62,14 +62,15 @@ OBJS_SRC		= $(addprefix $(OBJ_DIR), $(SRC_FILES:%.c=%.o))
 # endif
 
 PRINT_CMD = printf
-MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
+MSG = "[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
 
 # Function to print the compilation message
 define print_compile_msg
 	$(eval COMPILED_FILES = $(shell echo $$(($(COMPILED_FILES) + 1))))
-	@printf "%300s\r"
-	@printf $(UP) $(CUT)
+	@$(PRINT_CMD) "%200s\r"
+	@$(PRINT_CMD) $(UP) $(CUT)
 	@$(PRINT_CMD) $(MSG)
+
 endef
 
 define clean_func

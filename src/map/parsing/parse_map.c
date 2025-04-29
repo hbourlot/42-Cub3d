@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 21:09:48 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 00:55:18 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/28 21:26:57 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,13 @@ static bool	is_map_valid(char **cub_array, const char *valid_chars, int i)
 		while (cub_array[i][j])
 		{
 			if (!ft_strchr(valid_chars, cub_array[i][j]))
+			{
+				printf("valid_chars: %s\n", valid_chars);
+				printf("cub_array[i]: %s\n", cub_array[i]);
+				printf("OVER HERE\n");
+				
 				return (false);
+			}
 			j++;
 		}
 		i++;
@@ -114,6 +120,9 @@ bool	parse_map(t_map *map)
 			return (false);
 	}
 	else
+	{
+
 		return (ft_printf_fd(2, ME_MINFO), true);
+	}
 	return (SUCCESS);
 }

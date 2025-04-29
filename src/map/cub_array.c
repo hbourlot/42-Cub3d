@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_array.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:56:43 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 01:41:19 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:34:50 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,11 @@ static int	fill_cub_array(char **cub_array, const char *path)
 	return (0);
 }
 
-int	cub_array(t_map *map)
+void	init_cub_array(t_map *map)
 {
 	map->cub_array = allocate_cub_array(map->nbr_of_lines);
 	if (!map->cub_array)
-		return (-1);
+		free_game(1);
 	if (fill_cub_array(map->cub_array, map->path) < 0)
-		return (-1);
-	return (SUCCESS);
+		free_game(1);
 }

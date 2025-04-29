@@ -6,27 +6,30 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:28:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/20 17:41:17 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:28:15 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	allocate_fc(char **ptr_ref, char *src)
+static int	allocate_fc(int *ptr_ref, char *src)
 {
-	char	**split;
+	char	**split_addr;
+	char	**rgb;
 
-	split = ft_split(src, ' ');
-	if (!split)
+	split_addr = ft_split(src, ' ');
+	if (!split_addr)
 		return (-1);
-	*ptr_ref = ft_strdup(split[1]);
-	if (!*ptr_ref)
-	return (free_split(split), -1);
-	free_split(split);
+	rgb = ft_split(split_addr[1], ',');
+	if (!rgb)
+		return (free_split(split_addr), -1);
+	free_split(split_addr);
+	*ptr_ref = create_rgb(0 ,ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
+	free_split(rgb);
 	return (SUCCESS);
 }
 
-static int	set_fc(t_map *map, char *src)
+static int	set_fc(t_sprite *sprite, char *src)
 {
 	char	c;
 	int		status;
@@ -34,12 +37,12 @@ static int	set_fc(t_map *map, char *src)
 	status = -1;
 	c = src[0];
 
-	if ((c == 'F' && map->floor) || (c == 'C' && map->ceiling))
+	if ((c == 'F' && sprite->floor) || (c == 'C' && sprite->ceiling))
 		return (ft_printf_fd(2, ME_MMA), status);
 	if (c == 'F')
-		status = allocate_fc((char **)&map->floor, src);
+		status = allocate_fc(&sprite->floor, src);
 	if (c == 'C')
-		status = allocate_fc((char **)&map->ceiling, src);
+		status = allocate_fc(&sprite->ceiling, src);
 	if (status < 0)
 		ft_printf_fd(2, ME_MALLOC);
 	return (status);
@@ -96,7 +99,7 @@ static bool	parse_line(char *src)
 }
 
 //* [x] Need to make sure if wall texture can be mixed with floor and ceiling
-bool	parse_fc(t_map *map)
+void	init_fc(t_map *map, t_sprite *sprite)
 {
 	int		i;
 	char	c;
@@ -109,13 +112,12 @@ bool	parse_fc(t_map *map)
 			break ;
 		if (parse_line(map->cub_array[i]))
 		{
-			if (set_fc(map, map->cub_array[i]) < 0)
-				return (-1);
+			if (set_fc(sprite, map->cub_array[i]) < 0)
+				free_game(1);
 			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
 		}
-		i++;
+		++i;
 	}
-	if (!map->ceiling || !map->floor)
-		return (ft_printf_fd(2, ME_MMA), -1);
-	return (SUCCESS);
+	if (!sprite->ceiling || !sprite->floor)
+		return (ft_printf_fd(2, ME_MMA), free_game(1));
 }

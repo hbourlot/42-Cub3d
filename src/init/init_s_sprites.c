@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_s_sprites.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 01:01:03 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 00:45:26 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:25:31 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,20 @@ static int	init_sprite(t_cub3d *game, t_img **sprite, char *path)
 	return (SUCCESS);
 }
 
-int	init_s_sprite(t_cub3d *game)
+void	init_s_sprite(t_cub3d *game)
 {
 	if (init_sprite(game, &game->sprites->no, (char *)game->map->no))
-		return (ft_printf_fd(2, ME_MALLOC), -1);
+		return (ft_printf_fd(2, ME_MALLOC), free_game(1));
 	if (init_sprite(game, &game->sprites->so, (char *)game->map->so))
-		return (ft_printf_fd(2, ME_MALLOC), -1);
+		return (ft_printf_fd(2, ME_MALLOC), free_game(1));
 	if (init_sprite(game, &game->sprites->ea, (char *)game->map->ea))
-		return (ft_printf_fd(2, ME_MALLOC), -1);
+		return (ft_printf_fd(2, ME_MALLOC), free_game(1));
 	if (init_sprite(game, &game->sprites->we, (char *)game->map->we))
-		return (ft_printf_fd(2, ME_MALLOC), -1);
+		return (ft_printf_fd(2, ME_MALLOC), free_game(1));
 	if (init_sprite(game, &game->sprites->door_close,
 			"texture/door/door_close.xpm"))
-		return (ft_printf_fd(2, ME_MALLOC), -1);
+		return (ft_printf_fd(2, ME_MALLOC), free_game(1));
 	if (init_sprite(game, &game->sprites->door_open,
 			"texture/door/door_half_open2.xpm"))
-		return (ft_printf_fd(2, ME_MALLOC), -1);
-	return (SUCCESS);
+		return (ft_printf_fd(2, ME_MALLOC), free_game(1));
 }

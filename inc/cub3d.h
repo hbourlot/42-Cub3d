@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 14:49:15 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:35:02 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ typedef struct s_sprite
 	t_img		*ea;
 	t_img		*door_close;
 	t_img		*door_open;
-	t_img		*floor;
-	t_img		*ceiling;
+	int 		floor;
+	int 		ceiling;
 }				t_sprite;
 
 typedef struct s_screen
@@ -174,7 +174,7 @@ int				mouse_signal(int x, int y, t_cub3d *game);
 // ***************************************************************************
 // **							map/parsing Functions 						**
 // ***************************************************************************
-bool			parse_fc(t_map *map);
+void			init_fc(t_map *map, t_sprite *sprite);
 bool			parse_map(t_map *map);
 bool			parse_texture(t_map *map);
 bool			invalid_file_name(t_map *map);
@@ -184,16 +184,16 @@ int				check_unique_textures(t_map *map);
 // ***************************************************************************
 // **							Initialize Functions 						**
 // ***************************************************************************
+t_cub3d			*get_cub();
 t_screen		*init_s_screen(void);
-int				init_s_map(t_map *map);
-int				init_images(t_cub3d *game);
-int				init_s_sprite(t_cub3d *game);
-int				init_doors(t_map *map);
+void			init_s_map(t_map *map);
+void			init_images(t_cub3d *game);
+void			init_s_sprite(t_cub3d *game);
+void			init_doors(t_map *map);
 void			init_player(t_cub3d *game);
-int				init_game(t_cub3d *game);
 void			init_s_ray(t_ray *ray);
 void			init_s_dda(t_dda *dda, double x, double y, double angle);
-int				init_s_cube3d(t_cub3d **game, char *argv[]);
+void			init_s_cub3d(t_cub3d *game, char *argv[]);
 
 // ***************************************************************************
 // **							Draw Functions       						**
@@ -215,20 +215,20 @@ void			draw_line(t_cub3d *game, float initial[2], float final[2],
 // ***************************************************************************
 // **							Exit Functions      						**
 // ***************************************************************************
-void			free_game(t_cub3d *game);
+void			free_game(int exit_status);
 void			free_world(int **world);
 
 // ***************************************************************************
 // **							Map Functions   							**
 // ***************************************************************************
 void			map_range(t_map *map);
-int				cub_array(t_map *map);
-int				parse_s_map(t_map *map);
-int				game_loop(t_cub3d *game);
+void			init_cub_array(t_map *map);
+void			game_loop(t_cub3d *game);
 int				open_cub(const char *path);
-int				init_window(t_cub3d *game);
+void			init_window(t_cub3d *game);
 int				count_lines(const char *path);
 int				map_reachability(t_map *map);
+void			parse_s_map(t_map *map);
 
 // ***************************************************************************
 // **							Player Functions   							**

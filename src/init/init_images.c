@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:14:00 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/14 01:39:04 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:08:59 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,10 @@ static int	init_map_img(t_cub3d *game)
 	return (0);
 }
 
-int	init_images(t_cub3d *game)
+void	init_images(t_cub3d *game)
 {
 	if (init_main_img(game) == -1)
-		return (-1);
+		free_game(1);
 	if (init_map_img(game) == -1)
-		return (-1);
-	return (0);
+		free_game(1);
 }

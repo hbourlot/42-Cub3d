@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:14:58 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 13:49:27 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:07:48 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,11 @@ static void	free_sprites(t_cub3d *game, t_sprite *sprites)
 // 	}
 // }
 
-void	free_game(t_cub3d *game)
+void	free_game(int exit_status)
 {
+	t_cub3d	*game;
+	
+	game = get_cub();
 	if (game->map->num_doors)
 		free(game->map->doors);
 	free_map(game->map);
@@ -121,5 +124,5 @@ void	free_game(t_cub3d *game)
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
 	}
-	exit(0);
+	exit(exit_status);
 }

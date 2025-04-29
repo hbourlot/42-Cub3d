@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 01:01:46 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 01:05:20 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/28 21:42:15 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	clear_main_img(t_cub3d *game)
 		while (y < S_HEIGHT)
 		{
 			if (y < S_HEIGHT / 2)
-				put_pixel_img(&game->main_img, x, y, 0x4B4B4B);
+				put_pixel_img(&game->main_img, x, y, game->sprites->floor);
 			if (y > S_HEIGHT / 2 && y < S_HEIGHT)
-				put_pixel_img(&game->main_img, x, y, 0x2F2F2F);
+				put_pixel_img(&game->main_img, x, y, game->sprites->ceiling);
 			y++;
 		}
 		x++;

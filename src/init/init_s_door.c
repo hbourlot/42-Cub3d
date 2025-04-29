@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_s_door.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:01:17 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 01:49:59 by joralves         ###   ########.fr       */
+/*   Updated: 2025/04/28 22:09:58 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,13 @@ static void	init_doors_aux(t_map *map)
 	}
 }
 
-int	init_doors(t_map *map)
+void	init_doors(t_map *map)
 {
 	count_doors(map);
 	if (map->num_doors == 0)
-		return (0);
+		return;
 	map->doors = ft_calloc((map->num_doors + 1), sizeof(t_door));
 	if (!map->doors)
-		return (-1);
+		free_game(1);
 	init_doors_aux(map);
-	return (0);
 }

@@ -22,9 +22,9 @@ COMPILED_FILES	= 0
 OS				= $(shell uname)
 
 NAME			= cub3D
-C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map init/init_images  								\
-				  	init/init_window init/init_game init/init_s_player init/init_s_sprites init/init_s_door				\
-				  																									\
+C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_images  								\
+				  	init/init_window init/init_s_player init/init_s_sprites init/init_s_door						\
+				  	init/init_fc																					\
 				  	utils/signal_hook utils/debug																	\
 																													\
 				  	exit/free																						\
@@ -32,7 +32,7 @@ C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_s_map init/init_images
 					draw/cast_ray draw/draw_line draw/cast_ray_door													\
 																													\
 				  	map/count_lines map/cub_array map/open															\
-				  	map/parsing/parse_map map/parsing/parse_texture map/parsing/parse_fc							\
+				  	map/parsing/parse_map map/parsing/parse_texture							\
 				  	map/parsing/invalid_file_name  map/parse_s_map map/map_range											\
 					map/parsing/map_reachability map/parsing/check_unique_textures									\
 				  																									\
@@ -61,14 +61,15 @@ MINILIBX_LIB	= ./lib/minilibx-linux/libmlx.a
 # endif
 
 PRINT_CMD = printf
-MSG = "\r%100s\r[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
+MSG = "[ $(COMPILED_FILES)/$(TOTAL_FILES) $$(($(COMPILED_FILES) * 100 / $(TOTAL_FILES)))%% ] $(ORANGE)Compiling [$1]... $(RESET)"
 
 # Function to print the compilation message
 define print_compile_msg
 	$(eval COMPILED_FILES = $(shell echo $$(($(COMPILED_FILES) + 1))))
-	@$(PRINT_CMD) "%400s\r"
+	@$(PRINT_CMD) "%200s\r"
 	@$(PRINT_CMD) $(UP) $(CUT)
 	@$(PRINT_CMD) $(MSG)
+
 
 endef
 
@@ -141,3 +142,7 @@ r:
 v:
 	@make -s
 	@$(VALGRIND) ./$(NAME) ./map/ex1.cub
+
+fc: fclean
+
+c: clean
