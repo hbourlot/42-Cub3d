@@ -22,18 +22,18 @@ COMPILED_FILES	= 0
 OS				= $(shell uname)
 
 NAME			= cub3D
-C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_images  								\
+C_FUNCTIONS		= init/game_loop init/init_s_cub3d init/init_images  												\
 				  	init/init_window init/init_s_player init/init_s_sprites init/init_s_door						\
 				  	init/init_fc																					\
 				  	utils/signal_hook utils/debug																	\
 																													\
-				  	exit/free_game																						\
+				  	exit/free_game																					\
 				  	draw/draw_img draw/draw_map draw/draw_line draw/raycaster draw/get_texture 						\
 					draw/cast_ray draw/draw_line draw/cast_ray_door													\
 																													\
 				  	map/count_lines map/cub_array map/open															\
-				  	map/parsing/parse_map map/parsing/parse_texture							\
-				  	map/parsing/invalid_file_name  map/parse_s_map map/map_range											\
+				  	map/parsing/parse_map map/parsing/parse_texture													\
+				  	map/parsing/invalid_file_name  map/parse_s_map map/map_range									\
 					map/parsing/map_reachability map/parsing/check_unique_textures									\
 				  																									\
 					player/locate_spawn_point player/player_movement player/player_collision						\
