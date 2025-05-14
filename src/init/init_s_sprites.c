@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 01:01:03 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 00:45:26 by joralves         ###   ########.fr       */
+/*   Updated: 2025/05/14 00:04:06 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	init_s_sprite(t_cub3d *game)
 			"texture/door/door_close.xpm"))
 		return (ft_printf_fd(2, ME_MALLOC), -1);
 	if (init_sprite(game, &game->sprites->door_open,
-			"texture/door/door_half_open2.xpm"))
+			"texture/door/door_open.xpm"))
 		return (ft_printf_fd(2, ME_MALLOC), -1);
 	return (SUCCESS);
 }

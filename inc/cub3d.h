@@ -6,7 +6,7 @@
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/17 14:49:15 by joralves         ###   ########.fr       */
+/*   Updated: 2025/05/13 23:16:16 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ typedef struct s_cub3d
 	char		*name;
 	t_sprite	*sprites;
 	t_player	player;
+	bool		mouse_on;
 	int			mouse_x;
 	int			mouse_y;
 
