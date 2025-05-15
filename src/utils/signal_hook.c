@@ -15,8 +15,9 @@
 int	mouse_signal(int x, int y, t_cub3d *game)
 {
 	int	dx;
+
 	if (game->mouse_on == false)
-		return(0);
+		return (0);
 	(void)y;
 	dx = x - game->mouse_x;
 	if (dx < 0)
