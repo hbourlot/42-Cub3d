@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:18:57 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/28 22:35:02 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:58:11 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ typedef struct s_cub3d
 	char		*name;
 	t_sprite	*sprites;
 	t_player	player;
+	bool		mouse_on;
 	int			mouse_x;
 	int			mouse_y;
 
@@ -174,7 +175,7 @@ int				mouse_signal(int x, int y, t_cub3d *game);
 // ***************************************************************************
 // **							map/parsing Functions 						**
 // ***************************************************************************
-void			init_fc(t_map *map, t_sprite *sprite);
+void			parse_fc(t_map *map, t_sprite *sprite);
 bool			parse_map(t_map *map);
 bool			parse_texture(t_map *map);
 bool			invalid_file_name(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 01:01:03 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/28 22:25:31 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:42:28 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	init_s_sprite(t_cub3d *game)
 			"texture/door/door_close.xpm"))
 		return (ft_printf_fd(2, ME_MALLOC), free_game(1));
 	if (init_sprite(game, &game->sprites->door_open,
-			"texture/door/door_half_open2.xpm"))
+			"texture/door/door_open.xpm"))
 		return (ft_printf_fd(2, ME_MALLOC), free_game(1));
 }

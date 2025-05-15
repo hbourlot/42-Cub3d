@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:24:49 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 14:58:17 by joralves         ###   ########.fr       */
+/*   Updated: 2025/05/15 18:37:09 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,13 @@ static void	render_door(t_cub3d *game, t_ray *ray, float ray_angle, int x)
 	t_draw		second_draw;
 	t_player	*p;
 
+	(void)ray;
 	p = &game->player;
-	new_x = p->x + cos(ray_angle) * (ray->dist);
-	new_y = p->y - sin(ray_angle) * (ray->dist);
+
+	new_x = p->x /* + cos(ray_angle) * (ray->dist) */;
+	new_y = p->y /* - sin(ray_angle) * (ray->dist) */;
+	// new_x = p->x + cos(ray_angle) * (ray->dist);
+	// new_y = p->y - sin(ray_angle) * (ray->dist);
 	new_x /= TILE_SIZE;
 	new_y /= TILE_SIZE;
 	second_ray = cast_ray_door(game->map, new_x, new_y, ray_angle);

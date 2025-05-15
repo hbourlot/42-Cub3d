@@ -1,0 +1,1701 @@
+[
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_init.o",
+			"mlx_init.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_init.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_init.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_new_window.o",
+			"mlx_new_window.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_new_window.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_new_window.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_pixel_put.o",
+			"mlx_pixel_put.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_pixel_put.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_pixel_put.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_loop.o",
+			"mlx_loop.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_loop.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_loop.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_mouse_hook.o",
+			"mlx_mouse_hook.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_mouse_hook.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_mouse_hook.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_key_hook.o",
+			"mlx_key_hook.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_key_hook.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_key_hook.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_expose_hook.o",
+			"mlx_expose_hook.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_expose_hook.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_expose_hook.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_loop_hook.o",
+			"mlx_loop_hook.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_loop_hook.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_loop_hook.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_int_anti_resize_win.o",
+			"mlx_int_anti_resize_win.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_int_anti_resize_win.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_int_anti_resize_win.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_int_do_nothing.o",
+			"mlx_int_do_nothing.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_int_do_nothing.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_int_do_nothing.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_int_wait_first_expose.o",
+			"mlx_int_wait_first_expose.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_int_wait_first_expose.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_int_wait_first_expose.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_int_get_visual.o",
+			"mlx_int_get_visual.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_int_get_visual.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_int_get_visual.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_flush_event.o",
+			"mlx_flush_event.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_flush_event.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_flush_event.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_string_put.o",
+			"mlx_string_put.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_string_put.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_string_put.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_set_font.o",
+			"mlx_set_font.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_set_font.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_set_font.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_new_image.o",
+			"mlx_new_image.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_new_image.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_new_image.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_get_data_addr.o",
+			"mlx_get_data_addr.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_get_data_addr.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_get_data_addr.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_put_image_to_window.o",
+			"mlx_put_image_to_window.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_put_image_to_window.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_put_image_to_window.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_get_color_value.o",
+			"mlx_get_color_value.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_get_color_value.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_get_color_value.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_clear_window.o",
+			"mlx_clear_window.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_clear_window.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_clear_window.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_xpm.o",
+			"mlx_xpm.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_xpm.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_xpm.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_int_str_to_wordtab.o",
+			"mlx_int_str_to_wordtab.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_int_str_to_wordtab.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_int_str_to_wordtab.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_destroy_window.o",
+			"mlx_destroy_window.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_destroy_window.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_destroy_window.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_int_param_event.o",
+			"mlx_int_param_event.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_int_param_event.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_int_param_event.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_int_set_win_event_mask.o",
+			"mlx_int_set_win_event_mask.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_int_set_win_event_mask.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_int_set_win_event_mask.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_hook.o",
+			"mlx_hook.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_hook.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_hook.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_rgb.o",
+			"mlx_rgb.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_rgb.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_rgb.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_destroy_image.o",
+			"mlx_destroy_image.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_destroy_image.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_destroy_image.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_mouse.o",
+			"mlx_mouse.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_mouse.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_mouse.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_screen_size.o",
+			"mlx_screen_size.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_screen_size.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_screen_size.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/gcc",
+			"-O3",
+			"-I/usr/X11/include",
+			"-c",
+			"-o",
+			"obj/mlx_destroy_display.o",
+			"mlx_destroy_display.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/mlx_destroy_display.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/obj/mlx_destroy_display.o"
+	},
+	{
+		"arguments": [
+			"/opt/homebrew/opt/llvm/bin/clang",
+			"-I/usr/X11/include",
+			"-O3",
+			"-I..",
+			"-g",
+			"-c",
+			"-o",
+			"main.o",
+			"main.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/test",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/test/main.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/minilibx-linux/test/main.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_atoi.o",
+			"src/mandatory/ft_atoi.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_atoi.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_atoi.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_bzero.o",
+			"src/mandatory/ft_bzero.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_bzero.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_bzero.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_calloc.o",
+			"src/mandatory/ft_calloc.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_calloc.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_calloc.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_isalnum.o",
+			"src/mandatory/ft_isalnum.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_isalnum.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_isalnum.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_isalpha.o",
+			"src/mandatory/ft_isalpha.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_isalpha.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_isalpha.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_isascii.o",
+			"src/mandatory/ft_isascii.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_isascii.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_isascii.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_isdigit.o",
+			"src/mandatory/ft_isdigit.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_isdigit.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_isdigit.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_isprint.o",
+			"src/mandatory/ft_isprint.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_isprint.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_isprint.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_memchr.o",
+			"src/mandatory/ft_memchr.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_memchr.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_memchr.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_memcpy.o",
+			"src/mandatory/ft_memcpy.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_memcpy.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_memcpy.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_memmove.o",
+			"src/mandatory/ft_memmove.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_memmove.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_memmove.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_memset.o",
+			"src/mandatory/ft_memset.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_memset.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_memset.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strchr.o",
+			"src/mandatory/ft_strchr.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strchr.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strchr.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strdup.o",
+			"src/mandatory/ft_strdup.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strdup.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strdup.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strlcpy.o",
+			"src/mandatory/ft_strlcpy.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strlcpy.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strlcpy.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strlen.o",
+			"src/mandatory/ft_strlen.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strlen.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strlen.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strncmp.o",
+			"src/mandatory/ft_strncmp.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strncmp.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strncmp.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strnstr.o",
+			"src/mandatory/ft_strnstr.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strnstr.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strnstr.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strrchr.o",
+			"src/mandatory/ft_strrchr.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strrchr.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strrchr.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_tolower.o",
+			"src/mandatory/ft_tolower.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_tolower.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_tolower.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_toupper.o",
+			"src/mandatory/ft_toupper.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_toupper.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_toupper.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strjoin.o",
+			"src/mandatory/ft_strjoin.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strjoin.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strjoin.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strtrim.o",
+			"src/mandatory/ft_strtrim.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strtrim.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strtrim.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_substr.o",
+			"src/mandatory/ft_substr.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_substr.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_substr.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_split.o",
+			"src/mandatory/ft_split.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_split.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_split.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_striteri.o",
+			"src/mandatory/ft_striteri.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_striteri.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_striteri.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_putchar_fd.o",
+			"src/mandatory/ft_putchar_fd.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_putchar_fd.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_putchar_fd.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_putendl_fd.o",
+			"src/mandatory/ft_putendl_fd.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_putendl_fd.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_putendl_fd.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_putnbr_fd.o",
+			"src/mandatory/ft_putnbr_fd.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_putnbr_fd.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_putnbr_fd.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strmapi.o",
+			"src/mandatory/ft_strmapi.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strmapi.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strmapi.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_itoa.o",
+			"src/mandatory/ft_itoa.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_itoa.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_itoa.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_memcmp.o",
+			"src/mandatory/ft_memcmp.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_memcmp.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_memcmp.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_putstr_fd.o",
+			"src/mandatory/ft_putstr_fd.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_putstr_fd.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_putstr_fd.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/mandatory/ft_strlcat.o",
+			"src/mandatory/ft_strlcat.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/mandatory/ft_strlcat.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/mandatory/ft_strlcat.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_itoa_iter.o",
+			"src/new/ft_itoa_iter.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_itoa_iter.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_itoa_iter.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_linelen.o",
+			"src/new/ft_linelen.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_linelen.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_linelen.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_nbrlen.o",
+			"src/new/ft_nbrlen.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_nbrlen.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_nbrlen.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_strcmp.o",
+			"src/new/ft_strcmp.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_strcmp.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_strcmp.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_lstduplicate.o",
+			"src/new/ft_lstduplicate.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_lstduplicate.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_lstduplicate.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_lstidx.o",
+			"src/new/ft_lstidx.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_lstidx.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_lstidx.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_lstvalue.o",
+			"src/new/ft_lstvalue.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_lstvalue.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_lstvalue.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_free_split.o",
+			"src/new/ft_free_split.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_free_split.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_free_split.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_strcpy.o",
+			"src/new/ft_strcpy.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_strcpy.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_strcpy.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_strcat.o",
+			"src/new/ft_strcat.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_strcat.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_strcat.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_append_and_free.o",
+			"src/new/ft_append_and_free.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_append_and_free.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_append_and_free.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/free_split.o",
+			"src/new/free_split.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/free_split.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/free_split.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/get_next_line.o",
+			"src/new/get_next_line.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/get_next_line.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/get_next_line.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_printf.o",
+			"src/new/ft_printf.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_printf.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_printf.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_putchar.o",
+			"src/new/ft_putchar.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_putchar.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_putchar.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_putstr.o",
+			"src/new/ft_putstr.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_putstr.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_putstr.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/array_length.o",
+			"src/new/array_length.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/array_length.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/array_length.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/char_cmp.o",
+			"src/new/char_cmp.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/char_cmp.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/char_cmp.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_strstr.o",
+			"src/new/ft_strstr.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_strstr.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_strstr.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/is_str_longer.o",
+			"src/new/is_str_longer.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/is_str_longer.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/is_str_longer.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/is_greater.o",
+			"src/new/is_greater.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/is_greater.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/is_greater.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/split_by_tokens.o",
+			"src/new/split_by_tokens.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/split_by_tokens.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/split_by_tokens.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/sort_arrays_by_length.o",
+			"src/new/sort_arrays_by_length.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/sort_arrays_by_length.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/sort_arrays_by_length.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_strncpy.o",
+			"src/new/ft_strncpy.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_strncpy.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_strncpy.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/remove_substring.o",
+			"src/new/remove_substring.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/remove_substring.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/remove_substring.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_strcmps.o",
+			"src/new/ft_strcmps.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_strcmps.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_strcmps.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_strstr_any.o",
+			"src/new/ft_strstr_any.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_strstr_any.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_strstr_any.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/find_string_match.o",
+			"src/new/find_string_match.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/find_string_match.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/find_string_match.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/free_pointers.o",
+			"src/new/free_pointers.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/free_pointers.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/free_pointers.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_printf_fd.o",
+			"src/new/ft_printf_fd.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_printf_fd.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_printf_fd.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/all_same_char.o",
+			"src/new/all_same_char.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/all_same_char.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/all_same_char.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/get_last_node.o",
+			"src/new/get_last_node.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/get_last_node.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/get_last_node.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/get_offset.o",
+			"src/new/get_offset.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/get_offset.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/get_offset.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/insert_string.o",
+			"src/new/insert_string.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/insert_string.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/insert_string.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/truncate_range.o",
+			"src/new/truncate_range.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/truncate_range.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/truncate_range.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/truncate_character.o",
+			"src/new/truncate_character.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/truncate_character.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/truncate_character.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_strjoin_char.o",
+			"src/new/ft_strjoin_char.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_strjoin_char.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_strjoin_char.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_atol.o",
+			"src/new/ft_atol.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_atol.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_atol.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/ft_isspaces.o",
+			"src/new/ft_isspaces.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/ft_isspaces.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/ft_isspaces.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/all_spaces.o",
+			"src/new/all_spaces.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/all_spaces.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/all_spaces.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/init_prev.o",
+			"src/new/init_prev.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/init_prev.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/init_prev.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/split_metadata.o",
+			"src/new/split_metadata.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/split_metadata.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/split_metadata.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj/src/new/contains_char.o",
+			"src/new/contains_char.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/src/new/contains_char.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/lib/libft/obj/src/new/contains_char.o"
+	},
+	{
+		"arguments": [
+			"/usr/bin/cc",
+			"-g",
+			"-Wall",
+			"-Wextra",
+			"-Werror",
+			"-c",
+			"-Iinc/",
+			"-o",
+			"obj//init/game_loop.o",
+			"src//init/game_loop.c"
+		],
+		"directory": "/Users/hugobourlot/Projects/42-Cub3d",
+		"file": "/Users/hugobourlot/Projects/42-Cub3d/src/init/game_loop.c",
+		"output": "/Users/hugobourlot/Projects/42-Cub3d/obj/init/game_loop.o"
+	}
+]

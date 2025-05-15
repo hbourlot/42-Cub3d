@@ -6,7 +6,7 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:28:50 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/29 19:25:39 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/15 19:34:39 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static bool	parse_line(char *src)
 }
 
 //* [x] Need to make sure if wall texture can be mixed with floor and ceiling
-void	init_fc(t_map *map, t_sprite *sprite)
+void	parse_fc(t_map *map, t_sprite *sprite)
 {
 	int		i;
 	char	c;
