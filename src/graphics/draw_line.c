@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 00:59:33 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 01:00:01 by joralves         ###   ########.fr       */
+/*   Updated: 2025/05/15 20:25:16 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	get_greater_num(int a, int b)
+static int	get_greater_num(int a, int b)
 {
 	if (a > b)
 		return (a);

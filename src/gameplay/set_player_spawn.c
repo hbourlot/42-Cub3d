@@ -6,13 +6,13 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:13:30 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/05/15 20:01:29 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/15 20:29:12 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	locate_spawn_point(t_player *player, t_map *map)
+void	set_player_spawn(t_player *player, t_map *map)
 {
 	int	i;
 	int	j;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_s_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 00:59:35 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 14:55:18 by joralves         ###   ########.fr       */
+/*   Updated: 2025/05/15 20:29:12 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_player(t_cub3d *game)
 	t_player	*player;
 
 	player = &game->player;
-	locate_spawn_point(&game->player, game->map);
+	set_player_spawn(&game->player, game->map);
 	init_rotation(player);
 	player->pdx = cos(player->angle) * SPEED;
 	player->pdy = -sin(player->angle) * SPEED;

@@ -6,25 +6,12 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 19:01:17 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/28 22:09:58 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/15 20:35:54 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_door	*find_door(t_map *map, int x, int y)
-{
-	int	i;
-
-	i = 0;
-	while (i < map->num_doors)
-	{
-		if (map->doors[i].x == x && map->doors[i].y == y)
-			return (&map->doors[i]);
-		i++;
-	}
-	return (NULL);
-}
 
 static void	count_doors(t_map *map)
 {

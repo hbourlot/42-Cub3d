@@ -6,20 +6,11 @@
 /*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:24:49 by joralves          #+#    #+#             */
-/*   Updated: 2025/05/15 18:37:09 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/15 20:10:24 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	init_s_ray(t_ray *ray)
-{
-	ray->dist = 1000000.0;
-	ray->hit_side = 0;
-	ray->tex_num = 0;
-	ray->wall_x = 0;
-	ray->door = NULL;
-}
 
 static t_draw	prepare_draw(t_ray *ray, t_player *p, double ray_angle, int x)
 {
@@ -87,7 +78,7 @@ static void	render_door(t_cub3d *game, t_ray *ray, float ray_angle, int x)
 }
 
 //*Render to image now
-void	render(t_cub3d *game, t_player *p)
+void	raycaster(t_cub3d *game, t_player *p)
 {
 	t_ray	ray;
 	t_draw	draw;

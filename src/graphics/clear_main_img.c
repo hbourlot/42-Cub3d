@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_img.c                                         :+:      :+:    :+:   */
+/*   clear_main_img.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 01:01:46 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/29 19:07:15 by joralves         ###   ########.fr       */
+/*   Created: 2025/05/15 20:23:34 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/05/15 20:24:03 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	create_rgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
 
 void	clear_main_img(t_cub3d *game)
 {
@@ -36,16 +31,4 @@ void	clear_main_img(t_cub3d *game)
 		}
 		x++;
 	}
-}
-
-void	put_pixel_img(t_img *img, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x < 0 || y < 0)
-		return ;
-	if (x >= img->width || y >= img->height)
-		return ;
-	dst = img->addr + (y * img->size_line + x * (img->bpp / 8));
-	*(unsigned int *)dst = color;
 }

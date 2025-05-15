@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 23:53:30 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 15:02:21 by joralves         ###   ########.fr       */
+/*   Updated: 2025/05/15 20:28:26 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	move_player(t_map *map, t_player *player, int keycode)
 		new_x -= player->pdx;
 		new_y -= player->pdy;
 	}
-	check_collision(player, map, new_x, new_y);
+	handle_player_collision(player, map, new_x, new_y);
 }
 
 void	mouse_handler(t_cub3d *game)

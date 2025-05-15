@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_collision.c                                 :+:      :+:    :+:   */
+/*   check_player_collision.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 01:28:23 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/29 19:00:58 by joralves         ###   ########.fr       */
+/*   Updated: 2025/05/15 20:27:50 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	wall_collision(t_map *map, float new_x, float new_y, float collider)
 	return (0);
 }
 
-void	check_collision(t_player *player, t_map *map, float new_x, float new_y)
+void	handle_player_collision(t_player *player, t_map *map, float new_x, float new_y)
 {
 	int	collision_x;
 	int	collision_y;
