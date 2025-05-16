@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_ray_door.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 01:05:55 by joralves          #+#    #+#             */
-/*   Updated: 2025/05/15 18:35:59 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:59:04 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ static void	perform_dda_loop_door(t_map *map, t_ray *ray, t_dda *dda,
 		if ((door && !door->is_open)
 			|| map->map_world[dda->map_y][dda->map_x] == 1)
 			hit = 1;
-		if (dda->map_x < 0 || dda->map_y < 0 || dda->map_x >= map->width
-			|| dda->map_y >= map->height)
-			break ;
 	}
 }
 

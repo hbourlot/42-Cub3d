@@ -12,10 +12,9 @@
 
 #include "cub3d.h"
 
-
-t_cub3d	*get_cub()
+t_cub3d	*get_cub(void)
 {
-	static	t_cub3d data;
+	static t_cub3d	data;
 
 	return (&data);
 }

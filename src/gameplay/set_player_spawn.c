@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   locate_spawn_point.c                               :+:      :+:    :+:   */
+/*   set_player_spawn.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 10:13:30 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/05/15 20:29:12 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:58:12 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	set_player_spawn(t_player *player, t_map *map)
 			if (ft_strchr(VPL, map->map_array[i][j]))
 			{
 				player->dir = map->map_array[i][j];
-				player->x = j * TILE_SIZE + TILE_SIZE / 2;;
+				player->x = j * TILE_SIZE + TILE_SIZE / 2;
 				player->y = i * TILE_SIZE + TILE_SIZE / 2;
 				return ;
 			}

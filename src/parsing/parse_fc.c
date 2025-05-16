@@ -89,8 +89,8 @@ static bool	parse_line(char *src)
 	words = split_metadata()->word_count;
 	if (ft_strlen(split[0]) != 1 || words != 2)
 		return (free_split(split), false);
-	if (!parse_color(split[1])) {
-		
+	if (!parse_color(split[1]))
+	{
 		return (free_split(split), false);
 	}
 	free_split(split);
@@ -113,8 +113,8 @@ void	parse_fc(t_map *map, t_sprite *sprite)
 			break ;
 		if (parse_line(map->cub_array[i]))
 		{
-			
-			if (set_fc(sprite, map->cub_array[i]) < 0) {
+			if (set_fc(sprite, map->cub_array[i]) < 0)
+			{
 				free_game(1);
 			}
 			ft_memset(map->cub_array[i], 0, ft_strlen(map->cub_array[i]));
@@ -123,7 +123,6 @@ void	parse_fc(t_map *map, t_sprite *sprite)
 	}
 	if (!sprite->ceiling || !sprite->floor)
 	{
-
 		return (ft_printf_fd(2, ME_MMA), free_game(1));
 	}
 }

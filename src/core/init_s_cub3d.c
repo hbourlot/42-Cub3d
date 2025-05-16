@@ -26,7 +26,6 @@ void	init_s_cub3d(t_cub3d *game, char *argv[])
 	if (game->map->nbr_of_lines == 0)
 		return (ft_printf_fd(2, ME_EM), free_game(1));
 	game->mouse_on = true;
-
 	init_cub_array(game->map);
 	parse_fc(game->map, game->sprites);
 	parse_s_map(game->map);

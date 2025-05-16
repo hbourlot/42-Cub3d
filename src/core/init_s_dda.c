@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_s_dda.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 20:20:20 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/05/15 20:20:43 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:57:28 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,4 @@ void	init_s_dda(t_dda *dda, double x, double y, double angle)
 	dda->delta_dist_x = fabs(1.0 / dda->dir_x);
 	dda->delta_dist_y = fabs(1.0 / dda->dir_y);
 	init_s_dda_aux(dda, x, y);
-};
+}

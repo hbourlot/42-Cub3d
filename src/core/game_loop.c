@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 22:53:39 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/05/15 20:53:40 by hbourlot         ###   ########.fr       */
+/*   Updated: 2025/05/16 14:57:02 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int	draw(t_cub3d *game)
 	return (0);
 }
 
-static int close_window( void )
+static int	close_window(void)
 {
-    free_game(0);
-    return (0);
+	free_game(0);
+	return (0);
 }
 
-void game_loop(t_cub3d *game)
+void	game_loop(t_cub3d *game)
 {
-    mouse_handler(game);
-    mlx_hook(game->win_ptr, 2, 1L << 0, key_press, game); // KeyPress event
-    mlx_hook(game->win_ptr, 17, 0, close_window, game);  // DestroyNotify event
-    mlx_loop_hook(game->mlx_ptr, draw, game);
-    mlx_loop(game->mlx_ptr);
+	mouse_handler(game);
+	mlx_hook(game->win_ptr, 2, 1L << 0, key_press, game);
+	mlx_hook(game->win_ptr, 17, 0, close_window, game);
+	mlx_loop_hook(game->mlx_ptr, draw, game);
+	mlx_loop(game->mlx_ptr);
 }

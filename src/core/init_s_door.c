@@ -12,7 +12,6 @@
 
 #include "cub3d.h"
 
-
 static void	count_doors(t_map *map)
 {
 	int	y;
