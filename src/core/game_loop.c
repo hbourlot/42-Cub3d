@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 15:05:13 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 15:05:13 by joralves         ###   ########.fr       */
+/*   Created: 2025/03/06 22:53:39 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/05/16 14:57:02 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_cub3d	*get_cub(void)
+int	draw(t_cub3d *game)
 {
-	static t_cub3d	data;
-
-	return (&data);
+	raycaster(game, &game->player);
+	draw_map2d(game, game->map);
+	return (0);
 }
 
-int	main(int argc, char *argv[])
+static int	close_window(void)
 {
-	t_cub3d			*game;
-	static t_map	map;
-	static t_sprite	sprites;
-
-	if (argc != 2)
-		return (ft_printf_fd(2, ME_MMA), 1);
-	game = get_cub();
-	game->map = &map;
-	game->sprites = &sprites;
-	init_s_cub3d(game, argv);
-	game_loop(game);
 	free_game(0);
 	return (0);
+}
+
+void	game_loop(t_cub3d *game)
+{
+	mouse_handler(game);
+	mlx_hook(game->win_ptr, 2, 1L << 0, key_press, game);
+	mlx_hook(game->win_ptr, 17, 0, close_window, game);
+	mlx_loop_hook(game->mlx_ptr, draw, game);
+	mlx_loop(game->mlx_ptr);
 }

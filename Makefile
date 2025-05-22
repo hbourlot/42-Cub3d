@@ -19,17 +19,19 @@ BONUS_DIR       = bonus/
 HEADERS         = $(shell find $(INCLUDE) -name "*.h")
 
 # -- Source Files
-C_FUNCTIONS     = init/game_loop init/init_s_cub3d init/init_s_map init/init_images  								\
-				  init/init_window init/init_game init/init_s_player init/init_s_sprites init/init_s_door			\
-				  utils/signal_hook utils/debug																	\
-				  exit/free																						\
-				  draw/draw_img draw/draw_map draw/draw_line draw/raycaster draw/get_texture 						\
-				  draw/cast_ray draw/cast_ray_door																	\
-				  map/count_lines map/cub_array map/open															\
-				  map/parsing/parse_map map/parsing/texture map/parsing/floor_ceiling								\
-				  map/parsing/name map/parsing/utils map/parse map/map_range map/parsing/map_reachability			\
-				  player/locate_spawn_point player/player_movement player/player_collision							\
-				  main
+C_FUNCTIONS     = core/game_loop core/init_game core/init_images core/init_ray core/init_s_cub3d \
+                  core/init_s_dda core/init_s_door core/init_s_player core/init_s_sprites core/init_window \
+                  core/free_game \
+                  gameplay/handle_player_collision gameplay/player_movement gameplay/set_player_spawn \
+                  gameplay/find_door \
+                  graphics/cast_ray graphics/cast_ray_door graphics/clear_main_img graphics/create_rgb \
+                  graphics/draw_line graphics/draw_map graphics/fill_s_ray graphics/get_texture \
+                  graphics/perform_dda_loop graphics/put_pixel_img graphics/raycaster \
+                  helpers/debug helpers/signal_hook \
+                  parsing/count_lines parsing/cub_array parsing/map_range parsing/open parsing/parse_s_map \
+                  parsing/parse_map parsing/parse_texture parsing/parse_fc parsing/check_unique_textures \
+                  parsing/invalid_file_name parsing/map_reachability \
+                  main
 
 SRC_FILES       = $(addprefix $(SRC_DIR), $(C_FUNCTIONS:=.c))
 OBJS_SRC        = $(addprefix $(OBJ_DIR)/, $(C_FUNCTIONS:=.o))
@@ -127,11 +129,11 @@ bonus: all
 # -- Shortcuts
 r:
 	@make -s
-	@./$(NAME) ./map/ex1.cub
+	@./$(NAME) ./maps/ex1.cub
 
 v:
 	@make -s
-	@$(VALGRIND) ./$(NAME) ./map/ex1.cub
+	@$(VALGRIND) ./$(NAME) ./maps/ex1.cub
 
 fc: fclean
 c: clean

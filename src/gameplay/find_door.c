@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   find_door.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/17 15:05:13 by joralves          #+#    #+#             */
-/*   Updated: 2025/04/17 15:05:13 by joralves         ###   ########.fr       */
+/*   Created: 2025/05/15 20:35:23 by hbourlot          #+#    #+#             */
+/*   Updated: 2025/05/16 14:57:51 by joralves         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_cub3d	*get_cub(void)
+t_door	*find_door(t_map *map, int x, int y)
 {
-	static t_cub3d	data;
+	int	i;
 
-	return (&data);
-}
-
-int	main(int argc, char *argv[])
-{
-	t_cub3d			*game;
-	static t_map	map;
-	static t_sprite	sprites;
-
-	if (argc != 2)
-		return (ft_printf_fd(2, ME_MMA), 1);
-	game = get_cub();
-	game->map = &map;
-	game->sprites = &sprites;
-	init_s_cub3d(game, argv);
-	game_loop(game);
-	free_game(0);
-	return (0);
+	i = 0;
+	while (i < map->num_doors)
+	{
+		if (map->doors[i].x == x && map->doors[i].y == y)
+			return (&map->doors[i]);
+		i++;
+	}
+	return (NULL);
 }
