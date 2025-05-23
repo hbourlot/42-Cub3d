@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   name.c                                             :+:      :+:    :+:   */
+/*   invalid_file_name.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joralves <joralves@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbourlot <hbourlot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 11:02:45 by hbourlot          #+#    #+#             */
-/*   Updated: 2025/04/01 01:01:24 by joralves         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:36:54 by hbourlot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static bool	xpm_end(const char *src)
 bool	invalid_file_name(t_map *map)
 {
 	if (invalid_cub_name(map->path))
-		return (false);
+		return (true);
 	if (!xpm_end(map->ea) || !xpm_end(map->no) || !xpm_end(map->so)
 		|| !xpm_end(map->we))
 		return (true);
