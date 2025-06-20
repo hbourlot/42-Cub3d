@@ -3,7 +3,6 @@
 _Transforming Vision Into Immersive Reality_
 
 > Built with the tools and technologies:
-> - ![Markdown](https://img.shields.io/badge/-Markdown-000?logo=markdown&logoColor=white)
 > - ![C](https://img.shields.io/badge/-C-00599C?logo=c&logoColor=white)
 > - ![GNU Make](https://img.shields.io/badge/-GNU%20Make-007C00?logo=gnu&logoColor=white)
 
@@ -16,7 +15,6 @@ _Transforming Vision Into Immersive Reality_
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Usage](#usage)
-- [Testing](#testing)
 
 ---
 
@@ -55,7 +53,7 @@ Build 42-Cub3d from source and install dependencies:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/abouobra/42-cub3d
+   git clone https://github.com/hbourlot/42-Cub3d.git
 
 ### Usage
 Run the project with:
